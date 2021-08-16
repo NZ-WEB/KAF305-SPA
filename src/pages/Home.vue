@@ -1,0 +1,286 @@
+<template>
+  <q-page class="flex flex-center">
+    <div class="q-layout-container">
+
+      <div class="row">
+        <div class="col">
+          <q-carousel
+            :autoplay="3000"
+            v-model="slide"
+            transition-prev="scale"
+            transition-next="scale"
+            swipeable
+            animated
+            control-color="white"
+            navigation
+            padding
+            style="height: 350px;"
+            arrows
+            infinite
+            class="bg-primary text-white shadow-1 rounded-borders"
+
+          >
+            <q-carousel-slide
+              :name="item.name"
+              class="column no-wrap flex-center"
+              v-for="(item,index) in sliderNews"
+              :key="index"
+            >
+              <q-icon :name="item.icon" size="56px"/>
+              <h4 class="q-mt-md text-center">
+                {{ item.title }}
+              </h4>
+              <div class="hero-slider-text text-center">
+                {{
+                  item.text
+                }}
+              </div>
+            </q-carousel-slide>
+            <!--            <q-carousel-slide name="tv" class="column no-wrap flex-center">-->
+            <!--              <q-icon name="live_tv" size="56px"/>-->
+            <!--              <div class="q-mt-md text-center">-->
+            <!--                {{ lorem }}-->
+            <!--              </div>-->
+            <!--            </q-carousel-slide>-->
+            <!--            <q-carousel-slide name="layers" class="column no-wrap flex-center">-->
+            <!--              <q-icon name="layers" size="56px"/>-->
+            <!--              <div class="q-mt-md text-center">-->
+            <!--                {{ lorem }}-->
+            <!--              </div>-->
+            <!--            </q-carousel-slide>-->
+            <!--            <q-carousel-slide name="map" class="column no-wrap flex-center">-->
+            <!--              <q-icon name="terrain" size="56px"/>-->
+            <!--              <div class="q-mt-md text-center">-->
+            <!--                {{ lorem }}-->
+            <!--              </div>-->
+            <!--            </q-carousel-slide>-->
+          </q-carousel>
+        </div>
+      </div>
+      <!--      <div class="q-py-lg row justify-center items-center">-->
+      <!--        <div class="col-3 q-px-md">-->
+      <!--          <h5>Международная конференция «Математическое моделирование»</h5>-->
+      <!--          <p class="">-->
+      <!--            21–22 июля 2021 года Московский авиационный институт (национальный исследовательский университет) проведёт-->
+      <!--            Международную конференцию «Математическое моделирование». Мероприятие пройдёт в рамках Года науки и-->
+      <!--            технологий и станет частью Международного авиационно-космического салона МАКС-2021. С докладами выступят-->
+      <!--            ведущие российские и зарубежные специалисты в области математического моделирования и информационных-->
+      <!--            технологий для авиационной и ракетно-космической отраслей. Конференция позволит объединить опыт прорывных-->
+      <!--            научных исследований организаций разных стран, сформировать новую точку консолидации международного научного-->
+      <!--            сообщества и индустрии для решения перспективных задач промышленности.-->
+      <!--          </p>-->
+      <!--        </div>-->
+      <!--        <div class="col-4 q-px-md">-->
+      <!--          <q-img class="home-image-1" src="https://mai.ru/upload/iblock/dc7/Math_Screen_16x9_russ-_1_.jpg">-->
+      <!--          </q-img>-->
+      <!--        </div>-->
+      <!--      </div>-->
+      <!--      Section Tabs-->
+      <h4 align="center">Актуальные новости</h4>
+      <div class="row justify-center">
+        <div class="col-7">
+        </div>
+        <q-splitter
+          v-model="splitterModel"
+        >
+          <template v-slot:before>
+            <q-tabs
+              v-model="tab"
+              vertical
+              class="text-primary"
+            >
+              <q-tab
+                :name="item.icon"
+                :icon="item.icon"
+                :label="item.title"
+                v-for="(item,index) in heroTabs"
+                :key="index"
+              />
+              <!--              <q-tab name="alarms" icon="alarm" label="Alarms"/>-->
+              <!--              <q-tab name="movies" icon="movie" label="Movies"/>-->
+              <!--              <q-tab name="MAI" icon="school" label="MAI"/>-->
+            </q-tabs>
+          </template>
+
+          <template v-slot:after>
+            <q-tab-panels
+              v-model="tab"
+              animated
+              swipeable
+              vertical
+              transition-prev="jump-up"
+              transition-next="jump-up"
+            >
+              <q-tab-panel
+                :name="item.icon"
+                v-for="(item,index) in heroTabs"
+                :key="index"
+                class="tabs-content q-pl-xl q-pr-xl"
+              >
+                <div class="tabs-content__wrapper">
+                  <div class="text-h4 q-mb-md">{{ item.fullTitle === '' ? item.title : item.fullTitle }}</div>
+                  <p v-for="(i,index) in item.textContent" :key="index">{{ i }}</p>
+                </div>
+
+
+              </q-tab-panel>
+
+              <!--              <q-tab-panel name="alarms">-->
+              <!--                <div class="text-h4 q-mb-md">Alarms</div>-->
+              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
+              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
+              <!--                  ullam. In, libero.</p>-->
+              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
+              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
+              <!--                  ullam. In, libero.</p>-->
+              <!--              </q-tab-panel>-->
+
+              <!--              <q-tab-panel name="movies">-->
+              <!--                <div class="text-h4 q-mb-md">Movies</div>-->
+              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
+              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
+              <!--                  ullam. In, libero.</p>-->
+              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
+              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
+              <!--                  ullam. In, libero.</p>-->
+              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
+              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
+              <!--                  ullam. In, libero.</p>-->
+              <!--              </q-tab-panel>-->
+              <!--              <q-tab-panel name="MAI">-->
+              <!--                <div class="text-h4 q-mb-md">МАИ</div>-->
+              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
+              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
+              <!--                  ullam. In, libero.</p>-->
+              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
+              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
+              <!--                  ullam. In, libero.</p>-->
+              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
+              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
+              <!--                  ullam. In, libero.</p>-->
+              <!--              </q-tab-panel>-->
+            </q-tab-panels>
+          </template>
+        </q-splitter>
+      </div>
+
+
+    </div>
+  </q-page>
+</template>
+
+<script>
+import {defineComponent} from 'vue';
+import {useStore} from 'vuex'
+import {ref, onMounted} from 'vue'
+
+export default defineComponent({
+  setup() {
+    const store = useStore()
+
+    const sliderNews = store.getters['sliderNews']
+    const heroTabs = store.getters['heroTabs']
+    const lorem = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.'
+    const slide = ref(sliderNews[0].name)
+    const tab = ref(heroTabs[0].icon)
+    const splitterModel = ref(20)
+
+    const CurrentTimeAndDate = () => {
+      setInterval(() => {
+        let date = new Date()
+        document.getElementById("time").innerHTML = (getHours() + ":" + getMinutes() + ":" + getSeconds());
+        document.getElementById("date").innerHTML = (getDate() + ' | ' + getMonth() + ' | ' + date.getFullYear());
+      }, 1000)
+    }
+
+    const getDate = () => {
+      if (new Date().getDate() < 10) {
+        return `0${new Date().getDate()}`
+      } else {
+        return new Date().getDate()
+      }
+    }
+
+    const getMonth = () => {
+      if (new Date().getMonth() < 10) {
+        return `0${new Date().getMonth()}`
+      } else {
+        return new Date().getMonth()
+      }
+    }
+
+    const getHours = () => {
+      if (new Date().getHours() < 10) {
+        return `0${new Date().getHours()}`
+      } else {
+        return new Date().getHours()
+      }
+    }
+    const getSeconds = () => {
+      if (new Date().getSeconds() < 10) {
+        return `0${new Date().getSeconds()}`
+      } else {
+        return new Date().getSeconds()
+      }
+    }
+    const getMinutes = () => {
+      if (new Date().getMinutes() < 10) {
+        return `0${new Date().getMinutes()}`
+      } else {
+        return new Date().getMinutes()
+      }
+    }
+
+    onMounted(CurrentTimeAndDate)
+
+
+    return {
+      tab,
+      store,
+      splitterModel,
+      lorem,
+      sliderNews,
+      heroTabs,
+      slide,
+    }
+
+
+
+  },
+  methods: {
+    log() {
+      console.log(1)
+    }
+  }
+})
+
+</script>
+
+<style scoped lang="scss">
+
+.big-logo {
+  display: block;
+  width: 250px;
+  height: 250px;
+}
+
+.home-image-1 {
+  display: block;
+  max-width: 600px;
+}
+
+.hero-slider-text {
+  max-width: 700px;
+}
+
+.tabs-content {
+  min-width: 1000px;
+  min-height: 370px;
+
+  &__wrapper {
+    max-width: 1200px;
+  }
+}
+
+
+</style>
