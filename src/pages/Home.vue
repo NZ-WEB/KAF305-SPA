@@ -1,8 +1,7 @@
 <template>
   <q-page class="flex flex-center">
     <div class="q-layout-container">
-
-      <div class="row">
+      <div class="row q-mb-auto q-mt-0">
         <div class="col">
           <q-carousel
             :autoplay="3000"
@@ -27,14 +26,14 @@
               :key="index"
             >
               <q-icon :name="item.icon" size="56px"/>
-              <h4 class="q-mt-md text-center">
+              <h5 class="text-h5 text-weight-medium q-my-md text-center">
                 {{ item.title }}
-              </h4>
-              <div class="hero-slider-text text-center">
+              </h5>
+              <p class="hero-slider-text text-center">
                 {{
                   item.text
                 }}
-              </div>
+              </p>
             </q-carousel-slide>
             <!--            <q-carousel-slide name="tv" class="column no-wrap flex-center">-->
             <!--              <q-icon name="live_tv" size="56px"/>-->
@@ -76,92 +75,54 @@
       <!--        </div>-->
       <!--      </div>-->
       <!--      Section Tabs-->
-      <h4 align="center">Актуальные новости</h4>
-      <div class="row justify-center">
+      <div class="row q-pt-lg justify-center">
         <div class="col-7">
+          <h5 class="text-h4 text-weight-medium q-my-md text-primary" align="center">Актуальная информация</h5>
         </div>
-        <q-splitter
-          v-model="splitterModel"
-        >
-          <template v-slot:before>
-            <q-tabs
-              v-model="tab"
-              vertical
-              class="text-primary"
-            >
-              <q-tab
-                :name="item.icon"
-                :icon="item.icon"
-                :label="item.title"
-                v-for="(item,index) in heroTabs"
-                :key="index"
-              />
-              <!--              <q-tab name="alarms" icon="alarm" label="Alarms"/>-->
-              <!--              <q-tab name="movies" icon="movie" label="Movies"/>-->
-              <!--              <q-tab name="MAI" icon="school" label="MAI"/>-->
-            </q-tabs>
-          </template>
-
-          <template v-slot:after>
-            <q-tab-panels
-              v-model="tab"
-              animated
-              swipeable
-              vertical
-              transition-prev="jump-up"
-              transition-next="jump-up"
-            >
-              <q-tab-panel
-                :name="item.icon"
-                v-for="(item,index) in heroTabs"
-                :key="index"
-                class="tabs-content q-pl-xl q-pr-xl"
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-3 col-12">
+              <q-tabs
+                v-model="tab"
+                vertical
+                class="text-primary"
               >
-                <div class="tabs-content__wrapper">
-                  <div class="text-h4 q-mb-md">{{ item.fullTitle === '' ? item.title : item.fullTitle }}</div>
-                  <p v-for="(i,index) in item.textContent" :key="index">{{ i }}</p>
-                </div>
-
-
-              </q-tab-panel>
-
-              <!--              <q-tab-panel name="alarms">-->
-              <!--                <div class="text-h4 q-mb-md">Alarms</div>-->
-              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
-              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
-              <!--                  ullam. In, libero.</p>-->
-              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
-              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
-              <!--                  ullam. In, libero.</p>-->
-              <!--              </q-tab-panel>-->
-
-              <!--              <q-tab-panel name="movies">-->
-              <!--                <div class="text-h4 q-mb-md">Movies</div>-->
-              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
-              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
-              <!--                  ullam. In, libero.</p>-->
-              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
-              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
-              <!--                  ullam. In, libero.</p>-->
-              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
-              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
-              <!--                  ullam. In, libero.</p>-->
-              <!--              </q-tab-panel>-->
-              <!--              <q-tab-panel name="MAI">-->
-              <!--                <div class="text-h4 q-mb-md">МАИ</div>-->
-              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
-              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
-              <!--                  ullam. In, libero.</p>-->
-              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
-              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
-              <!--                  ullam. In, libero.</p>-->
-              <!--                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quis praesentium cumque magnam odio iure-->
-              <!--                  quidem, quod illum numquam possimus obcaecati commodi minima assumenda consectetur culpa fuga nulla-->
-              <!--                  ullam. In, libero.</p>-->
-              <!--              </q-tab-panel>-->
-            </q-tab-panels>
-          </template>
-        </q-splitter>
+                <q-tab
+                  :name="item.icon"
+                  :icon="item.icon"
+                  :label="item.title"
+                  v-for="(item,index) in heroTabs"
+                  :key="index"
+                />
+              </q-tabs>
+            </div>
+            <div class="col-lg-9 col-12">
+              <q-tab-panels
+                v-model="tab"
+                animated
+                swipeable
+                vertical
+                transition-prev="jump-up"
+                transition-next="jump-up"
+              >
+                <q-tab-panel
+                  :name="item.icon"
+                  v-for="(item,index) in heroTabs"
+                  :key="index"
+                  class="tabs-content q-px-xl clear-padding-sm"
+                >
+                  <div class="tabs-content__wrapper">
+                    <div class="text-h6 text-weight-medium text-primary q-mb-sm">{{
+                        item.fullTitle === '' ? item.title : item.fullTitle
+                      }}
+                    </div>
+                    <p v-for="(i,index) in item.textContent" :key="index" class="text-primary">{{ i }}</p>
+                  </div>
+                </q-tab-panel>
+              </q-tab-panels>
+            </div>  
+          </div>
+        </div>
       </div>
 
 
@@ -183,7 +144,6 @@ export default defineComponent({
     const lorem = 'Lorem ipsum dolor, sit amet consectetur adipisicing elit. Itaque voluptatem totam, architecto cupiditate officia rerum, error dignissimos praesentium libero ab nemo.'
     const slide = ref(sliderNews[0].name)
     const tab = ref(heroTabs[0].icon)
-    const splitterModel = ref(20)
 
     const CurrentTimeAndDate = () => {
       setInterval(() => {
@@ -237,13 +197,11 @@ export default defineComponent({
     return {
       tab,
       store,
-      splitterModel,
       lorem,
       sliderNews,
       heroTabs,
       slide,
     }
-
 
 
   },
@@ -262,24 +220,6 @@ export default defineComponent({
   display: block;
   width: 250px;
   height: 250px;
-}
-
-.home-image-1 {
-  display: block;
-  max-width: 600px;
-}
-
-.hero-slider-text {
-  max-width: 700px;
-}
-
-.tabs-content {
-  min-width: 1000px;
-  min-height: 370px;
-
-  &__wrapper {
-    max-width: 1200px;
-  }
 }
 
 

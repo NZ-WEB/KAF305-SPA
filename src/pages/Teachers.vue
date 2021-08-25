@@ -17,8 +17,8 @@
     >
       <q-carousel-slide name="style" class="column no-wrap flex-center">
         <div class="row justify-center" align="center">
-          <div class="col-5">
-            <h3 class="q-mt-sm">Коллектив кафедры</h3>
+          <div class="col-lg-5">
+            <h3 class="q-my-sm text-weight-medium text-h5">Коллектив кафедры</h3>
             <p class="teachers-description">
               Учебный процесс на кафедре 305 ведут преподаватели, которые имеют научную степень доктора, кандидата
               технических наук, являются членами Академии навигации и управления движением, имеют статус преподавателя
@@ -32,7 +32,7 @@
       <q-carousel-slide name="tv" class="column no-wrap flex-center">
         <div class="row justify-center" align="center">
           <div class="col-5">
-            <h3 class="q-mt-sm">Учебный процесс</h3>
+            <h3 class="q-my-sm text-weight-medium text-h5">Учебный процесс</h3>
             <p class="teachers-description">
               Учебный процесс на кафедре основан на глубокой интеграции фундаментальных физико-математических знаний и
               прикладных знаний в области современных инновационных технологий. В процессе обучения будущие специалисты
@@ -47,7 +47,7 @@
       <q-carousel-slide name="layers" class="column no-wrap flex-center">
         <div class="row justify-center" align="center">
           <div class="col-5">
-            <h3 class="q-mt-sm">Исследования и разработки</h3>
+            <h3 class="q-my-sm text-weight-medium text-h5">Исследования и разработки</h3>
             <p class="teachers-description">
               Кафедра ведёт большой объём научно-исследовательской работы с активным привлечением студентов. За
               последние 5 лет студентами сделано более 170 научных докладов, опубликовано более 90 работ, получено более
@@ -59,15 +59,12 @@
         </div>
       </q-carousel-slide>
     </q-carousel>
-    <q-splitter
-      v-model="splitterModel"
-    >
-
-      <template v-slot:before>
+    <div class="row">
+      <div class="col-lg-3 col-12">
         <q-tabs
           v-model="tab"
-          vertical
           class="text-primary"
+          vertical
         >
           <q-tab
             :name="idx"
@@ -76,10 +73,10 @@
             :key="idx"
           />
         </q-tabs>
-      </template>
-
-      <template v-slot:after>
-        <q-tab-panels
+      </div>  
+        
+      <div class="col-lg-9 col-12">
+        <q-tab-panels q-tab-panels
           v-model="tab"
           animated
           swipeable
@@ -92,7 +89,7 @@
             v-for="(item, idx) in $store.getters['teachers/teachers']"
             :key="idx"
           >
-            <q-card class="q-pa-xl shadow-0 text-primary"  style="background: #EDF4FA">
+            <q-card class="q-pa-xl clear-padding-sm shadow-0 text-primary" style="background: #EDF4FA">
               <q-toolbar>
                 <q-avatar
                   size="100px"
@@ -103,7 +100,7 @@
                   </q-img>
                 </q-avatar>
 
-                <q-toolbar-title><span class="text-h6 text-weight-bold">{{ item.fullName }}</span></q-toolbar-title>
+                <q-toolbar-title><span class="text-h5 text-weight-medium">{{ item.fullName }}</span></q-toolbar-title>
 
 
               </q-toolbar>
@@ -111,43 +108,43 @@
 
               <q-card-section class="teacher-date">
                 <div class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-weight-bold">Должность:</h6>
+                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Должность:</h6>
                   <p class="">{{ item.post }}</p>
                 </div>
                 <div class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-weight-bold">Преподаваемые дисциплины:</h6>
+                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Преподаваемые дисциплины:</h6>
                   <p class="">{{ item.disciplines }}</p>
                 </div>
                 <div class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-weight-bold">Уровень образования:</h6>
+                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Уровень образования:</h6>
                   <p class="">{{ item.education }}</p>
                 </div>
                 <div class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-weight-bold">Квалификация:</h6>
+                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Квалификация:</h6>
                   <p class="">{{ item.qualification }}</p>
                 </div>
                 <div v-if="item.academicDegree != ''" class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-weight-bold">Ученая степень:</h6>
+                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Ученая степень:</h6>
                   <p class="">{{ item.academicDegree }}</p>
                 </div>
                 <div class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-weight-bold">Направление подготовки и (или)
+                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Направление подготовки и (или)
                     специальности:
                   </h6>
                   <p class="">{{ item.specialties }}</p>
                 </div>
                 <div class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-weight-bold">Повышение квалификации (или)
+                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Повышение квалификации (или)
                     профессиональная переподготовка:
                   </h6>
                   <p class="">{{ item.advancedTraining }}</p>
                 </div>
                 <div class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-weight-bold">Страж работы по специальности:</h6>
+                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Страж работы по специальности:</h6>
                   <p class="">{{ item.specGuardian }}</p>
                 </div>
                 <div class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-weight-bold">Общий стаж работы:</h6>
+                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Общий стаж работы:</h6>
                   <p class="">{{ item.totalGuardian }}</p>
                 </div>
               </q-card-section>
@@ -178,39 +175,49 @@
                      :label="expanded == true ? 'Скрыть публикации': 'Публикации'"/>
             </q-card>
           </q-tab-panel>
-
         </q-tab-panels>
-      </template>
-
-    </q-splitter>
-
+      </div>
+    </div>
   </q-page>
 </template>
 
 <script>
 import {ref, onMounted} from 'vue'
 import {useStore} from 'vuex'
+import {
+  Loading,
+
+  // optional!, for example below
+  // with custom spinner
+  QSpinnerIos
+} from 'quasar'
+
 
 
 export default {
   setup() {
     onMounted(async () => {
-      await store.dispatch('teachers/load')
+      Loading.show({
+        spinner: QSpinnerIos,
+        spinnerSize: '7em',
+        spinnerColor: '#fff',
+        backgroundColor: '#fff',
+
+      });
+      await store.dispatch('teachers/load');
+      Loading.hide();
     })
+
     const store = useStore();
     const slide = ref('style');
     const tab = ref(0);
-    const splitterModel = ref(20);
     const expanded = ref(false);
-
 
 
     return {
       tab,
-      splitterModel,
       slide,
-      expanded
-
+      expanded,
     }
 
 
@@ -219,7 +226,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 
 
 

@@ -7,8 +7,12 @@ const routes = [
       { path: '/', component: () => import('pages/Home') },
       { path: '/Teachers', component: () => import('pages/Teachers') },
       { path: '/Schedule', component: () => import('pages/Schedule') },
+      { path: '/History', component: () => import('pages/History') },
+      { path: '/NIR', component: () => import('pages/NIR') },
+      { path: '/Conferences', component: () => import('pages/Conferences') },
       { name: 'Group Schedule', path: '/Schedule/group/:id', component: () => import('pages/GroupSchedule') },
-      { name: 'Group Weeks Schedule', path: '/Schedule/group/:id', component: () => import('pages/GroupWeeksSchedule') },
+      { name: 'Teacher`s Schedule', path: '/Schedule/teacher/:id', component: () => import('pages/TeacherSchedule') },
+      { name: 'Weeks Schedule', path: '/Schedule/group/:id/weeks/:id', component: () => import('pages/GroupWeeksSchedule') },
     ]
   },
 

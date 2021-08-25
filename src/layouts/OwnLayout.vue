@@ -91,7 +91,12 @@ h1,h2,h3,h4,h5,h6, p, span {
 
 .page {
   padding: 0!important;
+}
 
+@media (max-width: $breakpoint-sm-max) {
+  .clear-padding-sm {
+    padding: 16px!important;
+  }
 }
 
 </style>

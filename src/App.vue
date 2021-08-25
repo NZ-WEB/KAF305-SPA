@@ -16,4 +16,17 @@ export default defineComponent({
 @import "~tailwindcss/components.css";
 @import "~tailwindcss/utilities.css";
 
+body {
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+p {
+  font-size: 16px;
+}
+
+
+
 </style>

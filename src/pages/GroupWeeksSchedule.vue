@@ -1,39 +1,42 @@
 <template>
   <q-container>
-    <q-card class="q-pa-xl shadow-0 text-primary" style="background: #EDF4FA">
-      <h4 class="text-h4">Расписание на:{{ weeksData.date }}</h4>
-      <div
-        v-for="(days,idx) in weeksData.days"
-        :key="idx"
-      >
-        <h5 class="text-h5 q-pt-sm q-px-sm">
-          {{ days.name }}
-        </h5>
-        <p class="q-pa-sm">
-          {{ days.date }}
-        </p>
-        <q-list
-          dense bordered padding class="rounded-borders"
-        >
-          <q-item
-            clickable v-ripple
-            v-for="(subject,idx) in days.subjects"
-            :key="idx"
-          >
-            <q-item-section>
-              <p>{{ subject.name }}</p>
-              <p>{{ subject.lector.name }}</p>
-            </q-item-section>
-          </q-item>
-        </q-list>
+    <div v-if="weeksData">
+      <div class="flex justify-center">
+          <q-btn @click="$router.go(-1)" size="md" outline rounded color="primary" class="q-ma-sm">Назад</q-btn>
+        <h5 align="center" class="text-h5 text-primary text-weight-medium q-pa-lg">Расписание на: {{ weeksData.date }}</h5>
       </div>
-    </q-card>
+      <div class="text-primary row justify-center">
+        <q-card
+        class="no-shadow q-pa-lg col-lg-5 col-12"
+        v-for="(day, idx) in weeksData.days"
+          :key="idx"
+        >
+        <!--  background: #edf4fa; -->
+           <div v-if="day.name !== '_'">
+            <q-card-section>
+              <q-chip size="lg" color="primary" text-color="white">
+                {{ day.name }}
+              </q-chip>
+            </q-card-section>
+          </div>
+          <app-weeks-schedule
+            v-for="(item, idx) in day.subjects"
+            :key="idx"
+            :scheduleData="item"
+          >
+          </app-weeks-schedule>
+        </q-card>
+      </div>
+    </div>
+    <div v-else>{{ $router.push('/schedule') }}</div>
   </q-container>
 </template>
 
 <script>
+import AppWeeksSchedule from "../components/ui/AppWeeksSchedule.vue"
 import {useRoute} from "vue-router";
 import {useStore} from "vuex";
+
 
 export default {
   name: "GroupWeeksSchedule",
@@ -45,6 +48,9 @@ export default {
     return {
       weeksData
     }
+  },
+  components: {
+    AppWeeksSchedule
   }
 
 }
