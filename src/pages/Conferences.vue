@@ -14,24 +14,22 @@
       </div>
       <div class="row q-pt-lg justify-center">
         <div class="col-9">
-          <q-list separator style="border-color: #EDF4FA">
             <q-expansion-item
               v-for="(item, idx) in $store.getters['conferences']"
               :key="idx"
-              expand-separator
               :label="item.title"
               :caption="item.subtitle"
-              class="text-primary text-h5 text-weight-medium"
+              class="q-my-sm q-pa-lg clear-padding-sm shadow-0 text-primary"
+              style="background: #EDF4FA"
             >
-              <q-card>
+              <q-card class="text-primary" style="background: #EDF4FA">
                 <q-card-section>
-                  <p v-for="(text, i) in item.desc" :key="i" class="text-grey q-pa-sm">
+                  <p v-for="(text, i) in item.desc" :key="i" class="text-primary q-pa-sm">
                     {{ text }}
                   </p>
                 </q-card-section>
               </q-card>
             </q-expansion-item>
-          </q-list>
         </div>
       </div>
     </q-container>

@@ -1,13 +1,13 @@
 <template>
-  <q-card class="schedule-card q-my-sm q-pa-sm sha text-primary" style="background: #edf4fa;">
+  <q-card class="schedule-card q-my-sm q-pa-sm sha text-primary" style="background: #edf4fa;min-height: 200px">
     <q-card-section class="flex justify-between items-center">
         <q-card-title class="flex">
         <q-chip color="primary" text-color="white">
             {{ data.number }}
         </q-chip>
         <div class="q-pl-sm">
-            <h5 class="text-h5 text-weight-medium">{{ data.name }}</h5>
-            <h6 class="text-h6 q-mt-sm text-grey">
+            <h6 class="card-title-custom text-h6 text-weight-medium flex-inline">{{ data.name }}</h6>
+            <h6 class="text-subtitle2 q-mt-sm text-grey">
                 {{ data.lector.name }}
             </h6>
         </div>
@@ -18,13 +18,13 @@
     </q-card-section>
     <q-card-section class="flex justify-between items-center">
         <div>
-            <h5 class="q-pl-lg-xl text-weight-medium text-h5">{{ data.room.name }} </h5>
+            <h6 class="q-pl-lg-xl text-weight-medium text-h6">{{ data.room.name }} </h6>
         </div>
-        <span class="text-h6 text-grey">
+        <span class="text-subtitle2 text-grey">
             {{ data.type }}
         </span>
     </q-card-section>
-  </q-card>    
+  </q-card>
 </template>
 
 <script>
@@ -47,6 +47,10 @@ export default {
 <style lang="scss" scoped>
 .schedule-card {
     width: 100%;
+}
+
+.card-title-custom {
+  max-width: 360px;
 }
 
 </style>

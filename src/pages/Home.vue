@@ -13,7 +13,7 @@
             control-color="white"
             navigation
             padding
-            style="height: 350px;"
+            style="height: 300px;"
             arrows
             infinite
             class="bg-primary text-white shadow-1 rounded-borders"
@@ -25,7 +25,7 @@
               v-for="(item,index) in sliderNews"
               :key="index"
             >
-              <q-icon :name="item.icon" size="56px"/>
+              <q-icon :name="item.icon" size="66px"/>
               <h5 class="text-h5 text-weight-medium q-my-md text-center">
                 {{ item.title }}
               </h5>
@@ -100,7 +100,6 @@
               <q-tab-panels
                 v-model="tab"
                 animated
-                swipeable
                 vertical
                 transition-prev="jump-up"
                 transition-next="jump-up"
@@ -111,16 +110,41 @@
                   :key="index"
                   class="tabs-content q-px-xl clear-padding-sm"
                 >
-                  <div class="tabs-content__wrapper">
-                    <div class="text-h6 text-weight-medium text-primary q-mb-sm">{{
-                        item.fullTitle === '' ? item.title : item.fullTitle
-                      }}
+                  <q-card class="q-pa-xl clear-padding-sm shadow-0 text-primary" style="background: #EDF4FA">
+                    <div class="tabs-content__wrapper">
+                      <div class="text-h6 text-weight-medium text-primary q-mb-sm">{{
+                          item.fullTitle === '' ? item.title : item.fullTitle
+                        }}
+                      </div>
+                      <div class="q-py-sm" v-if="item.textContent.text">
+                        <p v-for="(i,index) in item.textContent.text" :key="index" class="q-py-sm text-primary">{{ i }}</p>
+                      </div>
+
+
+                      <h6 class="text-h6 text-primary " v-if="item.textContent.list">
+                        {{ item.textContent.list.title }}
+                      </h6>
+                      <ul class="q-py-sm" v-if="item.textContent.list">
+                        <li v-for="(i1,index) in item.textContent.list.items" :key="index" class="text-primary">{{
+                            i1
+                          }}
+                        </li>
+                      </ul>
+
+                      <h6 class="text-h6 text-primary " v-if="item.textContent.list2">
+                        {{ item.textContent.list2.title }}
+                      </h6>
+                      <ul class="q-py-sm" v-if="item.textContent.list2">
+                        <li v-for="(i2,index) in item.textContent.list2.items" :key="index" class="text-primary">{{
+                            i2
+                          }}
+                        </li>
+                      </ul>
                     </div>
-                    <p v-for="(i,index) in item.textContent" :key="index" class="text-primary">{{ i }}</p>
-                  </div>
+                  </q-card>
                 </q-tab-panel>
               </q-tab-panels>
-            </div>  
+            </div>
           </div>
         </div>
       </div>

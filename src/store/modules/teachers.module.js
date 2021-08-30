@@ -10,7 +10,6 @@ export default {
   mutations: {
     setTeachers(state, teachers) {
       state.teachers = teachers
-      console.log(state.teachers)
     },
   },
   actions: {

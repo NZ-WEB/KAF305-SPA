@@ -4,12 +4,14 @@
     <!-- (Optional) The Header -->
     <q-header class="text-primary bg-white">
       <q-toolbar class="">
-        <img
-          alt="Quasar logo"
-          src="~assets/logo.svg"
-          style="width: 60px; height: 60px"
-          class="big-logo q-my-sm q-mx-auto"
-        >
+          <img
+            @click="$router.push('/')"
+            alt="Quasar logo"
+            src="~assets/logo.svg"
+            style="width: 60px; height: 60px"
+            class="big-logo q-my-sm q-mx-auto"
+          >
+
       </q-toolbar>
 
       <q-tabs class="bg-white text-primary">

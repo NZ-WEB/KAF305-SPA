@@ -7,7 +7,7 @@
       </div>
       <div class="text-primary row justify-center">
         <q-card
-        class="no-shadow q-pa-lg col-lg-5 col-12"
+        class="no-shadow q-pa-lg col-lg-4 col-12"
         v-for="(day, idx) in weeksData.days"
           :key="idx"
         >
@@ -25,7 +25,16 @@
             :scheduleData="item"
           >
           </app-weeks-schedule>
+          <q-card
+            v-if="day.subjects.length < 4"
+            class="schedule-card q-my-sm q-pa-sm sha text-primary"
+            style="background: #edf4fa; min-height: 190px!important;"
+          >
+
+          </q-card>
         </q-card>
+        <div>
+        </div>
       </div>
     </div>
     <div v-else>{{ $router.push('/schedule') }}</div>

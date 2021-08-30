@@ -73,13 +73,12 @@
             :key="idx"
           />
         </q-tabs>
-      </div>  
-        
+      </div>
+
       <div class="col-lg-9 col-12">
         <q-tab-panels q-tab-panels
           v-model="tab"
           animated
-          swipeable
           vertical
           transition-prev="jump-up"
           transition-next="jump-up"
@@ -200,8 +199,8 @@ export default {
       Loading.show({
         spinner: QSpinnerIos,
         spinnerSize: '7em',
-        spinnerColor: '#fff',
-        backgroundColor: '#fff',
+        spinnerColor: 'primary',
+        backgroundColor: 'primary',
 
       });
       await store.dispatch('teachers/load');
