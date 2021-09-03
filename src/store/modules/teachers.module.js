@@ -1,21 +1,34 @@
-import axios from 'axios'
+import axios from 'axios';
 
 export default {
   namespaced: true,
   state() {
     return {
-      teachers: []
+      curTeacherId: '',
+      allTeachers: []
     }
   },
   mutations: {
-    setTeachers(state, teachers) {
-      state.teachers = teachers
+    setTeacher(state, teacher) {
+      state.teacher = teacher
     },
+    setAllTeachers(state, allTeachers) {
+      state.allTeachers = allTeachers
+    }
   },
   actions: {
-    async load({ commit }) {
+    async loadAllTeachers({ commit }) {
       try {
-        const {data} = await axios.get(`${process.env.VUE_APP_FB_URL}/teachers/-MfHRXajPQwZbcA6_dNY/content.json`)
+        const {data} = await axios.get(`${process.env.VUE_APP_FB_URL}/teachersData.json`)
+        const allTeachers = Object.keys(data).map(id => ({...data[id], id}))
+        commit('setAllTeachers', allTeachers)
+      } catch (e) {
+        console.log(e)
+      }
+    },
+    async loadTeacher({ commit }) {
+      try {
+        const {data} = await axios.get(`${process.env.VUE_APP_FB_URL}/teachersData.json/${id}`)
         const teachers = Object.keys(data).map(id => ({...data[id], id}))
         commit('setTeachers', teachers)
         return teachers
@@ -23,10 +36,26 @@ export default {
         console.log(e)
       }
     },
+    async addNewTeacher(item) {
+      try {
+        await axios.get(`${process.env.VUE_APP_FB_URL}/teachersData.json`, {
+          method: 'POST',
+          body: JSON.stringify(item)
+        });
+
+        const teachers = Object.keys(data).map(id => ({...data[id], id}))
+        commit('setTeachers', teachers)
+        return teachers
+      } catch (e) {
+        console.log(e)
+      }
+    }
   },
   getters: {
     teachers(state) {
-      return state.teachers
+      return state.allTeachers
     }
   }
 }
+
+

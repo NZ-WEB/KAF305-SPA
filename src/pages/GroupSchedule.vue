@@ -4,12 +4,12 @@
       <router-link to="/schedule">
         <q-btn size="md" outline rounded color="primary" class="q-ma-sm">Назад</q-btn>
       </router-link>
-      <q-card v-if="$store.getters['schedule/currentWeekSchedule'] !== null" class="q-pa-xl q-my-lg shadow-0 text-primary" style="background: #EDF4FA">
-        <h3>Расписание</h3>
-      </q-card>
-      <q-card v-else class="q-pa-xl q-my-lg shadow-0 text-primary" style="background: #EDF4FA">
-        <h3 class="text-h5">На текущей неделе занятий — нет! </h3>
-      </q-card>
+<!--      <q-card v-if="$store.getters['schedule/currentWeekSchedule'] !== null" class="q-pa-xl q-my-lg shadow-0 text-primary" style="background: #EDF4FA">-->
+<!--        <h3>Расписание</h3>-->
+<!--      </q-card>-->
+<!--      <q-card v-else class="q-pa-xl q-my-lg shadow-0 text-primary" style="background: #EDF4FA">-->
+<!--        <h3 class="text-h5">На текущей неделе занятий — нет! </h3>-->
+<!--      </q-card>-->
       <q-card v-if="groupData" class="q-pa-xl shadow-0 text-primary" style="background: #EDF4FA">
         <h5 class="text-h5"> Расписание занятий группы "{{ groupData.name }}".</h5>
         <ul class="flex justify-start q-mt-lg" v-if="$store.getters['schedule/WeekSchedule'].length">

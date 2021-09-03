@@ -31,7 +31,7 @@
       </q-carousel-slide>
       <q-carousel-slide name="tv" class="column no-wrap flex-center">
         <div class="row justify-center" align="center">
-          <div class="col-5">
+          <div class="col-lg-5">
             <h3 class="q-my-sm text-weight-medium text-h5">Учебный процесс</h3>
             <p class="teachers-description">
               Учебный процесс на кафедре основан на глубокой интеграции фундаментальных физико-математических знаний и
@@ -46,7 +46,7 @@
       </q-carousel-slide>
       <q-carousel-slide name="layers" class="column no-wrap flex-center">
         <div class="row justify-center" align="center">
-          <div class="col-5">
+          <div class="col-lg-5">
             <h3 class="q-my-sm text-weight-medium text-h5">Исследования и разработки</h3>
             <p class="teachers-description">
               Кафедра ведёт большой объём научно-исследовательской работы с активным привлечением студентов. За
@@ -85,13 +85,14 @@
         >
           <q-tab-panel
             :name="idx"
-            v-for="(item, idx) in $store.getters['teachers/teachers']"
+            v-for="(item, idx) in teachersData"
             :key="idx"
           >
             <q-card class="q-pa-xl clear-padding-sm shadow-0 text-primary" style="background: #EDF4FA">
               <q-toolbar>
                 <q-avatar
                   size="100px"
+                  v-if="item.avatar"
                 >
                   <q-img
                     :src="item.avatar"
@@ -132,25 +133,25 @@
                   </h6>
                   <p class="">{{ item.specialties }}</p>
                 </div>
-                <div class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Повышение квалификации (или)
-                    профессиональная переподготовка:
-                  </h6>
-                  <p class="">{{ item.advancedTraining }}</p>
-                </div>
+<!--                <div class="row items-center q-pa-sm">-->
+<!--                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Повышение квалификации (или)-->
+<!--                    профессиональная переподготовка:-->
+<!--                  </h6>-->
+<!--                  <p class="">{{ item.advancedTraining }}</p>-->
+<!--                </div>-->
                 <div class="row items-center q-pa-sm">
                   <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Страж работы по специальности:</h6>
                   <p class="">{{ item.specGuardian }}</p>
                 </div>
-                <div class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Общий стаж работы:</h6>
-                  <p class="">{{ item.totalGuardian }}</p>
-                </div>
+<!--                <div class="row items-center q-pa-sm">-->
+<!--                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Общий стаж работы:</h6>-->
+<!--                  <p class="">{{ item.totalGuardian }}</p>-->
+<!--                </div>-->
               </q-card-section>
               <q-slide-transition>
                 <div v-show="expanded">
-                  <q-card-section class="text-subitle2 q-pa-lg q-px-lg">
-                    <h4 class="teacher-info-title q-mr-md">Публикации </h4>
+                  <q-card-section v-if="item.publications.length" class="text-subitle2 q-pa-lg q-px-lg">
+                    <h4 class="teacher-info-title q-mr-md">Публикации</h4>
                     <q-card flat class="my-card q-my-md" v-for="(item,index) in item.publications"
                             :key="index">
                       <q-card-section>
@@ -167,6 +168,9 @@
                         <p class="">{{ item.content }}</p>
                       </q-card-section>
                     </q-card>
+                  </q-card-section>
+                  <q-card-section v-else class="text-subitle2 q-pa-lg q-px-lg">
+                    <h4 class="teacher-info-title q-mr-md">На данный момент в базе данных информации о публикациях этого преподавателя — нет.</h4>
                   </q-card-section>
                 </div>
               </q-slide-transition>
@@ -185,27 +189,26 @@ import {ref, onMounted} from 'vue'
 import {useStore} from 'vuex'
 import {
   Loading,
-
-  // optional!, for example below
-  // with custom spinner
   QSpinnerIos
 } from 'quasar'
+import {teachers} from '../data/Teachers'
 
 
 
 export default {
   setup() {
-    onMounted(async () => {
+    const teachersData = teachers
+
+    onMounted(() => {
       Loading.show({
         spinner: QSpinnerIos,
         spinnerSize: '7em',
         spinnerColor: 'primary',
         backgroundColor: 'primary',
-
       });
-      await store.dispatch('teachers/load');
+      store.dispatch('teachers/loadAllTeachers');
       Loading.hide();
-    })
+    });
 
     const store = useStore();
     const slide = ref('style');
@@ -213,10 +216,13 @@ export default {
     const expanded = ref(false);
 
 
+
+
     return {
       tab,
       slide,
       expanded,
+      teachersData
     }
 
 
