@@ -8,7 +8,9 @@ export default {
       groups: [],
       WeekSchedule: [],
       teacher: [],
-      currentWeekSchedule: null
+      currentWeekSchedule: null,
+      scheduleCurrentCondition: Number(-1),
+      dayCondition: [false, false, false, false, false, false,]
     }
   },
   mutations: {
@@ -33,6 +35,26 @@ export default {
     clearTeacherData(state) {
       return state.teacher = []
     },
+    addScheduleCurrentCondition(state) {
+      return state.scheduleCurrentCondition += 1;
+    },
+    subtractScheduleCurrentCondition(state) {
+      return state.scheduleCurrentCondition -= 1;
+    },
+    clearScheduleCurrentCondition(state) {
+      return state.scheduleCurrentCondition = -1
+    },
+    setCondition(state, idx) {
+      state.dayCondition[0] = false;
+      state.dayCondition[1] = false;
+      state.dayCondition[2] = false;
+      state.dayCondition[3] = false;
+      state.dayCondition[4] = false;
+      state.dayCondition[5] = false;
+      return state.dayCondition[idx] = !state.dayCondition[idx]
+    },
+
+
 
 
   },
@@ -109,8 +131,8 @@ export default {
         console.log(e)
       }
     }
-
   },
+
   getters: {
     schedule(state) {
       return  state.groups
@@ -123,6 +145,12 @@ export default {
     },
     currentWeekSchedule(state) {
       return state.currentWeekSchedule
+    },
+    scheduleCurrentCondition(state) {
+      return state.scheduleCurrentCondition
+    },
+    condition(state) {
+      return state.dayCondition
     }
   }
 }

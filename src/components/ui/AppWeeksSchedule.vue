@@ -34,8 +34,6 @@ export default {
     props: ['scheduleData'],
     setup(props) {
         const data = ref(props.scheduleData )
-        console.log(data.value);
-
         return {
             data
         }

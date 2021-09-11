@@ -12,7 +12,7 @@ const routes = [
       { path: '/Conferences', component: () => import('pages/Conferences') },
       { name: 'Group Schedule', path: '/Schedule/group/:id', component: () => import('pages/GroupSchedule') },
       { name: 'Teacher`s Schedule', path: '/Schedule/teacher/:id', component: () => import('pages/TeacherSchedule') },
-      { name: 'Weeks Schedule', path: '/Schedule/group/:id/weeks/:id', component: () => import('pages/GroupWeeksSchedule') },
+      { name: 'Weeks Schedule', path: '/Schedule/group/weeks/:id', component: () => import('pages/GroupWeeksSchedule') },
     ]
   },
 

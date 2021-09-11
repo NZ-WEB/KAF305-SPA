@@ -28,7 +28,7 @@
           <q-card
             v-if="day.subjects.length < 4"
             class="schedule-card q-my-sm q-pa-sm sha text-primary"
-            style="background: #edf4fa; min-height: 190px!important;"
+            style="background: #edf4fa; min-height: 200px!important;"
           >
 
           </q-card>

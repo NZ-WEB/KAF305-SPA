@@ -1,16 +1,17 @@
 <template>
-  <q-layout view="hHh Lpr fFf"> <!-- Be sure to play with the Layout demo on docs -->
+  <q-layout
+    view="hHh Lpr fFf"> <!--v-touch-pan.prevent.mouse="handlePan"--> <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
     <q-header class="text-primary bg-white">
       <q-toolbar class="">
-          <img
-            @click="$router.push('/')"
-            alt="Quasar logo"
-            src="~assets/logo.svg"
-            style="width: 60px; height: 60px"
-            class="big-logo q-my-sm q-mx-auto"
-          >
+        <img
+          @click="$router.push('/')"
+          alt="Quasar logo"
+          src="~assets/logo.svg"
+          style="width: 60px; height: 60px"
+          class="big-logo q-my-sm q-mx-auto"
+        >
 
       </q-toolbar>
 
@@ -58,7 +59,7 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, computed, onMounted } from 'vue'
 import {useStore} from 'vuex'
 // import {menuItems} from "src/data/menuItems";
 
@@ -70,6 +71,9 @@ export default {
     const store = useStore()
 
     const leftDrawerOpen = ref(false)
+    // const info = ref(null)
+    // const panning = ref(false)
+
 
     const menuItems = store.getters['menuItems']
 
@@ -78,7 +82,24 @@ export default {
       toggleLeftDrawer () {
         leftDrawerOpen.value = !leftDrawerOpen.value
       },
-      menuItems
+      menuItems,
+      // info,
+      // panning,
+      // handlePan({evt, ...newInfo}) {
+      //   info.value = newInfo
+      //   let offsetY = (-info.value.offset.y) * 0.05
+      //   window.scrollBy(0, offsetY)
+      //
+      //   // native Javascript event
+      //   // console.log(evt)
+      //
+      //   if (newInfo.isFirst) {
+      //     panning.value = true
+      //   } else if (newInfo.isFinal) {
+      //     panning.value = false
+      //   }
+      // },
+      scroll,
     }
   }
 }
