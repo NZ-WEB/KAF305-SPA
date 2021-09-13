@@ -1,11 +1,11 @@
 <template>
-  <q-card  style="background: transparent;" flat>
-    <q-card-section class="q-pb-sm row items-center justify-between" :class="$props.active ? '' : 'q-pa-sm'">
+  <q-card style="background: transparent;" flat class="sm:px-5 lg:px-0">
+    <q-card-section  class="q-pb-sm row items-center justify-between" :class="$props.active ? '' : 'q-pa-sm'">
       <div>
         <q-chip :color="isActive().color" class="text-subtitle1 text-weight-medium" :class="isActive().class">
           {{ count }}
         </q-chip>
-        <span v-if="$props.active" class="q-ml-sm text-subtitle1 text-grey ">
+        <span v-if="$props.active" class=" q-ml-sm text-subtitle1 text-grey ">
           {{ type }}
         </span>
       </div>
@@ -17,18 +17,19 @@
       <h6  class=" text-primary " :class="displayTitle()">
         {{ name }}
       </h6>
-      <span v-show="$props.active" class="text-subtitle1 text-grey ">
+      <span v-if="$props.active" class="text-subtitle1 text-grey">
         {{ lector }}
       </span>
     </q-card-section>
-    <q-card-section :class="$props.active ? 'q-pt-sm' : 'q-pa-sm'">
+    <q-card-section :class="$props.active ? 'q-pt-sm' : 'lg q-pa-sm'">
       <span  class="text-subtitle1 text-grey">
         {{ room }}
       </span>
-      <q-separator  class="q-mt-sm"/>
     </q-card-section>
+    <q-separator class="q-mx-sm q-mt-sm"/>
   </q-card>
 </template>
+
 
 <script>
 import {ref} from 'vue'
@@ -73,7 +74,7 @@ export default {
       } else {
         return {
           color: "",
-          class: "text-white"
+          class: "text-white lg"
         };
       }
     }
@@ -97,5 +98,10 @@ export default {
 </script>
 
 <style scoped>
+@media (max-width: 600px){
+  .custom-p {
+    padding: 2rem!important;
+  }
+}
 
 </style>
