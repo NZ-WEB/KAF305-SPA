@@ -169,55 +169,6 @@ export default defineComponent({
     const slide = ref(sliderNews[0].name)
     const tab = ref(heroTabs[0].icon)
 
-    const CurrentTimeAndDate = () => {
-      setInterval(() => {
-        let date = new Date()
-        document.getElementById("time").innerHTML = (getHours() + ":" + getMinutes() + ":" + getSeconds());
-        document.getElementById("date").innerHTML = (getDate() + ' | ' + getMonth() + ' | ' + date.getFullYear());
-      }, 1000)
-    }
-
-    const getDate = () => {
-      if (new Date().getDate() < 10) {
-        return `0${new Date().getDate()}`
-      } else {
-        return new Date().getDate()
-      }
-    }
-
-    const getMonth = () => {
-      if (new Date().getMonth() < 10) {
-        return `0${new Date().getMonth()}`
-      } else {
-        return new Date().getMonth()
-      }
-    }
-
-    const getHours = () => {
-      if (new Date().getHours() < 10) {
-        return `0${new Date().getHours()}`
-      } else {
-        return new Date().getHours()
-      }
-    }
-    const getSeconds = () => {
-      if (new Date().getSeconds() < 10) {
-        return `0${new Date().getSeconds()}`
-      } else {
-        return new Date().getSeconds()
-      }
-    }
-    const getMinutes = () => {
-      if (new Date().getMinutes() < 10) {
-        return `0${new Date().getMinutes()}`
-      } else {
-        return new Date().getMinutes()
-      }
-    }
-
-    onMounted(CurrentTimeAndDate)
-
-
     return {
       tab,
       store,

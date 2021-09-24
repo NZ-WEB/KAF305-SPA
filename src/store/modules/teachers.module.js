@@ -10,7 +10,7 @@ export default {
   },
   mutations: {
     setTeacher(state, teacher) {
-      state.teacher = teacher
+      state.allTeacher = teacher
     },
     setAllTeachers(state, allTeachers) {
       state.allTeachers = allTeachers

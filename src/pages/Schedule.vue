@@ -21,7 +21,7 @@
               />
 
               <div>
-                <q-btn label="Показать расписание" type="submit" color="primary"/>
+                <q-btn  label="Показать расписание" type="submit" color="primary"/>
                 <q-btn label="Сбросить" type="reset" color="primary" flat class="q-ml-sm"/>
               </div>
             </q-form>
@@ -38,7 +38,7 @@
                   :key="idx"
                 >
                   <q-card
-                    class="q-pa-lg shadow-0 text-primary schedule-item"
+                    class="q-pa-lg q-ma-sm shadow-0 text-primary schedule-item"
                     rounded
                     @click="$router.push({name: 'Group Schedule', params: {id: group.id}}) && $store.dispatch('schedule/loadGroupSchedule', group.id)"
                   >
@@ -62,7 +62,7 @@
                 </div>
               </div>
             </div>
-            <p class="q-my-md text-subtitle2">Начните писать название группы, и здесь появятся все существующие группы по вашему запросу</p>
+            <p class="q-mt-md text-subtitle2"> Начните писать название группы, и здесь появятся все существующие группы по вашему запросу</p>
 
           </q-card>
           <!--      Find By Group End-->
@@ -117,7 +117,7 @@
                 </div>
               </div>
             </div>
-            <p class="q-my-md text-subtitle2" >Начните писать фио преподавателя, и здесь появятся все существующие преподаватели по вашему запросу</p>
+            <p class="q-mt-md text-subtitle2"> Начните писать фио преподавателя, и здесь появятся все существующие преподаватели по вашему запросу</p>
           </q-card>
           <!--Find By Teacher End-->
         </div>
@@ -134,18 +134,19 @@ import {useStore} from "vuex";
 
 export default {
   setup() {
-    const store = useStore()
+    const store = useStore();
     onMounted(() => {
-      store.commit('schedule/clearWeekSchedule')
-    })
-    const $q = useQuasar()
-    const groupName = ref(null)
-    const teacherName = ref(null)
+      store.commit('schedule/clearWeekSchedule');
+    });
+    const $q = useQuasar();
+    const groupName = ref(null);
+    const teacherName = ref(null);
+
+
 
     return {
       groupName,
       teacherName,
-
       async onSubmit() {
         await store.dispatch('schedule/findGroupByName', groupName.value)
       },

@@ -114,7 +114,7 @@ export default {
     const days = ["Вс", "Пн", "Вт", "Ср",
       "Чт", "Пт", "Сб"];
 
-    const currWeek = ref(semesterCounter());
+    const currWeek = ref(semesterCounter() - 1);
     const groupData = ref(store.getters['schedule/schedule'].find(i => i.id === route.params.id));
 
     const curDay = () => {

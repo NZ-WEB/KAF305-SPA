@@ -9,7 +9,7 @@ const day = (day) => {
   } else {
     return day;
   };
-}
+};
 
 const month = (month) => {
   if (month < 10) {
@@ -17,20 +17,17 @@ const month = (month) => {
   } else {
     return month + 1;
   };
-}
-
-const stringDate = () => {
-  return `${day(d.getDate())}.${month(d.getMonth())}.${d.getFullYear()}`;
-}
+};
 
 const semesterCounter = () => {
   if (weekNum >= 35) {
-    return weekNum - 34;
+    console.log(weekNum, 'weekNum')
+    return weekNum - 35;
   } else {
     return weekNum;
   };
-}
+};
 
-export {semesterCounter}
+export {semesterCounter};
 
 

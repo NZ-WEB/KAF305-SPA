@@ -1,6 +1,7 @@
 <template>
   <q-layout
-    view="hHh Lpr fFf"> <!--v-touch-pan.prevent.mouse="handlePan"--> <!-- Be sure to play with the Layout demo on docs -->
+    view="hHh Lpr fFf"> <!--v-touch-pan.prevent.mouse="handlePan"-->
+    <!-- Be sure to play with the Layout demo on docs -->
 
     <!-- (Optional) The Header -->
     <q-header class="text-primary bg-white">
@@ -29,10 +30,12 @@
 
     <!-- (Optional) The Footer -->
     <q-footer class="text-primary bg-white">
-      <q-toolbar align="center" class="justify-center">
+      <q-toolbar align="center" class="justify-center q-pa-sm">
         <q-toolbar-title>
-          <p align="center" id="date"></p>
-          <p align="center" id="time"></p>
+          <div>
+            <p class="date">{{ date }}</p>
+            <p class="time">{{ time }}</p>
+          </div>
         </q-toolbar-title>
       </q-toolbar>
     </q-footer>
@@ -52,54 +55,54 @@
 
     <q-page-container>
       <!-- This is where pages get injected -->
-      <router-view />
+      <router-view/>
     </q-page-container>
 
   </q-layout>
 </template>
 
 <script>
-import { ref, computed, onMounted } from 'vue'
+import {ref} from 'vue'
 import {useStore} from 'vuex'
-// import {menuItems} from "src/data/menuItems";
 
 export default {
-  // name: 'LayoutName',
 
 
-  setup () {
+  setup() {
     const store = useStore()
-
     const leftDrawerOpen = ref(false)
-    // const info = ref(null)
-    // const panning = ref(false)
-
-
     const menuItems = store.getters['menuItems']
+
+    const time =  ref('');
+    const date = ref('') ;
+
+    const week = ['ВС', 'ПОН', 'ВТ', 'СР', 'ЧТ', 'ПТ', 'СУБ'];
+    const timerID = setInterval(updateTime, 1000);
+    updateTime();
+
+    function updateTime() {
+      let cd = new Date();
+      time.value = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
+      date.value = zeroPadding(cd.getFullYear(), 4) + '-' + zeroPadding(cd.getMonth() + 1, 2) + '-' + zeroPadding(cd.getDate(), 2) + ' ' + week[cd.getDay()];
+    };
+
+    function zeroPadding(num, digit) {
+      let zero = '';
+      for (let i = 0; i < digit; i++) {
+        zero += '0';
+      }
+      return (zero + num).slice(-digit);
+    }
 
     return {
       leftDrawerOpen,
-      toggleLeftDrawer () {
+      toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value
       },
       menuItems,
-      // info,
-      // panning,
-      // handlePan({evt, ...newInfo}) {
-      //   info.value = newInfo
-      //   let offsetY = (-info.value.offset.y) * 0.05
-      //   window.scrollBy(0, offsetY)
-      //
-      //   // native Javascript event
-      //   // console.log(evt)
-      //
-      //   if (newInfo.isFirst) {
-      //     panning.value = true
-      //   } else if (newInfo.isFinal) {
-      //     panning.value = false
-      //   }
-      // },
       scroll,
+      date,
+      time
     }
   }
 }
@@ -107,24 +110,24 @@ export default {
 
 <style lang="scss">
 
-h1,h2,h3,h4,h5,h6, p, span {
+h1, h2, h3, h4, h5, h6, p, span {
   //padding: 0;
   //margin: 0;
 }
 
 .page {
-  padding: 0!important;
+  padding: 0 !important;
 }
 
 @media (max-width: $breakpoint-sm-max) {
   .clear-padding-sm {
-    padding: 16px!important;
+    padding: 16px !important;
   }
 }
 
 
 .q-field__control-container span {
-  color: #9e9e9e!important;
+  color: #9e9e9e !important;
 }
 
 </style>

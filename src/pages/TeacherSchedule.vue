@@ -3,7 +3,7 @@
     <q-container>
       <q-card v-if="teacherData" class="q-pa-xl shadow-0 text-primary" style="background: #EDF4FA">
         <router-link to="/schedule">
-          <q-btn size="md" outline rounded color="primary" class="q-ma-sm">Назад</q-btn>
+          <q-btn size="md" rounded color="primary" icon="arrow_back" class="q-ma-sm"></q-btn>
         </router-link>
         <h5 class="text-h5"> Расписание занятий группы {{ teacherData.name }} </h5>
         <ul class="flex justify-start q-mt-lg" v-if="$store.getters['schedule/WeekSchedule'].length">

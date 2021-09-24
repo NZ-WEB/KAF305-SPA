@@ -69,7 +69,7 @@
           <q-tab
             :name="idx"
             :label="teacher.fullName"
-            v-for="(teacher, idx) in $store.getters['teachers/teachers']"
+            v-for="(teacher, idx) in teachersData"
             :key="idx"
           />
         </q-tabs>
@@ -95,7 +95,7 @@
                   v-if="item.avatar"
                 >
                   <q-img
-                    :src="item.avatar"
+                    :src=" item.avatar"
                   >
                   </q-img>
                 </q-avatar>
