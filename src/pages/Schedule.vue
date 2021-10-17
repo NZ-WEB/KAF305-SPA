@@ -18,10 +18,11 @@
                 hint="Пример: М3О-204С (Русская расскладка)"
                 lazy-rules
                 :rules="[ val => val && val.length > 0 || 'Название группы не может быть пустым']"
+                @click="toggleKeyboard(groupCondition.name)"
               />
 
               <div>
-                <q-btn  label="Показать расписание" type="submit" color="primary"/>
+                <q-btn label="Показать расписание" type="submit" color="primary"/>
                 <q-btn label="Сбросить" type="reset" color="primary" flat class="q-ml-sm"/>
               </div>
             </q-form>
@@ -62,7 +63,10 @@
                 </div>
               </div>
             </div>
-            <p class="q-mt-md text-subtitle2"> Начните писать название группы, и здесь появятся все существующие группы по вашему запросу</p>
+            <transition name="fade">
+              <p v-if="groupName === null" class="q-mt-md text-subtitle2"> Начните писать название группы, и здесь
+                появятся все существующие группы по вашему запросу</p>
+            </transition>
 
           </q-card>
           <!--      Find By Group End-->
@@ -82,6 +86,7 @@
                 hint="Пример: Иванов Иван Иванович"
                 lazy-rules
                 :rules="[ val => val && val.length > 0 || 'Имя преподаватея не может быть пустым']"
+                @click="toggleKeyboard(teacherCondition.name)"
               />
 
 
@@ -117,36 +122,99 @@
                 </div>
               </div>
             </div>
-            <p class="q-mt-md text-subtitle2"> Начните писать фио преподавателя, и здесь появятся все существующие преподаватели по вашему запросу</p>
+            <transition name="fade">
+              <p v-if="teacherName === null" class="q-mt-md text-subtitle2"> Начните писать фио преподавателя, и здесь
+                появятся все существующие преподаватели по вашему запросу</p>
+            </transition>
           </q-card>
           <!--Find By Teacher End-->
         </div>
       </div>
+
+      <div v-if="width > 1600">
+        <div v-if="groupCondition.value" class="row justify-center q-py-lg">
+          <transition name="fade">
+            <simple-keyboard :input="groupName" @onChange="onChangeGroup" @onKeyPress="onKeyPress"/>
+          </transition>
+        </div>
+
+        <div v-else-if="teacherCondition.value" class="row justify-center q-py-lg">
+          <transition name="fade">
+            <simple-keyboard :input="groupName" @onChange="onChangeTeacher" @onKeyPress="onKeyPress"/>
+          </transition>
+        </div>
+
+        <div v-else>
+          <div class="row justify-center q-pt-md">
+            <div class="col">
+              <h6 class="text-h6 text-primary" align="center">
+                Нажмите на поля преподавателей/групп для того, чтобы появилась экранная клавиатура!
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
 
     </q-container>
   </q-page>
 </template>
 
 <script>
-import {useQuasar} from 'quasar'
-import {ref, onMounted} from 'vue'
+import {useQuasar} from 'quasar';
+import {ref, onMounted, reactive} from 'vue';
 import {useStore} from "vuex";
+import SimpleKeyboard from "../components/ui/AppSimpleKeyboard";
 
 export default {
   setup() {
     const store = useStore();
-    onMounted(() => {
-      store.commit('schedule/clearWeekSchedule');
-    });
     const $q = useQuasar();
     const groupName = ref(null);
     const teacherName = ref(null);
+    const teacherCondition = reactive({name: 'teacherCondition', value: false});
+    const groupCondition = reactive({name: 'groupCondition', value: false});
+    const width = window.innerWidth;
 
+    onMounted(() => {
+      store.commit('schedule/clearWeekSchedule');
+    });
 
+    const onChangeGroup = (input) => {
+      groupName.value = input;
+    };
+
+    const onChangeTeacher = (input) => {
+      teacherName.value = input;
+    };
+
+    const onKeyPress = (button) => {
+      console.log("button", button);
+    };
+
+    const toggleKeyboard = (name) => {
+      if (name === 'teacherCondition') {
+        teacherCondition.value = true;
+        groupCondition.value = false;
+      } else if (name === 'groupCondition') {
+        groupCondition.value = true;
+        teacherCondition.value = false;
+      } else {
+        console.log(name, 'name')
+      }
+    }
 
     return {
       groupName,
       teacherName,
+      onChangeGroup,
+      onChangeTeacher,
+      onKeyPress,
+      toggleKeyboard,
+      teacherCondition,
+      groupCondition,
+      width,
       async onSubmit() {
         await store.dispatch('schedule/findGroupByName', groupName.value)
       },
@@ -166,7 +234,9 @@ export default {
       }
     }
   },
-  components: {}
+  components: {
+    SimpleKeyboard,
+  }
 }
 </script>
 
@@ -179,6 +249,15 @@ export default {
     cursor: pointer;
     transform: scale(1.01);
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .25s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+  transition: opacity .25s;
 }
 
 </style>
