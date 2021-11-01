@@ -1,11 +1,14 @@
 <template>
   <q-page padding>
-    <!-- content -->
     <q-container>
       <div class="row">
         <div class="col-12 col-lg-6 q-pa-sm">
-          <!--      find by group Start-->
-          <q-card class="q-pa-xl shadow-0 text-primary " style="background: #EDF4FA">
+
+          <!--      find by group Start   -->
+          <q-card
+            class="q-pa-xl shadow-0 text-primary "
+            style="background: #EDF4FA"
+          >
             <q-form
               @submit="onSubmit"
               @reset="onReset"
@@ -43,6 +46,7 @@
                     rounded
                     @click="$router.push({name: 'Group Schedule', params: {id: group.id}}) && $store.dispatch('schedule/loadGroupSchedule', group.id)"
                   >
+
                     <div class="flex justify-between content-center">
                       <div class="">
                         <h3 class="text-h5">{{ group.name }}</h3>
@@ -59,20 +63,25 @@
                         </p>
                       </div>
                     </div>
+
                   </q-card>
                 </div>
               </div>
             </div>
             <transition name="fade">
-              <p v-if="groupName === null" class="q-mt-md text-subtitle2"> Начните писать название группы, и здесь
-                появятся все существующие группы по вашему запросу</p>
+              <p v-if="groupName === null" class="q-mt-md text-subtitle2">
+                Начните писать название группы, и здесь
+                появятся все существующие группы по вашему запросу
+              </p>
             </transition>
 
           </q-card>
-          <!--      Find By Group End-->
+          <!--      Find By Group End   -->
+
         </div>
         <div class="col-12 col-lg-6 q-pa-sm">
-          <!--      Find By Teacher Start-->
+
+          <!--      Find By Teacher Start   -->
           <q-card class="q-pa-xl  shadow-0 text-primary" style="background: #EDF4FA">
             <q-form
               @submit="onTeacherSubmit"
@@ -88,7 +97,6 @@
                 :rules="[ val => val && val.length > 0 || 'Имя преподаватея не может быть пустым']"
                 @click="toggleKeyboard(teacherCondition.name)"
               />
-
 
               <div>
                 <q-btn label="Показать расписание" type="submit" color="primary"/>
@@ -123,28 +131,54 @@
               </div>
             </div>
             <transition name="fade">
-              <p v-if="teacherName === null" class="q-mt-md text-subtitle2"> Начните писать фио преподавателя, и здесь
-                появятся все существующие преподаватели по вашему запросу</p>
+              <p v-if="teacherName === null" class="q-mt-md text-subtitle2">
+                Начните писать фио преподавателя, и здесь
+                появятся все существующие преподаватели по вашему запросу
+              </p>
             </transition>
           </q-card>
-          <!--Find By Teacher End-->
+          <!--Find By Teacher End   -->
+
         </div>
       </div>
 
-      <div v-if="width > 1600">
-        <div v-if="groupCondition.value" class="row justify-center q-py-lg">
+      <div
+        v-if="width > 1600"
+      >
+        <div
+          v-if="groupCondition.value"
+          class="row justify-center q-py-lg"
+        >
           <transition name="fade">
-            <simple-keyboard :input="groupName" @onChange="onChangeGroup" @onKeyPress="onKeyPress"/>
+
+            <simple-keyboard
+              :input="groupName"
+              @onChange="onChangeGroup"
+              @onKeyPress="onKeyPress"
+            />
+
           </transition>
         </div>
 
-        <div v-else-if="teacherCondition.value" class="row justify-center q-py-lg">
+        <div
+          v-else-if="teacherCondition.value"
+          class="row justify-center q-py-lg"
+        >
           <transition name="fade">
-            <simple-keyboard :input="groupName" @onChange="onChangeTeacher" @onKeyPress="onKeyPress"/>
+
+            <simple-keyboard
+              :input="groupName"
+              @onChange="onChangeTeacher"
+              @onKeyPress="onKeyPress"
+            />
+
           </transition>
         </div>
 
-        <div v-else>
+        <div
+          v-else
+        >
+
           <div class="row justify-center q-pt-md">
             <div class="col">
               <h6 class="text-h6 text-primary" align="center">
@@ -152,58 +186,35 @@
               </h6>
             </div>
           </div>
+
         </div>
       </div>
-
-
-
     </q-container>
   </q-page>
 </template>
 
 <script>
-import {useQuasar} from 'quasar';
-import {ref, onMounted, reactive} from 'vue';
-import {useStore} from "vuex";
+
 import SimpleKeyboard from "../components/ui/AppSimpleKeyboard";
+import {useSchedulePage} from "src/use/schedulePage";
 
 export default {
   setup() {
-    const store = useStore();
-    const $q = useQuasar();
-    const groupName = ref(null);
-    const teacherName = ref(null);
-    const teacherCondition = reactive({name: 'teacherCondition', value: false});
-    const groupCondition = reactive({name: 'groupCondition', value: false});
-    const width = window.innerWidth;
 
-    onMounted(() => {
-      store.commit('schedule/clearWeekSchedule');
-    });
-
-    const onChangeGroup = (input) => {
-      groupName.value = input;
-    };
-
-    const onChangeTeacher = (input) => {
-      teacherName.value = input;
-    };
-
-    const onKeyPress = (button) => {
-      console.log("button", button);
-    };
-
-    const toggleKeyboard = (name) => {
-      if (name === 'teacherCondition') {
-        teacherCondition.value = true;
-        groupCondition.value = false;
-      } else if (name === 'groupCondition') {
-        groupCondition.value = true;
-        teacherCondition.value = false;
-      } else {
-        console.log(name, 'name')
-      }
-    }
+    const {
+      groupName,
+      teacherName,
+      onChangeGroup,
+      onChangeTeacher,
+      onKeyPress,
+      toggleKeyboard,
+      teacherCondition,
+      groupCondition,
+      width,
+      onSubmit,
+      onReset,
+      onTeacherSubmit,
+    } = useSchedulePage();
 
     return {
       groupName,
@@ -215,25 +226,12 @@ export default {
       teacherCondition,
       groupCondition,
       width,
-      async onSubmit() {
-        await store.dispatch('schedule/findGroupByName', groupName.value)
-      },
-
-      onReset() {
-        groupName.value = null
-        store.commit('schedule/clearScheduleData')
-      },
-
-      async onTeacherSubmit() {
-        await store.dispatch('schedule/findTeacher', teacherName.value)
-      },
-
-      onTeacherReset() {
-        teacherName.value = null
-        store.commit('schedule/clearTeacherData')
-      }
+      onSubmit,
+      onReset,
+      onTeacherSubmit,
     }
   },
+
   components: {
     SimpleKeyboard,
   }
