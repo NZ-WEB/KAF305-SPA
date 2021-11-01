@@ -134,4 +134,10 @@ h1, h2, h3, h4, h5, h6, p, span {
   color: $grey!important;
 }
 
+.big-logo {
+  display: block;
+  width: 250px;
+  height: 250px;
+}
+
 </style>
