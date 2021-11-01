@@ -1,6 +1,7 @@
 <template>
   <q-page padding class="page">
-    <!-- content -->
+
+    <!--    Top Slider Start    -->
     <q-carousel
       v-model="slide"
       transition-prev="scale"
@@ -27,7 +28,6 @@
             </p>
           </div>
         </div>
-
       </q-carousel-slide>
       <q-carousel-slide name="tv" class="column no-wrap flex-center">
         <div class="row justify-center" align="center">
@@ -59,7 +59,11 @@
         </div>
       </q-carousel-slide>
     </q-carousel>
+    <!--    Top Slider End    -->
+
+    <!--    Teachers Tabs Start   -->
     <div class="row">
+
       <div class="col-lg-3 col-12">
         <q-tabs
           v-model="tab"
@@ -76,7 +80,8 @@
       </div>
 
       <div class="col-lg-9 col-12">
-        <q-tab-panels q-tab-panels
+        <q-tab-panels
+          q-tab-panels
           v-model="tab"
           animated
           vertical
@@ -90,23 +95,21 @@
           >
             <q-card class="q-pa-xl clear-padding-sm shadow-0 text-primary" style="background: #EDF4FA">
               <q-toolbar>
-                <q-avatar
-                  size="100px"
-                  v-if="item.avatar"
-                >
-                  <q-img
-                    :src=" item.avatar"
-                  >
-                  </q-img>
+
+                <q-avatar size="100px" v-if="item.avatar">
+                  <q-img :src=" item.avatar"></q-img>
                 </q-avatar>
 
-                <q-toolbar-title><span class="text-h5 text-weight-medium">{{ item.fullName }}</span></q-toolbar-title>
-
+                <q-toolbar-title>
+                  <span class="text-h5 text-weight-medium">
+                    {{ item.fullName }}
+                  </span>
+                </q-toolbar-title>
 
               </q-toolbar>
 
-
               <q-card-section class="teacher-date">
+
                 <div class="row items-center q-pa-sm">
                   <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Должность:</h6>
                   <p class="">{{ item.post }}</p>
@@ -133,90 +136,88 @@
                   </h6>
                   <p class="">{{ item.specialties }}</p>
                 </div>
-<!--                <div class="row items-center q-pa-sm">-->
-<!--                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Повышение квалификации (или)-->
-<!--                    профессиональная переподготовка:-->
-<!--                  </h6>-->
-<!--                  <p class="">{{ item.advancedTraining }}</p>-->
-<!--                </div>-->
                 <div class="row items-center q-pa-sm">
                   <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Страж работы по специальности:</h6>
                   <p class="">{{ item.specGuardian }}</p>
                 </div>
-<!--                <div class="row items-center q-pa-sm">-->
-<!--                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Общий стаж работы:</h6>-->
-<!--                  <p class="">{{ item.totalGuardian }}</p>-->
-<!--                </div>-->
+
               </q-card-section>
+
+
               <q-slide-transition>
+
                 <div v-show="expanded">
-                  <q-card-section v-if="item.publications.length" class="text-subitle2 q-pa-lg q-px-lg">
+
+                  <q-card-section
+                    v-if="item.publications.length"
+                    class="text-subitle2 q-pa-lg q-px-lg"
+                  >
+
                     <h4 class="teacher-info-title q-mr-md">Публикации</h4>
-                    <q-card flat class="my-card q-my-md" v-for="(item,index) in item.publications"
-                            :key="index">
+                    <q-card
+                      flat
+                      class="my-card q-my-md"
+                      v-for="(item,index) in item.publications"
+                      :key="index"
+                    >
+
                       <q-card-section>
-                        <h7 class=" text-weight-bold">{{ item.name }}</h7>
+                        <h7 class="text-weight-bold">
+                          {{ item.name }}
+                        </h7>
                       </q-card-section>
 
                       <q-card-section class=" q-pt-none">
-                        <p class="">{{ item.creators }}</p>
+                        <p class="">
+                          {{ item.creators }}
+                        </p>
                       </q-card-section>
 
                       <q-separator inset/>
 
                       <q-card-section class="">
-                        <p class="">{{ item.content }}</p>
+                        <p class="">
+                          {{ item.content }}
+                        </p>
                       </q-card-section>
+
                     </q-card>
                   </q-card-section>
-                  <q-card-section v-else class="text-subitle2 q-pa-lg q-px-lg">
-                    <h4 class="teacher-info-title q-mr-md">На данный момент в базе данных информации о публикациях этого преподавателя — нет.</h4>
+
+                  <q-card-section
+                    v-else
+                    class="text-subitle2 q-pa-lg q-px-lg"
+                  >
+                    <h4 class="teacher-info-title q-mr-md">
+                      На данный момент в базе данных информации о публикациях этого
+                      преподавателя — нет.
+                    </h4>
                   </q-card-section>
                 </div>
               </q-slide-transition>
-              <q-btn size="md" outline rounded color="primary" class=" q-mx-lg" @click="expanded = !expanded"
-                     :label="expanded == true ? 'Скрыть публикации': 'Публикации'"/>
+              <q-btn
+                size="md"
+                outline rounded
+                color="primary"
+                class=" q-mx-lg"
+                @click="expanded = !expanded"
+                :label="expanded == true ? 'Скрыть публикации': 'Публикации'"
+              />
             </q-card>
           </q-tab-panel>
         </q-tab-panels>
       </div>
     </div>
+    <!--    Teachers Tabs End   -->
   </q-page>
 </template>
 
 <script>
-import {ref, onMounted} from 'vue'
-import {useStore} from 'vuex'
-import {
-  Loading,
-  QSpinnerIos
-} from 'quasar'
-import {teachers} from '../data/Teachers'
-
-
+import {useTeachersPage} from "src/use/teachersPage";
 
 export default {
   setup() {
-    const teachersData = teachers
-
-    onMounted(() => {
-      Loading.show({
-        spinner: QSpinnerIos,
-        spinnerSize: '7em',
-        spinnerColor: 'primary',
-        backgroundColor: 'primary',
-      });
-      store.dispatch('teachers/loadAllTeachers');
-      Loading.hide();
-    });
-
-    const store = useStore();
-    const slide = ref('style');
-    const tab = ref(0);
-    const expanded = ref(false);
-
-
-
+    const {tab, slide, expanded, teachersData} = useTeachersPage();
 
     return {
       tab,
@@ -224,14 +225,6 @@ export default {
       expanded,
       teachersData
     }
-
-
   },
 }
 </script>
-
-<style scoped lang="scss">
-
-
-
-</style>
