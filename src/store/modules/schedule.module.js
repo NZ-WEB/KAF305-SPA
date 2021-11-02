@@ -1,13 +1,12 @@
 import axios from 'axios'
 
-
 export default {
   namespaced: true,
   state() {
     return {
       groups: [],
       WeekSchedule: [],
-      teacher: [],
+      teachers: [],
       currentWeekSchedule: null,
       scheduleCurrentCondition: Number(-1),
       dayCondition: [false, false, false, false, false, false,]
@@ -15,48 +14,23 @@ export default {
   },
   mutations: {
     setGroups(state, groups) {
-      return state.groups = groups
+      return state.groups = groups;
     },
-    clearScheduleData(state) {
-      return state.groups = []
+    clearGroupsData(state) {
+      return state.groups = [];
     },
     setWeekSchedule(state, WeekSchedule) {
-      return state.WeekSchedule = WeekSchedule
-    },
-    setCurrentWeekSchedule(state, currentWeekSchedule) {
-      return state.currentWeekSchedule = currentWeekSchedule
+      return state.WeekSchedule = WeekSchedule;
     },
     clearWeekSchedule(state) {
-      return state.WeekSchedule = []
+      return state.WeekSchedule = [];
     },
-    setTeacher(state, teacher) {
-      state.teacher = teacher
+    setTeachers(state, teachers) {
+      state.teachers = teachers;
     },
     clearTeacherData(state) {
-      return state.teacher = []
+      return state.teachers = [];
     },
-    addScheduleCurrentCondition(state) {
-      return state.scheduleCurrentCondition += 1;
-    },
-    subtractScheduleCurrentCondition(state) {
-      return state.scheduleCurrentCondition -= 1;
-    },
-    clearScheduleCurrentCondition(state) {
-      return state.scheduleCurrentCondition = -1
-    },
-    setCondition(state, idx) {
-      state.dayCondition[0] = false;
-      state.dayCondition[1] = false;
-      state.dayCondition[2] = false;
-      state.dayCondition[3] = false;
-      state.dayCondition[4] = false;
-      state.dayCondition[5] = false;
-      return state.dayCondition[idx] = !state.dayCondition[idx]
-    },
-
-
-
-
   },
   actions: {
     async findGroupByName({commit}, groupName) {
@@ -66,12 +40,12 @@ export default {
           headers: {
             "ApiKey" : process.env.VUE_APP_SCHEDULE_API_KEY
           }
-        })
-        const response = data
-        commit('setGroups', response.data)
-      } catch (e) {
-        console.log(e)
-      }
+        });
+
+        const response = data;
+        commit('setGroups', response.data);
+
+      } catch (e) {}
     },
     async findTeacher({commit, getters}, teacherName) {
       try {
@@ -80,12 +54,12 @@ export default {
           headers: {
             "ApiKey" : process.env.VUE_APP_SCHEDULE_API_KEY
           }
-        })
-        const response = data
-        commit('setTeacher', response.data)
-      } catch (e) {
-        console.log(e)
-      }
+        });
+
+        const response = data;
+        commit('setTeachers', response.data);
+
+      } catch (e) {}
     },
     async loadGroupSchedule({commit}, id) {
       try {
@@ -94,27 +68,39 @@ export default {
           headers: {
             "ApiKey" : process.env.VUE_APP_SCHEDULE_API_KEY
           }
-        })
-        const response = data.data
-        commit('setWeekSchedule', response)
-      } catch (e) {
-        console.log(e)
-      }
+        });
+
+        const response = data.data;
+        commit('setWeekSchedule', response);
+
+      } catch (e) {}
     },
 
     async loadTeacherSchedule({commit}, id) {
       try {
+        const daysList = ["Вс", "Пн", "Вт", "Ср",
+          "Чт", "Пт", "Сб"];
         const {data} = await axios.get(`${process.env.VUE_APP_TEACHER_SCHEDULE_URL}${id}`, {
           method: 'GET',
           headers: {
             "ApiKey" : process.env.VUE_APP_SCHEDULE_API_KEY
           }
-        })
-        const response = data.data
-        commit('setWeekSchedule', response)
-      } catch (e) {
-        console.log(e)
-      }
+        });
+
+        const response = data.data;
+
+        response.forEach(week => {
+          week.days.forEach(day => {
+            const [dayN, monthN, yearN] = day.date.split('.');
+            const numberOfDay = new Date(+yearN, +monthN - 1, +dayN).getDay();
+
+            day.name = daysList[numberOfDay];
+          });
+        });
+
+        commit('setWeekSchedule', response);
+
+      } catch (e) {}
     },
 
     async loadCurrentWeek({commit}, id) {
@@ -124,33 +110,26 @@ export default {
           headers: {
             "ApiKey" : process.env.VUE_APP_SCHEDULE_API_KEY
           }
-        })
-        const response = data.data
-        commit('setCurrentWeekSchedule', response)
-      } catch (e) {
-        console.log(e)
-      }
+        });
+
+        const response = data.data;
+        commit('setCurrentWeekSchedule', response);
+      } catch (e) {}
     }
   },
 
   getters: {
-    schedule(state) {
-      return  state.groups
+    groupsList(state) {
+      return  state.groups;
+    },
+    teachersList(state) {
+      return  state.teachers;
     },
     WeekSchedule(state) {
-      return state.WeekSchedule
-    },
-    teacher(state) {
-      return state.teacher
+      return state.WeekSchedule;
     },
     currentWeekSchedule(state) {
-      return state.currentWeekSchedule
+      return state.currentWeekSchedule;
     },
-    scheduleCurrentCondition(state) {
-      return state.scheduleCurrentCondition
-    },
-    condition(state) {
-      return state.dayCondition
-    }
   }
 }

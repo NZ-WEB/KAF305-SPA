@@ -1,13 +1,17 @@
 <template>
   <q-page class="custom-animation" padding>
     <q-container>
+
       <div class="row">
         <div class="col-3 col-sm-2 col-lg-1">
+
           <router-link class="block mx-auto block" to="/schedule">
             <q-btn size="md" rounded color="primary" class="q-ma-sm mx-auto block"><q-icon name="arrow_back" /></q-btn>
           </router-link>
+
         </div>
         <div class="col-9 col-sm-10 col-lg-11">
+
           <q-select
             class="text-primary"
             filled
@@ -19,12 +23,20 @@
             emit-value
             rounded
           />
+
         </div>
+
       </div>
-      <div v-if="$store.getters['schedule/WeekSchedule'][currWeek]" class="row column text-primary">
+      <div
+        v-if="$store.getters['schedule/WeekSchedule'][currWeek]"
+        class="row column text-primary"
+      >
         <div class="col-12 col-lg-8">
           <div class="q-gutter-y-md">
-            <q-card flat v-if="$store.getters['schedule/WeekSchedule'][currWeek]">
+            <q-card
+              flat
+              v-if="$store.getters['schedule/WeekSchedule'][currWeek]"
+            >
               <q-tabs
                 v-model="tab"
                 active-color="primary"
@@ -80,78 +92,33 @@
 
         <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
       </div>
-      <div v-if="!groupData">{{ $router.push('/schedule') }}</div>
+      <div v-if="!filteredData">{{ $router.push('/schedule') }}</div>
 
     </q-container>
   </q-page>
 </template>
 
 <script>
-import {onMounted, ref} from "vue";
+import {ref} from "vue";
 import {useStore} from "vuex";
-import {useRoute} from "vue-router";
-import {Loading, QSpinnerIos} from "quasar";
 import AppScheduleItem from "components/ui/AppScheduleItem";
 import "animate.css/animate.min.css";
-import {semesterCounter} from '../data/currWeek'
-
+import useWeeksSchedule from '../use/weeksSchedule';
 
 export default {
-  setup() {
-    onMounted(() => {
-      Loading.show({
-        spinner: QSpinnerIos,
-        spinnerSize: '7em',
-        spinnerColor: '#fff',
-        backgroundColor: '#fff',
-      });
-      Loading.hide()
-    });
+  props: ['type'],
+  setup(props) {
 
     const store = useStore();
-    const route = useRoute();
-    const d = new Date();
-    const days = ["Вс", "Пн", "Вт", "Ср",
-      "Чт", "Пт", "Сб"];
-
-    const currWeek = ref(semesterCounter() - 1);
-    const groupData = ref(store.getters['schedule/schedule'].find(i => i.id === route.params.id));
-
-    const curDay = () => {
-      if (d.getDay() === 0) {
-        return d.getDay() + 1;
-      } else {
-        return d.getDay();
-      }
-    }
-    console.log('day', curDay())
-    const tab = ref(days[curDay()])
-
-    const activeWeek = (week) => {
-      currWeek.value = week;
-      return true;
-    }
-
-
-    // const createOptions = onMounted(() => {
-    //
-    // });
-
+    const {filteredData, activeWeek, tab, currWeek, options} = useWeeksSchedule(props);
 
     return {
-      groupData,
+      filteredData,
       activeWeek,
       tab,
       currWeek,
       model: ref(null),
-      options() {
-        const data = store.getters['schedule/WeekSchedule'];
-        const options = [];
-        data.forEach((i, idx) => {
-          options.push({label: i.date, value: idx});
-        })
-        return options
-      }
+      options
     }
   },
   components: {

@@ -185,7 +185,6 @@ export default {
         return d.getDay();
       }
     }
-    console.log('day', curDay())
     const tab = ref(days[curDay()])
 
     const activeWeek = (week) => {

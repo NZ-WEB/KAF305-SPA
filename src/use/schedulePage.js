@@ -11,6 +11,7 @@ export function useSchedulePage() {
   const groupCondition = reactive({name: 'groupCondition', value: false});
   const width = window.innerWidth;
 
+
   onMounted(() => {
     store.commit('schedule/clearWeekSchedule');
   });
@@ -23,31 +24,6 @@ export function useSchedulePage() {
     teacherName.value = input;
   };
 
-  const onKeyPress = (button) => {
-    console.log("button", button);
-  };
-
-  const toggleKeyboard = (name) => {
-    if (name === 'teacherCondition') {
-      teacherCondition.value = true;
-      groupCondition.value = false;
-    } else if (name === 'groupCondition') {
-      groupCondition.value = true;
-      teacherCondition.value = false;
-    } else {
-      console.log(name, 'name')
-    }
-  }
-
-  async function onSubmit() {
-    await store.dispatch('schedule/findGroupByName', groupName.value)
-  }
-
-  async function onReset() {
-    groupName.value = null
-    store.commit('schedule/clearScheduleData')
-  }
-
   async function onTeacherSubmit() {
     await store.dispatch('schedule/findTeacher', teacherName.value)
   }
@@ -57,13 +33,10 @@ export function useSchedulePage() {
     teacherName,
     onChangeGroup,
     onChangeTeacher,
-    onKeyPress,
-    toggleKeyboard,
     teacherCondition,
     groupCondition,
     width,
-    onSubmit,
-    onReset,
-    onTeacherSubmit
+    onTeacherSubmit,
+
   }
 }
