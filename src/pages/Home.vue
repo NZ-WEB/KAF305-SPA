@@ -39,16 +39,16 @@
       </div>
 
       <div class="row q-pt-lg justify-center" style="min-height: 560px">
-        <div class="col-7">
-          <h5 class="text-h4 text-weight-medium q-my-md text-primary" align="center">Актуальная информация</h5>
-        </div>
+        <!--        <div class="col-7">-->
+        <!--          <h5 class="text-h4 text-weight-medium q-my-md text-primary" align="center">Актуальная информация</h5>-->
+        <!--        </div>-->
         <div class="container">
           <div class="row">
             <div class="col-lg-3 col-12">
               <q-tabs
                 v-model="tab"
                 vertical
-                class="text-primary"
+                class="q-pt-md text-primary"
               >
                 <q-tab
                   :name="item.icon"
@@ -73,19 +73,66 @@
                   :key="index"
                   class="tabs-content q-px-xl clear-padding-sm"
                 >
-                  <q-card class="q-px-xl q-py-lg clear-padding-sm shadow-0 text-primary" style="background: #EDF4FA">
+                  <q-card class="q-px-xl  clear-padding-sm shadow-0 text-primary" style="background: #EDF4FA">
                     <div class="tabs-content__wrapper">
-                      <div class="text-h6 text-weight-medium text-primary q-mb-sm">
-                        {{
-                          item.fullTitle === '' ? item.title : item.fullTitle
-                        }}
+                      <div class="row align">
+                        <div class="col-6 q-my-auto">
+                          <div class="text-h6 text-weight-medium text-primary q-mb-sm">
+                            {{
+                              item.fullTitle === '' ? item.title : item.fullTitle
+                            }}
+                          </div>
+                        </div>
+                        <div class="col-6">
+                          <AppQRCode
+                            v-if="item.textContent.qrCode"
+                            :title="item.textContent.qrCode.title"
+                            :src="item.textContent.qrCode.src"
+                            size="80"
+                          />
+                        </div>
                       </div>
+
 
                       <div class="q-py-sm" v-if="item.textContent.text">
                         <p v-for="(i,index) in item.textContent.text" :key="index" class="q-py-sm text-primary">
                           {{
                             i
-                          }}</p>
+                          }}
+                        </p>
+                      </div>
+
+                      <!--  Photo Items  -->
+                      <div class="q-pa-md" v-if="item.textContent.pictures">
+                        <q-carousel
+                          v-model="photos"
+                          transition-prev="slide-right"
+                          transition-next="slide-left"
+                          swipeable
+                          animated
+                          control-color="primary"
+                          navigation
+                          padding
+                          arrows
+                          height="300px"
+                          class="bg-transparent rounded-borders"
+                        >
+                          <q-carousel-slide
+                            :name="index + 1"
+                            class="column no-wrap"
+                            v-for="(item, index) in item.textContent.pictures"
+                            :key="index"
+                          >
+                            <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
+                              <q-img
+                                class="rounded-borders col-4 full-height"
+                                v-for="(photo, index) in item"
+                                :key="index"
+                                :src="photo"
+                              />
+                            </div>
+                          </q-carousel-slide>
+                        </q-carousel>
                       </div>
 
                       <h6 class="text-h6 text-primary " v-if="item.textContent.list">
@@ -115,6 +162,8 @@
                           }}
                         </li>
                       </ul>
+
+
                     </div>
                   </q-card>
                 </q-tab-panel>
@@ -128,18 +177,22 @@
 </template>
 
 <script>
-import {defineComponent} from 'vue';
+import {defineComponent, ref} from 'vue';
 import {useHomePage} from "src/use/homePage";
+import AppQRCode from "components/ui/AppQRCode";
 
 export default defineComponent({
+  components: {AppQRCode},
   setup() {
     const {tab, sliderNews, heroTabs, slide} = useHomePage();
+    const photos = ref(1);
 
     return {
       tab,
       sliderNews,
       heroTabs,
       slide,
+      photos
     }
 
   },
