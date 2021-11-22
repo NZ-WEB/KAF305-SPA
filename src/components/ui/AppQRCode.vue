@@ -1,6 +1,6 @@
 <template>
   <q-card
-    class="q-px-xl q-py-lg clear-padding-sm shadow-0 text-primary bg-transparent q-pa-sm flex-col"
+    class="q-px-md q-py-md clear-padding-sm shadow-0 text-primary bg-transparent q-pa-sm flex-col"
   >
     <q-avatar :size="`${size}px`" title="2awf" square>
       <img :src="src">

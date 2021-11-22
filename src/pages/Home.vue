@@ -75,24 +75,19 @@
                 >
                   <q-card class="q-px-xl  clear-padding-sm shadow-0 text-primary" style="background: #EDF4FA">
                     <div class="tabs-content__wrapper">
-                      <div class="row align">
-                        <div class="col-6 q-my-auto">
-                          <div class="text-h6 text-weight-medium text-primary q-mb-sm">
+                      <div class="row justify-between q-pt-sm">
+                          <div class="q-my-auto q-pt-md text-h6 text-weight-medium text-primary q-mb-sm">
                             {{
                               item.fullTitle === '' ? item.title : item.fullTitle
                             }}
-                          </div>
                         </div>
-                        <div class="col-6">
                           <AppQRCode
                             v-if="item.textContent.qrCode"
                             :title="item.textContent.qrCode.title"
                             :src="item.textContent.qrCode.src"
-                            size="80"
+                            size="60"
                           />
-                        </div>
                       </div>
-
 
                       <div class="q-py-sm" v-if="item.textContent.text">
                         <p v-for="(i,index) in item.textContent.text" :key="index" class="q-py-sm text-primary">
@@ -101,6 +96,32 @@
                           }}
                         </p>
                       </div>
+
+                      <h6 class="text-subtitle1 text-primary" v-if="item.textContent.list">
+                        {{
+                          item.textContent.list.title
+                        }}
+                      </h6>
+                      <ul class="q-py-sm text-subtitle2" v-if="item.textContent.list">
+                        <li v-for="(i1,index) in item.textContent.list.items" :key="index" class="text-primary">
+                          {{
+                            i1
+                          }}
+                        </li>
+                      </ul>
+
+                      <h6 class="text-subtitle1 text-primary " v-if="item.textContent.list2">
+                        {{
+                          item.textContent.list2.title
+                        }}
+                      </h6>
+                      <ul class="q-py-sm text-subtitle2" v-if="item.textContent.list2">
+                        <li v-for="(i2,index) in item.textContent.list2.items" :key="index" class="text-primary">
+                          {{
+                            i2
+                          }}
+                        </li>
+                      </ul>
 
                       <!--  Photo Items  -->
                       <div class="q-pa-md" v-if="item.textContent.pictures">
@@ -134,35 +155,6 @@
                           </q-carousel-slide>
                         </q-carousel>
                       </div>
-
-                      <h6 class="text-h6 text-primary " v-if="item.textContent.list">
-                        {{
-                          item.textContent.list.title
-                        }}
-                      </h6>
-
-                      <ul class="q-py-sm" v-if="item.textContent.list">
-                        <li v-for="(i1,index) in item.textContent.list.items" :key="index" class="text-primary">
-                          {{
-                            i1
-                          }}
-                        </li>
-                      </ul>
-
-                      <h6 class="text-h6 text-primary " v-if="item.textContent.list2">
-                        {{
-                          item.textContent.list2.title
-                        }}
-                      </h6>
-
-                      <ul class="q-py-sm" v-if="item.textContent.list2">
-                        <li v-for="(i2,index) in item.textContent.list2.items" :key="index" class="text-primary">
-                          {{
-                            i2
-                          }}
-                        </li>
-                      </ul>
-
 
                     </div>
                   </q-card>
