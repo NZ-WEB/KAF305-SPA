@@ -2,7 +2,7 @@ import {onMounted, ref} from "vue";
 import {Loading, QSpinnerIos} from "quasar";
 import {useStore} from "vuex";
 import {useRoute} from "vue-router";
-import {semesterCounter} from "src/data/currWeek";
+import semesterCounter from "src/data/currWeek";
 
 export default function useWeeksSchedule(props) {
   onMounted(() => {
@@ -29,7 +29,7 @@ export default function useWeeksSchedule(props) {
     }
   };
 
-  const currWeek = ref(semesterCounter() - 1);
+  const currWeek = ref(semesterCounter - 1);
   const filteredData = defineGetter(props.type);
 
   const curDay = () => {

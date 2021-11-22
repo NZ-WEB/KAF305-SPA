@@ -82,6 +82,7 @@
                             }}
                         </div>
                           <AppQRCode
+                            class="q-my-auto"
                             v-if="item.textContent.qrCode"
                             :title="item.textContent.qrCode.title"
                             :src="item.textContent.qrCode.src"
@@ -146,7 +147,7 @@
                           >
                             <div class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap">
                               <q-img
-                                class="rounded-borders col-4 full-height"
+                                class="rounded-borders col-lg-4 full-height"
                                 v-for="(photo, index) in item"
                                 :key="index"
                                 :src="photo"
