@@ -19,7 +19,7 @@
             v-model="currWeek"
             :options="options()"
             option-value="value"
-            :display-value="`Учебная неделя ${currWeek + 1}`"
+            :display-value="`Учебная неделя ${currWeek }`"
             emit-value
             rounded
           />
@@ -28,14 +28,14 @@
 
       </div>
       <div
-        v-if="$store.getters['schedule/WeekSchedule'][currWeek]"
+        v-if="$store.getters['schedule/WeekSchedule'][currWeek - 1]"
         class="row column text-primary"
       >
         <div class="col-12 col-lg-8">
           <div class="q-gutter-y-md">
             <q-card
               flat
-              v-if="$store.getters['schedule/WeekSchedule'][currWeek]"
+              v-if="$store.getters['schedule/WeekSchedule'][currWeek - 1]"
             >
               <q-tabs
                 v-model="tab"
@@ -46,8 +46,8 @@
               >
                 <q-tab
                   :name="day.name"
-                  :label="day.name"
-                  v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek].days"
+                  :label="`${day.name} | ${day.date}`"
+                  v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek - 1].days"
                   :key="idxParent"
                 />
               </q-tabs>
@@ -56,7 +56,7 @@
 
               <q-tab-panels v-model="tab" animated>
                 <q-tab-panel
-                  v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek].days"
+                  v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek - 1].days"
                   :name="day.name"
                   :key="idxParent"
                 >

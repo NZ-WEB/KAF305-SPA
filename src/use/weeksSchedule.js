@@ -29,7 +29,7 @@ export default function useWeeksSchedule(props) {
     }
   };
 
-  const currWeek = ref(semesterCounter() - 1);
+  const currWeek = ref(semesterCounter() + 1);
   const filteredData = defineGetter(props.type);
 
   const curDay = () => {
