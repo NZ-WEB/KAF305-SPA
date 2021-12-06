@@ -92,7 +92,6 @@
             :name="idx"
             v-for="(item, idx) in teachersData"
             :key="idx"
-            class="q-pa-none"
           >
             <q-card class="q-pa-xl clear-padding-sm shadow-0 text-primary" style="background: #EDF4FA">
               <q-toolbar>
@@ -106,8 +105,6 @@
                     {{ item.fullName }}
                   </span>
                 </q-toolbar-title>
-
-                <AppQRCode v-if="item.qrCode" :src="item.qrCode" size="100" />
 
               </q-toolbar>
 
@@ -217,10 +214,8 @@
 
 <script>
 import {useTeachersPage} from "src/use/teachersPage";
-import AppQRCode from "components/ui/AppQRCode";
 
 export default {
-  components: {AppQRCode},
   setup() {
     const {tab, slide, expanded, teachersData} = useTeachersPage();
 

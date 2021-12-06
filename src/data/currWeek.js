@@ -1,18 +1,33 @@
 const d = new Date();
-const currentYear = d.getFullYear();
-const outSemStart = new Date(currentYear, 8, 2);
-const sprSemStart = new Date(currentYear, 0, 2);
+let oneJan = new Date(d.getFullYear(),0,1);
+let numberOfDays = Math.floor((d - oneJan) / (24 * 60 * 60 * 1000));
+let weekNum = Math.ceil(( d.getDay() + 1 + numberOfDays) / 7);
 
-const semesterCounter = (d, outSemStart, sprSemStart) => {
+const day = (day) => {
+  if (day < 10) {
+    return `0${day}`;
+  } else {
+    return day;
+  };
+};
 
-  if (d > outSemStart) {
-    return Math.floor(Math.round((d - outSemStart) / 1000 / 60 / 60 / 24) / 6);
-  } else if (d < outSemStart) {
-    return Math.floor(Math.round((d - sprSemStart) / 1000 / 60 / 60 / 24) / 6);
-  }
-}
+const month = (month) => {
+  if (month < 10) {
+    return `0${month + 1}`;
+  } else {
+    return month + 1;
+  };
+};
 
+const semesterCounter = () => {
+  if (weekNum >= 35) {
+    console.log(weekNum, 'weekNum')
+    return weekNum - 35;
+  } else {
+    return weekNum;
+  };
+};
 
-export default semesterCounter(d,  outSemStart, sprSemStart);
+export {semesterCounter};
 
 

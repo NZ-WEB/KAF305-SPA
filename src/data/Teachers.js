@@ -10,7 +10,6 @@ export const teachers = [
     advancedTraining: 'Интеллектуальные системы управления и обработки информации, объем 72 часа, удостоверение № 180 000/092593 от 30.12.2014, ФГБОУ ВО "Московский авиационный институт (национальный исследовательский университет)".',
     specGuardian: '15',
     totalGuardian: '14',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D25496&4&0',
     avatar: 'https://mai.ru/upload/iblock/163/antonov_resize.jpg',
     publications: [
       {
@@ -47,7 +46,6 @@ export const teachers = [
     specGuardian: '18',
     totalGuardian: '23',
     avatar: 'https://mai.ru/upload/iblock/8b4/img_8413.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D26304&4&0',
     publications: [
 
     ]
@@ -64,7 +62,6 @@ export const teachers = [
     specGuardian: '51',
     totalGuardian: '51',
     avatar: 'https://mai.ru/upload/iblock/50f/50f01aee5b76aa434b09676b9caeae99.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D100478&4&0',
     publications: [
       {
         name: 'Сетевой программно-алгоритмический комплекс для групповых экспериментальных исследований характеристик человека-оператора.  ',
@@ -100,7 +97,6 @@ export const teachers = [
     specGuardian: '32',
     totalGuardian: '39',
     avatar: 'https://mai.ru/upload/iblock/371/img_8396-kopiya.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D23810&4&0',
     publications: [
 
     ]
@@ -117,7 +113,6 @@ export const teachers = [
     specGuardian: '5',
     totalGuardian: '7',
     avatar: 'https://mai.ru/upload/iblock/1e1/Foto-na-kafedru.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D100476&4&0',
     publications: [
       {
         name: 'Эстетика космоса и космических исследований, научный доклад',
@@ -194,7 +189,6 @@ export const teachers = [
     specGuardian: '12 лет',
     totalGuardian: '22 года',
     avatar: 'https://mai.ru/upload/iblock/ccb/img_8433-kopiya.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D29690&4&0',
     publications: [
       {
         name: 'Виртуальное моделирование операторской деятельности в экстремальных условиях',
@@ -229,7 +223,6 @@ export const teachers = [
     specGuardian: '32 года',
     totalGuardian: '37 лет',
     avatar: 'https://mai.ru/upload/iblock/b33/b33b815d5ec3de24979b22c1f631cae0.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D34407&4&0',
     publications: [
       {
         name: 'Разработка базы данных для  сбора, статистической обработки  и прогнозирования состояния пациентов офтальмологической  клиники. ',
@@ -270,7 +263,6 @@ export const teachers = [
     specGuardian: '43 года',
     totalGuardian: '46 лет',
     avatar: 'https://mai.ru/upload/iblock/5db/5dba1813a094364e1e5ac73ac577006a.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D13271&4&0',
     publications: [
     ]
   },
@@ -286,7 +278,6 @@ export const teachers = [
     specGuardian: '51 год',
     totalGuardian: '51 год',
     avatar: 'https://mai.ru/upload/iblock/24e/img_8266-kopiya.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D70317&4&0',
     publications: [
       {
         name: 'Некоторые проблемы подготовки квалифицированных инженеров в области аэрокосмического приборостроения',
@@ -371,7 +362,6 @@ export const teachers = [
     specGuardian: '11 Лет',
     totalGuardian: '14 Лет',
     avatar: 'https://mai.ru/upload/iblock/56d/img_8377-kopiya.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D23808&4&0',
     publications: [
       {
         name: 'FAULT-TOLERANT INTEGRATED NAVIGATION SYSTEM FOR AN UNMANNED APPARATUS USING COMPUTER VISION',
@@ -414,7 +404,6 @@ export const teachers = [
     specGuardian: '5 Лет',
     totalGuardian: '5 Лет',
     avatar: 'https://mai.ru/upload/iblock/804/804ec4ee75bc66971df750d6546b2825.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D14691&4&0',
     publications: [
       {
         name: 'Разработка математического имитатора алгоритмов управления пространственным движением самолета.',
@@ -455,7 +444,6 @@ export const teachers = [
     specGuardian: '58 Лет',
     totalGuardian: '58 Лет',
     avatar: 'https://mai.ru/upload/iblock/949/img_8306.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D27747&4&0',
     publications: [
       {
         name: 'Основы построения весоизмерительных систем с использованием эффекта наклонной плоскости',
@@ -535,8 +523,7 @@ export const teachers = [
     advancedTraining: 'Математическое моделирование и обеспечение высокой надежности разработок в авиационных, ракетно-космических и корабельных бортовых системах, 72 часа, удостоверение от 09.10.2015, АНО "Академия надежности" в период работы XXI Международной конференции "Инноватика-2015". Проблемы подготовки кадров по приоритетным направлениям развития науки и техники, 80 часов, удостоверение № 772402232498 от 30.04.2017, ФГБОУ ВО "Московский авиационный институт (национальный исследовательский университет)".',
     specGuardian: '25 Лет',
     totalGuardian: '28 Лет',
-    avatar: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D4698&4&0',
-    qrCode: '',
+    avatar: 'https://mai.ru/upload/iblock/9b2/9b2de721ac6134774faa9c16a025bf70.jpg',
     publications: [
     ]
   },
@@ -552,8 +539,7 @@ export const teachers = [
       '2. Удостоверение № 180000086748, «Твердотельное моделирование агрегатов авиационной техники с использованием программного комплекса Solid Works» от 30.12.2015г.\n',
     specGuardian: '11 Лет',
     totalGuardian: '13 Лет',
-    avatar: 'https://mai.ru/upload/iblock/908/img_8339-kopiya.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D23807&4&0',
+    avatar: 'https://mai.ru/upload/iblock/2d0/img_8339-kopiya.jpg',
     publications: [
       {
         name: 'Отказоустойчивая интегрированная навигационная система для беспилотного аппарата с использованием технического зрения (индексируется ВАК).',
@@ -595,7 +581,6 @@ export const teachers = [
     specGuardian: '4 года',
     totalGuardian: '6 лет',
     avatar: '../assets/teachers-images/savkin.png',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D64599&4&0',
     publications: [
       {
         name: 'Метод автономной навигации на базе инерциальных и оптико-электронных измерений для беспилотных летательных аппаратов различных классов. Полет. ',
@@ -656,7 +641,6 @@ export const teachers = [
     specGuardian: '16 Лет',
     totalGuardian: '15 Лет',
     avatar: 'https://mai.ru/upload/iblock/1eb/1eb00af037742615cb6fb9a3d168941d.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D5189&4&0',
     publications: [
 
     ]
@@ -673,7 +657,6 @@ export const teachers = [
     specGuardian: '12 Лет',
     totalGuardian: '12 Лет',
     avatar: 'https://mai.ru/upload/iblock/a19/a198a8adade4403222fd00f7f8c7b6c8.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D53723&4&0',
     publications: [
       {
         name: 'Разработка системы управления течеискательной аппаратуры нового поколения для отработки элементов ракетно-космической техники ',
@@ -695,7 +678,6 @@ export const teachers = [
     specGuardian: '4 года',
     totalGuardian: '8 лет',
     avatar: 'https://mai.ru/upload/iblock/44c/3_IMG_8548.jpg',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D82074&4&0',
     publications: [
       {
         name: '. Аппаратно-программный комплекс для диагностики эссенциального тремора и дрожательной формы болезни паркинсона на основе применения микромеханического инерциального модуля. ',
@@ -734,7 +716,6 @@ export const teachers = [
     specGuardian: '4 года',
     totalGuardian: '4 года',
     avatar: '',
-    qrCode: 'http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D82075&4&0',
     publications: [
     ]
   },
@@ -750,7 +731,6 @@ export const teachers = [
     specGuardian: '52 года',
     totalGuardian: '54 года',
     avatar: 'https://mai.ru/upload/iblock/261/img_8242-kopiya.jpg',
-    qrCode: "http://qrcoder.ru/code/?https%3A%2F%2Fmai.ru%2Fcontent%2Fpeople%2Findex.php%3FID%3D24039&4&0",
     publications: [
     ]
   },

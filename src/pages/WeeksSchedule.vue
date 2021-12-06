@@ -46,7 +46,7 @@
               >
                 <q-tab
                   :name="day.name"
-                  :label="`${day.name} | ${day.date}`"
+                  :label="day.name"
                   v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek].days"
                   :key="idxParent"
                 />
@@ -100,6 +100,7 @@
 
 <script>
 import {ref} from "vue";
+import {useStore} from "vuex";
 import AppScheduleItem from "components/ui/AppScheduleItem";
 import "animate.css/animate.min.css";
 import useWeeksSchedule from '../use/weeksSchedule';
@@ -108,6 +109,7 @@ export default {
   props: ['type'],
   setup(props) {
 
+    const store = useStore();
     const {filteredData, activeWeek, tab, currWeek, options} = useWeeksSchedule(props);
 
     return {
