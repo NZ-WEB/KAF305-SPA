@@ -35,3 +35,4 @@ yarn-error.log*
 .quasar.env.json
 .development.env
 .production.env
+.env
