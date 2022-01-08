@@ -2,6 +2,7 @@ import {store} from 'quasar/wrappers'
 import {createStore} from 'vuex'
 import teachers from './modules/teachers.module'
 import schedule from './modules/schedule.module'
+import user from './modules/user.module'
 
 
 // import example from './modules'
@@ -148,7 +149,7 @@ export default store(function (/* { ssrContext } */) {
     modules: {
       teachers,
       schedule,
-
+      user
 
     },
 

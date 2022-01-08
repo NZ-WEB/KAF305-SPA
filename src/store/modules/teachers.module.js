@@ -17,7 +17,7 @@ export default {
     }
   },
   actions: {
-    async loadAllTeachers({ commit }) {
+    async loadAllTeachers({commit}) {
       try {
         const {data} = await axios.get(`${process.env.VUE_APP_FB_URL}/teachersData.json`)
         const allTeachers = Object.keys(data).map(id => ({...data[id], id}))
@@ -26,7 +26,7 @@ export default {
         console.log(e)
       }
     },
-    async loadTeacher({ commit }) {
+    async loadTeacher({commit}) {
       try {
         const {data} = await axios.get(`${process.env.VUE_APP_FB_URL}/teachersData.json/${id}`)
         const teachers = Object.keys(data).map(id => ({...data[id], id}))

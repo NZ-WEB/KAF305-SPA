@@ -11,8 +11,11 @@ const routes = [
       { path: '/NIR', component: () => import('pages/NIR') },
       { path: '/Conferences', component: () => import('pages/Conferences') },
       { name: 'Weeks schedule', path: '/Schedule/weeks/:id', component: () => import('pages/WeeksSchedule'), props: true },
+      { name: 'login', path: '/login', component: () => import('pages/Login') },
+      { name: 'admin', path: '/admin', component: () => import('pages/Admin') },
     ]
   },
+
 
   // Always leave this as last one,
   // but you can also remove it
