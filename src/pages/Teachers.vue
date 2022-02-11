@@ -149,7 +149,7 @@
                 <div v-show="expanded">
 
                   <q-card-section
-                    v-if="item.publications.length"
+                    v-if="item.publications"
                     class="text-subitle2 q-pa-lg q-px-lg"
                   >
 
@@ -213,11 +213,35 @@
 </template>
 
 <script>
-import {useTeachersPage} from "src/use/teachersPage";
+import {teachers} from "src/data/Teachers";
+import {onMounted, reactive, ref} from "vue";
+import {Loading, QSpinnerIos} from "quasar";
+import {useStore} from "vuex";
+import MembersService from "src/service/members.service";
 
 export default {
   setup() {
-    const {tab, slide, expanded, teachersData} = useTeachersPage();
+    let teachersData = ref(null);
+    const membersService = new MembersService();
+
+    onMounted(() => {
+      Loading.show({
+        spinner: QSpinnerIos,
+        spinnerSize: '7em',
+        spinnerColor: 'primary',
+        backgroundColor: 'primary',
+      });
+      membersService.getAll()
+        .then(data => teachersData.value = data)
+        .catch(e => console.log(e, 'error'));
+      console.log(teachersData,'td')
+      Loading.hide();
+    });
+
+    const store = useStore();
+    const slide = ref('style');
+    const tab = ref(0);
+    const expanded = ref(false);
 
     return {
       tab,

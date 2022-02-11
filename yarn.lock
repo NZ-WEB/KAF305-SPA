@@ -1791,6 +1791,11 @@ alphanum-sort@^1.0.2:
   resolved "https://registry.yarnpkg.com/alphanum-sort/-/alphanum-sort-1.0.2.tgz#97a1119649b211ad33691d9f9f486a8ec9fbe0a3"
   integrity sha1-l6ERlkmyEa0zaR2fn0hqjsn74KM=
 
+animate.css@^4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/animate.css/-/animate.css-4.1.1.tgz#614ec5a81131d7e4dc362a58143f7406abd68075"
+  integrity sha512-+mRmCTv6SbCmtYJCN4faJMNFVNN5EuCTTprDTAo7YzIGji2KADmakjVA3+8mVDkZ2Bf09vayB35lSQIex2+QaQ==
+
 ansi-colors@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-4.1.1.tgz#cbb9ae256bf750af1eab344f229aa27fe94ba348"
@@ -6500,6 +6505,16 @@ signal-exit@^3.0.2, signal-exit@^3.0.3:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
+
+simple-keyboard-layouts@^3.0.202:
+  version "3.1.48"
+  resolved "https://registry.yarnpkg.com/simple-keyboard-layouts/-/simple-keyboard-layouts-3.1.48.tgz#dcb3c03b3c2da223365a14ff1f2c05d188c0e199"
+  integrity sha512-QRLVm8O5ybsrEeBLJBTcaSddS2qmnlN6iSAeKddXnoZdSQHRJ4uhJlpDxU1Gsr3B10E5cwmmv4U48hBbIJdwZg==
+
+simple-keyboard@^3.3.4:
+  version "3.4.46"
+  resolved "https://registry.yarnpkg.com/simple-keyboard/-/simple-keyboard-3.4.46.tgz#301e2543d659a2f892366195f226af4be368a0e8"
+  integrity sha512-LFA4ljcHIZKJw2ij7RpEP5j6JstZhhjHjftHuzG+mqC0xSTAZDRcywte7yNy2sxL20fY0T0VJ4mRrBgYn8pBzg==
 
 simple-swizzle@^0.2.2:
   version "0.2.2"
