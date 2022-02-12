@@ -134,8 +134,6 @@ export default {
     const photos = ref(1);
     const tab = ref(props.tabs[0].icon);
 
-    console.log(props.tabs[0].icon)
-
     return {
       tab,
       photos

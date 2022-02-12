@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {defineComponent} from 'vue';
+import {defineComponent, onMounted} from 'vue';
 import AppTopSlider from "components/ui/AppTopSlider";
 import {useStore} from "vuex";
 import homePageTabs from "src/data/homePageTabs";
@@ -30,11 +30,15 @@ export default defineComponent({
 
     const sliderNews = store.getters['sliderNews'];
     const heroTabs = homePageTabs;
-
+    onMounted(() => {
+      console.log(process.env.VUE_APP_SCHEDULE_API_KEY, 'api key')
+    });
     return {
       sliderNews,
       heroTabs,
     }
+
+
 
   },
 })

@@ -9,8 +9,6 @@
 /* eslint-env node */
 const ESLintPlugin = require('eslint-webpack-plugin')
 const { configure } = require('quasar/wrappers');
-const dotenv = require('dotenv');
-const webpack = require('webpack');
 
 module.exports = configure(function (ctx) {
   return {
@@ -68,7 +66,6 @@ module.exports = configure(function (ctx) {
       // extractCSS: false,
 
       build: {
-        env: require('dotenv').config().parsed
       },
       //
 

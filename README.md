@@ -9,6 +9,9 @@ The SPA for an interactive whiteboard written on the basis of Vue JS, using the 
 
 SPA для интерактивной доски, написаноое на базе Vue JS, с применением фреймворка Quasar и его базового функционала. Бэкенд расписания был предоставлен разработчиками приложения "МАИ". База данных преподавателей базируется на сервисе Google Firebase
 
+# Attention!
+- or the program to work correctly, you need to add the ".env" file and a variable in it: VUE_APP_SCHEDULE_API_KEY
+
 > Внимание!
 Приложение находится на этапе разработки
 

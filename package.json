@@ -27,7 +27,6 @@
     "@quasar/app": "^3.0.0",
     "@quasar/quasar-app-extension-dotenv": "^1.1.0",
     "@quasar/quasar-app-extension-qenv": "^1.1.0",
-    "dotenv": "^10.0.0",
     "electron": "^13.1.9",
     "electron-packager": "^15.2.0",
     "eslint": "^7.14.0",
@@ -52,5 +51,3 @@
     "yarn": ">= 1.21.1"
   }
 }
-
-
