@@ -31,7 +31,6 @@ export default defineComponent({
     const sliderNews = store.getters['sliderNews'];
     const heroTabs = homePageTabs;
     onMounted(() => {
-      console.log(process.env.VUE_APP_SCHEDULE_API_KEY, 'api key')
     });
     return {
       sliderNews,

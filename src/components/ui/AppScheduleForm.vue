@@ -19,7 +19,7 @@
         />
 
         <div>
-          <q-btn label="Показать расписание" type="submit" color="primary"/>
+          <q-btn @click="onSubmit" label="Показать расписание" type="submit" color="primary"/>
           <q-btn label="Сбросить" type="reset" color="primary" flat class="q-ml-sm"/>
         </div>
       </q-form>
@@ -92,6 +92,7 @@
 
 import {ref, reactive} from "vue";
 import {useStore} from "vuex";
+import axios from "axios";
 // import SimpleKeyboard from "../ui/AppSimpleKeyboard";
 
 export default {
@@ -120,7 +121,6 @@ export default {
       } else if (props.type === 'Teacher') {
         await store.dispatch('schedule/findTeacher', name.value);
       }
-
     }
 
     async function onReset() {
