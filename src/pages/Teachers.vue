@@ -1,68 +1,14 @@
 <template>
   <q-page padding class="page">
 
-    <!--    Top Slider Start    -->
-    <q-carousel
-      v-model="slide"
-      transition-prev="scale"
-      transition-next="scale"
-      swipeable
-      animated
-      control-color="white"
-      navigation
-      padding
-      arrows
-      infinite
-      height="auto"
-      class="bg-primary text-white shadow-1 rounded-borders q-pa-lg q-mb-xl"
-    >
-      <q-carousel-slide name="style" class="column no-wrap flex-center">
-        <div class="row justify-center" align="center">
-          <div class="col-lg-5">
-            <h3 class="q-my-sm text-weight-medium text-h5">Коллектив кафедры</h3>
-            <p class="teachers-description">
-              Учебный процесс на кафедре 305 ведут преподаватели, которые имеют научную степень доктора, кандидата
-              технических наук, являются членами Академии навигации и управления движением, имеют статус преподавателя
-              европейского инженерного образования. Большинство преподавателей имеет опыт работы в современных
-              высокотехнологичных компаниях.
-            </p>
-          </div>
-        </div>
-      </q-carousel-slide>
-      <q-carousel-slide name="tv" class="column no-wrap flex-center">
-        <div class="row justify-center" align="center">
-          <div class="col-lg-5">
-            <h3 class="q-my-sm text-weight-medium text-h5">Учебный процесс</h3>
-            <p class="teachers-description">
-              Учебный процесс на кафедре основан на глубокой интеграции фундаментальных физико-математических знаний и
-              прикладных знаний в области современных инновационных технологий. В процессе обучения будущие специалисты
-              овладевают навыками проектирования и методами проведения исследований, а также особенностями эксплуатации
-              микромеханических (MEMS), лазерных, волоконно-оптических и электромеханических датчиков, спутниковых
-              (ГЛОНАСС, GPS), аэрометрических и инерциальных навигационных систем, интегрированных комплексов систем
-              управления.
-            </p>
-          </div>
-        </div>
-      </q-carousel-slide>
-      <q-carousel-slide name="layers" class="column no-wrap flex-center">
-        <div class="row justify-center" align="center">
-          <div class="col-lg-5">
-            <h3 class="q-my-sm text-weight-medium text-h5">Исследования и разработки</h3>
-            <p class="teachers-description">
-              Кафедра ведёт большой объём научно-исследовательской работы с активным привлечением студентов. За
-              последние 5 лет студентами сделано более 170 научных докладов, опубликовано более 90 работ, получено более
-              100 наград разного уровня. На кафедре учреждена специальная стипендия Клуба выпускников МАИ. Студенты
-              регулярно получают стипендию Учёного совета МАИ и академическую стипендию правительства РФ. Большинство
-              студентов в период обучения работают в профильных компаниях.
-            </p>
-          </div>
-        </div>
-      </q-carousel-slide>
-    </q-carousel>
-    <!--    Top Slider End    -->
+    <div class="row q-mb-auto q-mt-0">
+      <div class="col">
+        <app-top-slider :items="sliderInfo" />
+      </div>
+    </div>
 
     <!--    Teachers Tabs Start   -->
-    <div class="row">
+    <div class="row q-mt-md">
 
       <div class="col-lg-3 col-12">
         <q-tabs
@@ -81,6 +27,7 @@
 
       <div class="col-lg-9 col-12">
         <q-tab-panels
+          v-if="teachersData"
           q-tab-panels
           v-model="tab"
           animated
@@ -92,6 +39,7 @@
             :name="idx"
             v-for="(item, idx) in teachersData"
             :key="idx"
+            class="q-pt-none"
           >
             <q-card class="q-pa-xl clear-padding-sm shadow-0 text-primary" style="background: #EDF4FA">
               <q-toolbar>
@@ -144,65 +92,65 @@
               </q-card-section>
 
 
-              <q-slide-transition>
+<!--              <q-slide-transition>-->
 
-                <div v-show="expanded">
+<!--                <div v-show="expanded">-->
 
-                  <q-card-section
-                    v-if="item.publications"
-                    class="text-subitle2 q-pa-lg q-px-lg"
-                  >
+<!--                  <q-card-section-->
+<!--                    v-if="item.publications"-->
+<!--                    class="text-subitle2 q-pa-lg q-px-lg"-->
+<!--                  >-->
 
-                    <h4 class="teacher-info-title q-mr-md">Публикации</h4>
-                    <q-card
-                      flat
-                      class="my-card q-my-md"
-                      v-for="(item,index) in item.publications"
-                      :key="index"
-                    >
+<!--                    <h4 class="teacher-info-title q-mr-md">Публикации</h4>-->
+<!--                    <q-card-->
+<!--                      flat-->
+<!--                      class="my-card q-my-md"-->
+<!--                      v-for="(item,index) in item.publications"-->
+<!--                      :key="index"-->
+<!--                    >-->
 
-                      <q-card-section>
-                        <h7 class="text-weight-bold">
-                          {{ item.name }}
-                        </h7>
-                      </q-card-section>
+<!--                      <q-card-section>-->
+<!--                        <h7 class="text-weight-bold">-->
+<!--                          {{ item.name }}-->
+<!--                        </h7>-->
+<!--                      </q-card-section>-->
 
-                      <q-card-section class=" q-pt-none">
-                        <p class="">
-                          {{ item.creators }}
-                        </p>
-                      </q-card-section>
+<!--                      <q-card-section class=" q-pt-none">-->
+<!--                        <p class="">-->
+<!--                          {{ item.creators }}-->
+<!--                        </p>-->
+<!--                      </q-card-section>-->
 
-                      <q-separator inset/>
+<!--                      <q-separator inset/>-->
 
-                      <q-card-section class="">
-                        <p class="">
-                          {{ item.content }}
-                        </p>
-                      </q-card-section>
+<!--                      <q-card-section class="">-->
+<!--                        <p class="">-->
+<!--                          {{ item.content }}-->
+<!--                        </p>-->
+<!--                      </q-card-section>-->
 
-                    </q-card>
-                  </q-card-section>
+<!--                    </q-card>-->
+<!--                  </q-card-section>-->
 
-                  <q-card-section
-                    v-else
-                    class="text-subitle2 q-pa-lg q-px-lg"
-                  >
-                    <h4 class="teacher-info-title q-mr-md">
-                      На данный момент в базе данных информации о публикациях этого
-                      преподавателя — нет.
-                    </h4>
-                  </q-card-section>
-                </div>
-              </q-slide-transition>
-              <q-btn
-                size="md"
-                outline rounded
-                color="primary"
-                class=" q-mx-lg"
-                @click="expanded = !expanded"
-                :label="expanded == true ? 'Скрыть публикации': 'Публикации'"
-              />
+<!--                  <q-card-section-->
+<!--                    v-else-->
+<!--                    class="text-subitle2 q-pa-lg q-px-lg"-->
+<!--                  >-->
+<!--                    <h4 class="teacher-info-title q-mr-md">-->
+<!--                      На данный момент в базе данных информации о публикациях этого-->
+<!--                      преподавателя — нет.-->
+<!--                    </h4>-->
+<!--                  </q-card-section>-->
+<!--                </div>-->
+<!--              </q-slide-transition>-->
+<!--              <q-btn-->
+<!--                size="md"-->
+<!--                outline rounded-->
+<!--                color="primary"-->
+<!--                class=" q-mx-lg"-->
+<!--                @click="expanded = !expanded"-->
+<!--                :label="expanded == true ? 'Скрыть публикации': 'Публикации'"-->
+<!--              />-->
             </q-card>
           </q-tab-panel>
         </q-tab-panels>
@@ -213,15 +161,21 @@
 </template>
 
 <script>
-import {teachers} from "src/data/Teachers";
-import {onMounted, reactive, ref} from "vue";
+import {onMounted,ref} from "vue";
 import {Loading, QSpinnerIos} from "quasar";
-import {useStore} from "vuex";
 import MembersService from "src/service/members.service";
+import {data} from "src/data/membersSlider";
+import AppTopSlider from "components/ui/AppTopSlider";
 
 export default {
   setup() {
-    let teachersData = ref(null);
+    const teachersData = ref(null);
+    const slug = ref(null);
+    const slide = ref('style');
+    const tab = ref(0);
+    const expanded = ref(false);
+    const sliderInfo = data;
+
     const membersService = new MembersService();
 
     onMounted(() => {
@@ -233,22 +187,21 @@ export default {
       });
       membersService.getAll()
         .then(data => teachersData.value = data)
+        .then(data => slug.value = data[tab.value].slug)
         .catch(e => console.log(e, 'error'));
-      console.log(teachersData,'td')
+
       Loading.hide();
     });
-
-    const store = useStore();
-    const slide = ref('style');
-    const tab = ref(0);
-    const expanded = ref(false);
 
     return {
       tab,
       slide,
       expanded,
-      teachersData
+      teachersData,
+      slug,
+      sliderInfo
     }
   },
+  components: {AppTopSlider},
 }
 </script>

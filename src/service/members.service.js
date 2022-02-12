@@ -21,6 +21,7 @@ export default class MembersService {
           'Content-Type': 'application/json',
         },
       });
+      console.log('yes')
       return response.data.members;
     } catch (e) {
       throw e.response;
