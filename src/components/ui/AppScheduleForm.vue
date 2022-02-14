@@ -1,7 +1,7 @@
 <template>
   <div>
     <q-card
-      class="q-pa-xl shadow-0 text-primary "
+      class="q-pa-xl shadow-0 text-primary"
       style="background: #EDF4FA"
     >
       <q-form
@@ -19,8 +19,19 @@
         />
 
         <div>
-          <q-btn @click="onSubmit" label="Показать расписание" type="submit" color="primary"/>
-          <q-btn label="Сбросить" type="reset" color="primary" flat class="q-ml-sm"/>
+          <q-btn
+            @click="onSubmit"
+            label="Показать расписание"
+            type="submit"
+            color="primary"
+          />
+          <q-btn
+            label="Сбросить"
+            type="reset"
+            color="primary"
+            flat
+            class="q-ml-sm"
+          />
         </div>
       </q-form>
 
@@ -63,37 +74,23 @@
         </div>
       </div>
       <transition name="fade">
-        <p v-if="name === null" class="q-mt-md text-subtitle2">
+        <p
+          v-if="name === null"
+          class="q-mt-md text-subtitle2"
+        >
           {{
             subscription
           }}
         </p>
       </transition>
     </q-card>
-
-<!--    <div-->
-<!--      class="row justify-center q-py-lg"-->
-<!--    >-->
-
-<!--        <simple-keyboard-->
-<!--          :input="name"-->
-<!--          @onChange="onTextKeyboard"-->
-<!--          @onKeyPress="onKeyPress"-->
-<!--        />-->
-
-<!--    </div>-->
-
-
   </div>
-
 </template>
 
 <script>
-
 import {ref, reactive} from "vue";
 import {useStore} from "vuex";
 import axios from "axios";
-// import SimpleKeyboard from "../ui/AppSimpleKeyboard";
 
 export default {
   name: "AppScheduleForm",
@@ -146,7 +143,7 @@ export default {
       } else {
         console.log(name, 'name')
       }
-    }
+    };
 
     const onTextKeyboard = (input) => {
       name.value = input;
@@ -161,9 +158,7 @@ export default {
       onTextKeyboard
     }
   },
-  components: {
-    // SimpleKeyboard,
-  }
+
 }
 </script>
 

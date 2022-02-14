@@ -36,9 +36,6 @@ export default defineComponent({
       sliderNews,
       heroTabs,
     }
-
-
-
   },
 })
 
