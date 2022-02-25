@@ -18,7 +18,7 @@
     <q-carousel-slide
       v-for="(item,index) in items"
       :key="index"
-      :name="item.name"
+       :name="item.name"
       class="column no-wrap flex-center q-py-lg"
     >
 
@@ -41,7 +41,7 @@ import {ref} from 'vue'
 
 export default {
   props: {
-    items: Array
+    items: Object
   },
   setup(props) {
     return {
