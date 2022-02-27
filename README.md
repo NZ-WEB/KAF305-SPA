@@ -16,6 +16,7 @@ SPA для интерактивной доски, написаноое на ба
 - VUE_APP_GROUP_SCHEDULE_URL=https://jutter.online/mai/api/schedule/all/
 - VUE_APP_TEACHER_SCHEDULE_URL=https://jutter.online/mai/api/schedule/lector/
 - VUE_APP_CURRENT_GROUP_SCHEDULE=https://jutter.online/mai/api/schedule/currentWeek/
+- VUE_APP_SERVER_BASE_URL=http://localhost:3001
 
 > Внимание!
 > Приложение находится на этапе разработки

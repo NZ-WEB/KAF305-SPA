@@ -1,6 +1,6 @@
 <template>
   <q-carousel
-    v-if="items"
+    v-if="items.length"
     v-model="slide"
     :autoplay="3000"
     animated
@@ -18,12 +18,15 @@
     <q-carousel-slide
       v-for="(item,index) in items"
       :key="index"
-       :name="item.name"
+      :name="item.id"
       class="column no-wrap flex-center q-py-lg"
     >
 
       <template v-if="item.icon">
-        <q-icon :name="item.icon" size="66px"/>
+        <q-icon
+          :name="item.icon"
+          size="66px"
+        />
       </template>
       <h5 class="text-h5 text-weight-medium q-my-md text-center">
         {{ item.title }}
@@ -34,23 +37,37 @@
 
     </q-carousel-slide>
   </q-carousel>
+  <div
+    v-else
+    class="column items-center q-gutter-md"
+  >
+    <q-skeleton
+      type="circle"
+      size="100px"
+    />
+    <q-skeleton width="150px" />
+    <q-skeleton
+      height="150px"
+      width="100%"
+    />
+  </div>
 </template>
 
 <script>
-import {ref} from 'vue'
+import { ref } from 'vue'
 
 export default {
   props: {
     items: Object
   },
-  setup(props) {
+  setup (props) {
+    console.log(props, 'props');
     return {
-      slide: ref(props.items[0].name)
+      slide: ref(1)
     }
   }
 }
 </script>
 
 <style scoped>
-
 </style>

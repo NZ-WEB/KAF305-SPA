@@ -1,13 +1,18 @@
 <template>
   <q-page class="flex flex-center">
     <div class="q-layout-container">
-      <div class="row q-mb-auto q-mt-0">
+      <div
+        class="row q-mb-auto q-mt-0"
+      >
         <div class="col">
-          <app-top-slider :items="sliderNews" />
+          <app-top-slider :items="$store.getters['homePage/getTopNews']" />
         </div>
       </div>
 
-      <div class="row justify-center" style="min-height: 560px">
+      <div
+        class="row justify-center"
+        style="min-height: 560px"
+      >
         <div class="container">
           <the-main-tab-panels :tabs="heroTabs" />
         </div>
@@ -17,7 +22,7 @@
 </template>
 
 <script>
-import { defineComponent, onMounted } from "vue";
+import { defineComponent, onMounted, ref } from "vue";
 import AppTopSlider from "components/ui/AppTopSlider";
 import { useStore } from "vuex";
 import homePageTabs from "src/data/homePageTabs";
@@ -25,14 +30,20 @@ import TheMainTabPanels from "components/ui/TheMainTabPanels";
 
 export default defineComponent({
   components: { TheMainTabPanels, AppTopSlider },
-  setup() {
+  setup () {
     const store = useStore();
 
-    const sliderNews = store.getters["sliderNews"];
     const heroTabs = homePageTabs;
-    onMounted(() => {});
+
+    const loadTopNews = async () => {
+      await store.dispatch("homePage/loadTopNews");
+    };
+
+    onMounted(() => {
+      loadTopNews();
+    });
+
     return {
-      sliderNews,
       heroTabs,
     };
   },

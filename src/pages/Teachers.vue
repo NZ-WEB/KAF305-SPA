@@ -1,9 +1,15 @@
 <template>
-  <q-page padding class="page">
+  <q-page
+    padding
+    class="page"
+  >
 
-    <div class="row q-mb-auto q-mt-0">
+    <div
+      v-if="$store.getters['homePage/getTopNews'].length"
+      class="row q-mb-auto q-mt-0"
+    >
       <div class="col">
-        <app-top-slider :items="sliderInfo" />
+        <app-top-slider :items="$store.getters['homePage/getTopNews']" />
       </div>
     </div>
 
@@ -41,10 +47,16 @@
             :key="idx"
             class="q-pt-none"
           >
-            <q-card class="q-pa-xl clear-padding-sm shadow-0 text-primary" style="background: #EDF4FA">
+            <q-card
+              class="q-pa-xl clear-padding-sm shadow-0 text-primary"
+              style="background: #EDF4FA"
+            >
               <q-toolbar>
 
-                <q-avatar size="100px" v-if="item.avatar">
+                <q-avatar
+                  size="100px"
+                  v-if="item.avatar"
+                >
                   <q-img :src=" item.avatar"></q-img>
                 </q-avatar>
 
@@ -66,15 +78,18 @@
                   <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Преподаваемые дисциплины:</h6>
                   <p class="">{{ item.disciplines }}</p>
                 </div>
-                <div class="row items-center q-pa-sm">
+                <!-- <div class="row items-center q-pa-sm">
                   <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Уровень образования:</h6>
                   <p class="">{{ item.education }}</p>
-                </div>
+                </div> -->
                 <div class="row items-center q-pa-sm">
                   <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Квалификация:</h6>
                   <p class="">{{ item.qualification }}</p>
                 </div>
-                <div v-if="item.academicDegree != ''" class="row items-center q-pa-sm">
+                <div
+                  v-if="item.academicDegree != ''"
+                  class="row items-center q-pa-sm"
+                >
                   <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Ученая степень:</h6>
                   <p class="">{{ item.academicDegree }}</p>
                 </div>
@@ -85,72 +100,11 @@
                   <p class="">{{ item.specialties }}</p>
                 </div>
                 <div class="row items-center q-pa-sm">
-                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Страж работы по специальности:</h6>
+                  <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">Страж работы </h6>
                   <p class="">{{ item.specGuardian }}</p>
                 </div>
 
               </q-card-section>
-
-
-<!--              <q-slide-transition>-->
-
-<!--                <div v-show="expanded">-->
-
-<!--                  <q-card-section-->
-<!--                    v-if="item.publications"-->
-<!--                    class="text-subitle2 q-pa-lg q-px-lg"-->
-<!--                  >-->
-
-<!--                    <h4 class="teacher-info-title q-mr-md">Публикации</h4>-->
-<!--                    <q-card-->
-<!--                      flat-->
-<!--                      class="my-card q-my-md"-->
-<!--                      v-for="(item,index) in item.publications"-->
-<!--                      :key="index"-->
-<!--                    >-->
-
-<!--                      <q-card-section>-->
-<!--                        <h7 class="text-weight-bold">-->
-<!--                          {{ item.name }}-->
-<!--                        </h7>-->
-<!--                      </q-card-section>-->
-
-<!--                      <q-card-section class=" q-pt-none">-->
-<!--                        <p class="">-->
-<!--                          {{ item.creators }}-->
-<!--                        </p>-->
-<!--                      </q-card-section>-->
-
-<!--                      <q-separator inset/>-->
-
-<!--                      <q-card-section class="">-->
-<!--                        <p class="">-->
-<!--                          {{ item.content }}-->
-<!--                        </p>-->
-<!--                      </q-card-section>-->
-
-<!--                    </q-card>-->
-<!--                  </q-card-section>-->
-
-<!--                  <q-card-section-->
-<!--                    v-else-->
-<!--                    class="text-subitle2 q-pa-lg q-px-lg"-->
-<!--                  >-->
-<!--                    <h4 class="teacher-info-title q-mr-md">-->
-<!--                      На данный момент в базе данных информации о публикациях этого-->
-<!--                      преподавателя — нет.-->
-<!--                    </h4>-->
-<!--                  </q-card-section>-->
-<!--                </div>-->
-<!--              </q-slide-transition>-->
-<!--              <q-btn-->
-<!--                size="md"-->
-<!--                outline rounded-->
-<!--                color="primary"-->
-<!--                class=" q-mx-lg"-->
-<!--                @click="expanded = !expanded"-->
-<!--                :label="expanded == true ? 'Скрыть публикации': 'Публикации'"-->
-<!--              />-->
             </q-card>
           </q-tab-panel>
         </q-tab-panels>
@@ -161,14 +115,18 @@
 </template>
 
 <script>
-import {onMounted,ref} from "vue";
-import {Loading, QSpinnerIos} from "quasar";
+import { onMounted, ref } from "vue";
+import { Loading, QSpinnerIos } from "quasar";
 import MembersService from "src/service/members.service";
-import {data} from "src/data/membersSlider";
+import { data } from "src/data/membersSlider";
 import AppTopSlider from "components/ui/AppTopSlider";
+import { useStore } from "vuex";
 
 export default {
-  setup() {
+  setup () {
+    const membersService = new MembersService();
+    const store = useStore();
+
     const teachersData = ref(null);
     const slug = ref(null);
     const slide = ref('style');
@@ -176,7 +134,10 @@ export default {
     const expanded = ref(false);
     const sliderInfo = data;
 
-    const membersService = new MembersService();
+
+    const loadTopNews = async () => {
+      await store.dispatch("homePage/loadTopNews");
+    };
 
     onMounted(() => {
       Loading.show({
@@ -190,6 +151,8 @@ export default {
         .then(data => slug.value = data[tab.value].slug)
         .catch(e => console.log(e, 'error'));
 
+      loadTopNews();
+
       Loading.hide();
     });
 
@@ -202,6 +165,6 @@ export default {
       sliderInfo
     }
   },
-  components: {AppTopSlider},
+  components: { AppTopSlider },
 }
 </script>
