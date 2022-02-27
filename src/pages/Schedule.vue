@@ -39,11 +39,6 @@
                           появятся все существующие группы по вашему запросу"
                 title="Номер группы"
                 type="Group"
-                @onReset="onReset"
-                @onSubmit="onSubmit"
-                @routeAndLoadData="$router.push(
-                  {name: 'Group Schedule', params: {id: group.id}}
-                  ) && $store.dispatch('schedule/loadGroupSchedule', group.id)"
               >
               </app-schedule-form>
             </div>
@@ -62,11 +57,6 @@
                 "
                 title="Имя преподавателя"
                 type="Teacher"
-                @onReset="onReset"
-                @onSubmit="onSubmit"
-                @routeAndLoadData="$router.push(
-                  {name: 'Group Schedule', params: {id: group.id}}
-                  ) && $store.dispatch('schedule/loadGroupSchedule', group.id)"
               >
               </app-schedule-form>
             </div>
@@ -79,13 +69,13 @@
 
 <script>
 
-import {onMounted, ref} from "vue";
+import { onMounted, ref } from "vue";
 import AppScheduleForm from "components/ui/AppScheduleForm";
-import {useStore} from "vuex";
-import {useQuasar} from "quasar";
+import { useStore } from "vuex";
+import { useQuasar } from "quasar";
 
 export default {
-  setup() {
+  setup () {
     const store = useStore();
     const $q = useQuasar();
     const groupName = ref(null);
@@ -95,7 +85,7 @@ export default {
       store.commit('schedule/clearWeekSchedule');
     });
 
-    async function onTeacherSubmit() {
+    async function onTeacherSubmit () {
       await store.dispatch('schedule/findTeacher', teacherName.value);
     }
 
@@ -115,7 +105,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .schedule-item {
   transition: all 0.3s ease-in-out;
 
@@ -125,13 +114,14 @@ export default {
   }
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .25s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.25s;
 }
 
-.fade-enter, .fade-leave-to {
+.fade-enter,
+.fade-leave-to {
   opacity: 0;
-  transition: opacity .25s;
+  transition: opacity 0.25s;
 }
-
 </style>

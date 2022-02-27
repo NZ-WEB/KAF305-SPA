@@ -1,12 +1,25 @@
 <template>
-  <q-page class="custom-animation" padding>
+  <q-page
+    class="custom-animation"
+    padding
+  >
     <q-container>
 
       <div class="row">
         <div class="col-3 col-sm-2 col-lg-1">
 
-          <router-link class="block mx-auto block" to="/schedule">
-            <q-btn size="md" rounded color="primary" class="q-ma-sm mx-auto block"><q-icon name="arrow_back" /></q-btn>
+          <router-link
+            class="block mx-auto block"
+            to="/schedule"
+          >
+            <q-btn
+              size="md"
+              rounded
+              color="primary"
+              class="q-ma-sm mx-auto block"
+            >
+              <q-icon name="arrow_back" />
+            </q-btn>
           </router-link>
 
         </div>
@@ -52,9 +65,12 @@
                 />
               </q-tabs>
 
-              <q-separator/>
+              <q-separator />
 
-              <q-tab-panels v-model="tab" animated>
+              <q-tab-panels
+                v-model="tab"
+                animated
+              >
                 <q-tab-panel
                   v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek - 1].days"
                   :name="day.name"
@@ -99,25 +115,82 @@
 </template>
 
 <script>
-import {ref} from "vue";
-import {useStore} from "vuex";
+import { ref, onMounted } from "vue";
+import { useRoute } from "vue-router";
+import { useStore } from "vuex";
 import AppScheduleItem from "components/ui/AppScheduleItem";
 import "animate.css/animate.min.css";
-import useWeeksSchedule from '../use/weeksSchedule';
+import { Loading, QSpinnerIos } from "quasar";
+import { semesterCounter } from "src/data/currWeek";
 
 export default {
   props: ['type'],
-  setup(props) {
 
+  setup (props) {
     const store = useStore();
-    const {filteredData, activeWeek, tab, currWeek, options} = useWeeksSchedule(props);
+    onMounted(() => {
+      Loading.show({
+        spinner: QSpinnerIos,
+        spinnerSize: '7em',
+        spinnerColor: '#fff',
+        backgroundColor: '#fff',
+      });
+
+
+      Loading.hide()
+    });
+
+    const route = useRoute();
+    const d = new Date();
+    const days = ["Вс", "Пн", "Вт", "Ср",
+      "Чт", "Пт", "Сб"];
+
+    const loadCurrentSchedule = () => {
+      store.dispatch('getCurrentGroupSchedule', route.params.id);
+    };
+
+    const defineGetter = (prop) => {
+      if (prop === 'Group') {
+        return ref(store.getters['schedule/groupsList'].find(i => i.id === route.params.id));
+      } else if (prop === 'Teacher') {
+        return ref(store.getters['schedule/teachersList'].find(i => i.id === route.params.id));
+      }
+    };
+
+    const currWeek = ref(semesterCounter);
+    const filteredData = defineGetter(props.type);
+
+    const curDay = () => {
+      if (d.getDay() === 0) {
+        return d.getDay() + 1;
+      } else {
+        return d.getDay();
+      }
+    };
+
+    const tab = ref(days[curDay()]);
+
+    const activeWeek = (week) => {
+      currWeek.value = week;
+      return true;
+    };
+
+    const options = () => {
+      const data = store.getters['schedule/WeekSchedule'];
+      const options = [];
+
+      data.forEach((i, idx) => {
+        options.push({ label: i.date, value: idx });
+      });
+
+      return options;
+    }
 
     return {
       filteredData,
       activeWeek,
       tab,
       currWeek,
-      model: ref(null),
       options
     }
   },
@@ -128,7 +201,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 * {
   transition: all 0.3s ease;
 }
@@ -138,8 +210,6 @@ export default {
 }
 
 .custom-input {
-  color: #1976D2 !important;
+  color: #1976d2 !important;
 }
-
-
 </style>

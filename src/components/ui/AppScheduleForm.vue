@@ -15,7 +15,7 @@
           :label="title"
           :hint="exampleTitle"
           lazy-rules
-          :rules="[ val => val && val.length > 0 || 'Название группы не может быть пустым']"
+          :rules="[ val => val && val.length > 0 || 'Это поле не может быть пустым']"
         />
 
         <div>
@@ -94,14 +94,28 @@ import axios from "axios";
 
 export default {
   name: "AppScheduleForm",
-  props: [
-    'allDataList',
-    'title',
-    'exampleTitle',
-    'subscription',
-    'type'
-
-  ],
+  props: {
+    allDataList: {
+      type: Object,
+      require: true,
+    },
+    title: {
+      type: String,
+      require: true,
+    },
+    examlpeTitle: {
+      type: String,
+      require: true,
+    },
+    subscription: {
+      type: String,
+      require: true,
+    },
+    type: {
+      type: String,
+      require: true
+    }
+  },
   emits: [
     'onSubmit',
     'onReset',

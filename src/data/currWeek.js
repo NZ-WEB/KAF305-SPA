@@ -1,33 +1,15 @@
 const d = new Date();
-let oneJan = new Date(d.getFullYear(),0,1);
-let numberOfDays = Math.floor((d - oneJan) / (24 * 60 * 60 * 1000));
-let weekNum = Math.ceil(( d.getDay() + 1 + numberOfDays) / 7);
+const firstDate = new Date(2021, 7, 30);
+let semesterCounter;
 
-const day = (day) => {
-  if (day < 10) {
-    return `0${day}`;
-  } else {
-    return day;
-  };
-};
+function weeksBetween(d1, d2) {
+  return Math.round((d2 - d1) / (7 * 24 * 60 * 60 * 1000));
+}
 
-const month = (month) => {
-  if (month < 10) {
-    return `0${month + 1}`;
-  } else {
-    return month + 1;
-  };
-};
+if (d.getDay() === 0) {
+  semesterCounter = weeksBetween(firstDate, d) + 1;
+} else {
+  semesterCounter = weeksBetween(firstDate, d);
+}
 
-const semesterCounter = () => {
-  if (weekNum >= 35) {
-    console.log(weekNum, 'weekNum')
-    return weekNum - 35;
-  } else {
-    return weekNum;
-  };
-};
-
-export {semesterCounter};
-
-
+export { semesterCounter };
