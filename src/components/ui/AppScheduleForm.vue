@@ -11,9 +11,10 @@
       >
         <q-input
           filled
-          v-model="name"
           :label="title"
           :hint="exampleTitle"
+          @focusin="isKeyboardVisible = true"
+          v-model="name"
           lazy-rules
           :rules="[ val => val && val.length > 0 || 'Это поле не может быть пустым']"
         />
@@ -63,7 +64,10 @@
                   <p class="">
                     {{ item.level }}
                   </p>
-                  <p v-if="item.course" align="center">
+                  <p
+                    v-if="item.course"
+                    align="center"
+                  >
                     {{ item.course }} - курс
                   </p>
                 </div>
@@ -84,15 +88,27 @@
         </p>
       </transition>
     </q-card>
+
+    <app-keyboard
+      v-if="isKeyboardVisible"
+      :label="title"
+      v-model:name="name"
+      @submit="onSubmit"
+    />
+
   </div>
 </template>
 
 <script>
-import {ref, reactive} from "vue";
-import {useStore} from "vuex";
+import { ref, reactive } from "vue";
+import { useStore } from "vuex";
 import axios from "axios";
+import AppKeyboard from "./AppKeyboard.vue";
 
 export default {
+  components: {
+    AppKeyboard
+  },
   name: "AppScheduleForm",
   props: {
     allDataList: {
@@ -120,13 +136,14 @@ export default {
     'onSubmit',
     'onReset',
   ],
-  setup(props) {
+  setup (props) {
+    const isKeyboardVisible = ref(false);
     const name = ref(null);
     const store = useStore();
-    const teacherCondition = reactive({name: 'teacherCondition', value: false});
-    const groupCondition = reactive({name: 'groupCondition', value: false});
+    const teacherCondition = reactive({ name: 'teacherCondition', value: false });
+    const groupCondition = reactive({ name: 'groupCondition', value: false });
 
-    async function onSubmit() {
+    async function onSubmit () {
       if (props.type === 'Group') {
         await store.dispatch('schedule/findGroupByName', name.value);
       } else if (props.type === 'Teacher') {
@@ -134,7 +151,7 @@ export default {
       }
     }
 
-    async function onReset() {
+    async function onReset () {
       name.value = null
       if (props.type === 'Group') {
         store.commit('schedule/clearGroupsData');
@@ -169,7 +186,8 @@ export default {
       onSubmit,
       onKeyPress,
       toggleKeyboard,
-      onTextKeyboard
+      onTextKeyboard,
+      isKeyboardVisible
     }
   },
 
@@ -177,5 +195,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

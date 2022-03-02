@@ -16,7 +16,7 @@
     "axios": "^0.21.1",
     "core-js": "^3.6.5",
     "quasar": "^2.0.0",
-    "simple-keyboard": "^3.3.4",
+    "simple-keyboard": "^3.4.57",
     "simple-keyboard-layouts": "^3.0.202",
     "tailwindcss": "^2.2.7",
     "vue-i18n": "^9.0.0-beta.0",

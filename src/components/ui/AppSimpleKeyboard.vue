@@ -1,6 +1,6 @@
 <template>
     <q-card
-      class="q-pa-xl shadow-0 row justify-center"
+      class="q-pa-xl q-mt-md shadow-0 row justify-center"
       style="background: #EDF4FA; width: 100%"
     >
       <div class="col-12 col-lg-8">

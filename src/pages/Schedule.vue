@@ -81,6 +81,7 @@ export default {
     const groupName = ref(null);
     const teacherName = ref(null);
 
+
     onMounted(() => {
       store.commit('schedule/clearWeekSchedule');
     });
@@ -94,13 +95,13 @@ export default {
       teacherName,
       onTeacherSubmit,
       tab: ref('groups'),
-      splitterModel: ref(20)
+      splitterModel: ref(20),
     }
   },
 
   components: {
-    AppScheduleForm
-  }
+    AppScheduleForm,
+}
 }
 </script>
 
