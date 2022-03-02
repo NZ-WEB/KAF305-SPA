@@ -41,8 +41,9 @@
         class=" shadow-0  q-pt-lg text-primary"
         style="background: #EDF4FA"
       >
-        <div class="row">
+        <div class="row" >
           <div
+
             class="col-12 col-md-6 "
             v-for="(item, idx) in allDataList"
             :key="idx"

@@ -41,14 +41,14 @@
 
       </div>
       <div
-        v-if="$store.getters['schedule/WeekSchedule'][currWeek - 1]"
+        v-if="$store.getters['schedule/WeekSchedule'][currWeek]"
         class="row column text-primary"
       >
         <div class="col-12 col-lg-8">
           <div class="q-gutter-y-md">
             <q-card
               flat
-              v-if="$store.getters['schedule/WeekSchedule'][currWeek - 1]"
+              v-if="$store.getters['schedule/WeekSchedule'][currWeek]"
             >
               <q-tabs
                 v-model="tab"
@@ -60,7 +60,7 @@
                 <q-tab
                   :name="day.name"
                   :label="`${day.name} | ${day.date}`"
-                  v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek - 1].days"
+                  v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek].days"
                   :key="idxParent"
                 />
               </q-tabs>
@@ -72,7 +72,7 @@
                 animated
               >
                 <q-tab-panel
-                  v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek - 1].days"
+                  v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek].days"
                   :name="day.name"
                   :key="idxParent"
                 >
