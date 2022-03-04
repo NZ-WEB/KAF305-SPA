@@ -9,7 +9,7 @@
       class="row q-mb-auto q-mt-0"
     >
       <div class="col">
-        <app-top-slider :items="$store.getters['homePage/getTopNews']" />
+        <app-top-slider v-if="$store.getters['homePage/getTopNews'].length" :items="$store.getters['homePage/getTopNews']" />
       </div>
     </div>
 

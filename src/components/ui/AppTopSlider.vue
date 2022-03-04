@@ -61,16 +61,20 @@
 </template>
 
 <script>
-import { ref } from 'vue'
+import { ref, watch } from 'vue'
 
 export default {
   props: {
     items: Object
   },
   setup (props) {
-    console.log(props, 'props');
+    const slide = ref(null);
+    watch(() => props.items, ( ) => {
+      slide.value = 1
+    });
+
     return {
-      slide: ref(1)
+      slide
     }
   }
 }
