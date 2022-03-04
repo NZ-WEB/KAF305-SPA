@@ -23,7 +23,7 @@
       <q-carousel-slide
         v-for="(item,index) in items"
         :key="index"
-        :name="item.id"
+        :name="index"
         class="column no-wrap flex-center q-py-lg"
       >
 
@@ -46,14 +46,9 @@
       v-else
       class="column items-center q-gutter-md"
     >
-      <q-skeleton
-        type="circle"
-        size="100px"
-      />
-      <q-skeleton width="150px" />
-      <q-skeleton
-        height="150px"
-        width="100%"
+      <q-spinner
+        color="primary"
+        size="3em"
       />
     </div>
   </transition-group>
@@ -61,17 +56,14 @@
 </template>
 
 <script>
-import { ref, watch } from 'vue'
+import {ref} from 'vue'
 
 export default {
   props: {
     items: Object
   },
-  setup (props) {
-    const slide = ref(null);
-    watch(() => props.items, ( ) => {
-      slide.value = 1
-    });
+  setup () {
+    const slide = ref(1);
 
     return {
       slide
