@@ -16,14 +16,14 @@ SPA для интерактивной доски, написаноое на ба
 - VUE_APP_GROUP_SCHEDULE_URL=https://jutter.online/mai/api/schedule/all/
 - VUE_APP_TEACHER_SCHEDULE_URL=https://jutter.online/mai/api/schedule/lector/
 - VUE_APP_CURRENT_GROUP_SCHEDULE=https://jutter.online/mai/api/schedule/currentWeek/
-- VUE_APP_SERVER_BASE_URL=http://localhost:3001
+- VUE_APP_SERVER_BASE_URL=http://81.163.26.156:3001
 
 > Внимание!
 > Приложение находится на этапе разработки
 
 # Links(ссылки)
 
-- https://kaf305-mai.web.app/#/ (Ссылка на хостинг с проектом)
+- http://81.163.26.156:8080/#/ (Ссылка на хостинг с проектом)
 - https://github.com/NZ-WEB/KAF305-SPA/tree/master (ссылка на репозиторий)
 - https://jutter.online/maiadmin/app/public/reg (Ссылка на API расписания)
 - https://play.google.com/store/apps/details?id=com.raspisanie.mai (Мобильное приложение расписания занятий МАИ)
