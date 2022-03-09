@@ -3,14 +3,6 @@
     v-if="teachers.length"
     class="column items-center justify-center"
   >
-    <h5 class="text-h5 text-primary">Сотрудники кафедры</h5>
-
-    <q-pagination
-      v-model="current"
-      :max="calculatedNumberOfPages"
-      input
-    />
-
     <q-tabs
       v-model="tab"
       class="text-primary"
@@ -23,6 +15,12 @@
         :key="idx"
       />
     </q-tabs>
+
+    <q-pagination
+      v-model="current"
+      :max="calculatedNumberOfPages"
+      input
+    />
   </div>
   <div v-else>
     <q-circular-progress />

@@ -1,12 +1,17 @@
 <template>
-  <div class="column items-center justify-center bg-primary text-white shadow-1 rounded-borders q-pa-xl">
-    <div class="col-auto">
-      <h1 class="text-h4">{{ title }}</h1>
-    </div>
-    <div class="col-auto q-mt-sm">
-      <h2 class="text-subtitle1">{{ description }}</h2>
+  <div class="row items-center justify-center bg-primary q-pa-xl shadow-1 rounded-borders text-white">
+    <div class="col-6">
+      <div class="column items-center justify-center ">
+        <div class="col-auto">
+          <h1 class="text-h4">{{ title }}</h1>
+        </div>
+        <div class="col-auto q-mt-sm">
+          <h2 class="text-subtitle1">{{ description }}</h2>
+        </div>
+      </div>
     </div>
   </div>
+
 </template>
 
 <script>
