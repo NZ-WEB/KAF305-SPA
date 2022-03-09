@@ -25,7 +25,7 @@
           <q-tab
             :name="idx"
             :label="teacher.fullName"
-            v-for="(teacher, idx) in teachersData"
+            v-for="(teacher, idx) in sortedTeacherData"
             :key="idx"
           />
         </q-tabs>
@@ -115,7 +115,7 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import { Loading, QSpinnerIos } from "quasar";
 import MembersService from "src/service/members.service";
 import { data } from "src/data/membersSlider";
@@ -138,6 +138,13 @@ export default {
     const loadTopNews = async () => {
       await store.dispatch("homePage/loadTopNews");
     };
+
+    const sortedTeacherData = computed(() => {
+      if (teachersData.value) {
+        return [...teachersData.value].sort((a, b) => (a.fullName > b.fullName ? 1 : -1));
+      }
+      return [];
+    })
 
     onMounted(() => {
       Loading.show({
@@ -162,7 +169,8 @@ export default {
       expanded,
       teachersData,
       slug,
-      sliderInfo
+      sliderInfo,
+      sortedTeacherData
     }
   },
   components: { AppTopSlider },

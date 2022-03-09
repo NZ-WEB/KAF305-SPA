@@ -1,7 +1,7 @@
 import axios from "axios";
 const SERVER_BASE_URL = "http://localhost:3001";
 export default class MembersService {
-  async getAll() {
+  async getAll () {
     try {
       const response = await axios.get(
         `${process.env.VUE_APP_SERVER_BASE_URL}/members`,
@@ -17,7 +17,7 @@ export default class MembersService {
     }
   }
 
-  async getBySlug(slug) {
+  async getBySlug (slug) {
     try {
       const response = await axios.get(
         `${process.env.VUE_APP_SERVER_BASE_URL}/members/${slug}`,
