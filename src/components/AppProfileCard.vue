@@ -26,7 +26,10 @@
     </q-toolbar>
 
     <q-card-section class="teacher-date">
-      <div class="row items-between q-pa-sm">
+      <div
+        v-if="data.disciplines && data.disciplines !== '-'"
+        class="row items-between q-pa-sm"
+      >
         <div class="col-3">
           <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">
             Преподаваемые дисциплины:
@@ -37,7 +40,10 @@
         </div>
       </div>
 
-      <div class="row items-center q-pa-sm">
+      <div
+        v-if="data.qualification && data.qualification !== '-'"
+        class="row items-center q-pa-sm"
+      >
         <div class="col-3">
           <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">
             Квалификация:
@@ -49,7 +55,7 @@
       </div>
 
       <div
-        v-if="data.academicDegree != ''"
+        v-if="data.academicDegree && data.academicDegree !== '-'"
         class="row items-center q-pa-sm"
       >
         <div class="col-3">
@@ -62,7 +68,10 @@
         </div>
       </div>
 
-      <div class="row items-center q-pa-sm">
+      <div
+        v-if="data.specGuardian && data.specGuardian !== '-'"
+        class="row items-center q-pa-sm"
+      >
         <div class="col-3">
           <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">
             Страж работы
@@ -79,7 +88,10 @@
         </div>
       </div>
 
-      <div class="row items-between q-pa-sm">
+      <div
+        v-if="data.specialties && data.specialties !== '-'"
+        class="row items-between q-pa-sm"
+      >
         <div class="col-3">
           <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">
             Направление подготовки и (или) специальности:
