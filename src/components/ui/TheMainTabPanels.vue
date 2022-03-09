@@ -1,5 +1,8 @@
 <template>
-  <div class="row">
+  <div
+    style="min-height: 320px"
+    class="row"
+  >
     <div class="col-lg-3 col-12">
       <q-tabs
         v-model="tab"

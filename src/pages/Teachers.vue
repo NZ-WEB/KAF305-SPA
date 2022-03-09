@@ -9,9 +9,13 @@
       class="row q-mb-auto q-mt-0"
     >
       <div class="col">
-        <app-top-slider
+        <!-- <app-top-slider
           v-if="$store.getters['homePage/getTopNews'].length"
           :items="$store.getters['homePage/getTopNews']"
+        /> -->
+        <app-page-title
+          title="Сотрудники кафедры"
+          :description="`На текущий момент на кафедре насчитывается более ${sortedTeacherData.length}-х сотрудников`"
         />
       </div>
     </div>
@@ -57,15 +61,14 @@ import { onMounted, ref, computed } from "vue";
 import { Loading, QSpinnerIos } from "quasar";
 import MembersService from "src/service/members.service";
 import { data } from "src/data/membersSlider";
-import AppTopSlider from "components/ui/AppTopSlider";
+// import AppTopSlider from "components/ui/AppTopSlider";
 import { useStore } from "vuex";
 import AppProfileCard from "src/components/AppProfileCard.vue";
 import AppTeachersPanel from "src/components/AppTeachersPanel.vue";
+import AppPageTitle from "src/components/AppPageTitle.vue";
 
 export default {
-  components: {
-    AppProfileCard
-  },
+  components: { AppProfileCard, AppTeachersPanel, AppPageTitle },
 
   setup () {
     const membersService = new MembersService();
@@ -123,6 +126,5 @@ export default {
       setSelectedTab
     }
   },
-  components: { AppTopSlider, AppProfileCard, AppTeachersPanel },
 }
 </script>
