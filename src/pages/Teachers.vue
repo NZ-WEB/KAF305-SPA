@@ -16,22 +16,13 @@
       </div>
     </div>
 
-    <!--    Teachers Tabs Start   -->
     <div class="row q-mt-md">
 
       <div class="col-lg-3 col-12">
-        <q-tabs
-          v-model="tab"
-          class="text-primary"
-          vertical
-        >
-          <q-tab
-            :name="idx"
-            :label="teacher.fullName"
-            v-for="(teacher, idx) in sortedTeacherData"
-            :key="idx"
-          />
-        </q-tabs>
+        <app-teachers-panel
+          @handleClick="setSelectedTab"
+          :teachers="sortedTeacherData"
+        />
       </div>
 
       <div class="col-lg-9 col-12">
@@ -69,6 +60,7 @@ import { data } from "src/data/membersSlider";
 import AppTopSlider from "components/ui/AppTopSlider";
 import { useStore } from "vuex";
 import AppProfileCard from "src/components/AppProfileCard.vue";
+import AppTeachersPanel from "src/components/AppTeachersPanel.vue";
 
 export default {
   components: {
@@ -78,13 +70,18 @@ export default {
   setup () {
     const membersService = new MembersService();
     const store = useStore();
-
     const teachersData = ref(null);
     const slug = ref(null);
     const slide = ref('style');
-    const tab = ref(0);
     const expanded = ref(false);
     const sliderInfo = data;
+    const tab = ref(0);
+
+    const setSelectedTab = (selectedTab) => {
+      console.log('old', tab.value, 'sel tab', selectedTab)
+      tab.value = selectedTab;
+      console.log('new', tab.value)
+    };
 
 
     const loadTopNews = async () => {
@@ -122,9 +119,10 @@ export default {
       teachersData,
       slug,
       sliderInfo,
-      sortedTeacherData
+      sortedTeacherData,
+      setSelectedTab
     }
   },
-  components: { AppTopSlider, AppProfileCard },
+  components: { AppTopSlider, AppProfileCard, AppTeachersPanel },
 }
 </script>
