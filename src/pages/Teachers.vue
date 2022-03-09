@@ -3,7 +3,6 @@
     padding
     class="page"
   >
-
     <div
       v-if="$store.getters['homePage/getTopNews'].length"
       class="row q-mb-auto q-mt-0"
@@ -81,9 +80,8 @@ export default {
     const tab = ref(0);
 
     const setSelectedTab = (selectedTab) => {
-      console.log('old', tab.value, 'sel tab', selectedTab)
+      console.log(selectedTab, 'st')
       tab.value = selectedTab;
-      console.log('new', tab.value)
     };
 
 
