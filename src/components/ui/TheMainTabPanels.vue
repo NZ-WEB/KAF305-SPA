@@ -51,20 +51,6 @@
 
             <q-card-section>
               <div class="text-subtitle1">
-                24.05.05 «Интегрированные системы летательных аппаратов» (срок обучения — 5 лет и 6 месяцев)
-              </div>
-              <ul class="q-ml-sm">
-                <li>
-                  <p class="body1">
-                    - Приборы и измерительно-вычислительные комплексы летательных аппаратов
-                  </p>
-                </li>
-              </ul>
-
-            </q-card-section>
-
-            <q-card-section>
-              <div class="text-subtitle1">
                 24.05.06 «Системы управления летательных аппаратов» (срок обучения — 5 лет) </div>
               <ul class="q-ml-sm">
                 <li>
@@ -85,8 +71,25 @@
                   </p>
                 </li>
               </ul>
-
             </q-card-section>
+
+            <q-card-section>
+              <ul>
+                <li class="row items-center">
+                  <q-icon name="phone" />
+                  <p class="q-ml-sm">+7 (499) 158-43-59</p>
+                </li>
+                <li class="row items-center">
+                  <q-icon name="mail" />
+                  <p class="q-ml-sm">kaf305@mai.ru</p>
+                </li>
+                <li class="row items-center">
+                  <q-icon name="room" />
+                  <p class="q-ml-sm">3к. 246</p>
+                </li>
+              </ul>
+            </q-card-section>
+
           </q-card>
         </q-tab-panel>
 
