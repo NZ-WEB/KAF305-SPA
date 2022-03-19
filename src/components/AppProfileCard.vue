@@ -74,7 +74,7 @@
       >
         <div class="col-3">
           <h6 class="teacher-info-title q-mr-md text-h6 text-weight-medium">
-            Страж работы
+            Стаж работы
           </h6>
         </div>
         <div class="col-9">

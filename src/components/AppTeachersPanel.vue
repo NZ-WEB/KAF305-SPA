@@ -64,7 +64,7 @@ export default {
     });
 
     watch(tab, (cur) => {
-      emit("handleClick", cur + ((page.value - 1) * MAX_MEMBER_ON_PAGE.value));
+      emit("handleClick", cur + (page.value - 1) * MAX_MEMBER_ON_PAGE.value);
     });
 
     return {
