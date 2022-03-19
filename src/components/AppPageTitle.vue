@@ -1,5 +1,5 @@
 <template>
-  <div class="row items-center justify-center bg-primary q-pa-xl shadow-1 rounded-borders text-white">
+  <div class="row items-center justify-center q-pa-lg rounded-borders text-primary ">
     <div class="col-6">
       <div class="column items-center justify-center ">
         <div class="col-auto">
@@ -35,6 +35,6 @@ export default {
 
 <style scoped lang="scss">
 .bg {
-  background: var(--q-primary);
+  // background: var(--q-primary);
 }
 </style>
