@@ -4,6 +4,7 @@ import teachers from "./modules/teachers.module";
 import schedule from "./modules/schedule.module";
 import user from "./modules/user.module";
 import homePage from "./homePage";
+import news from './news';
 
 // import example from './modules'
 
@@ -46,9 +47,9 @@ export default store(function (/* { ssrContext } */) {
           link: { path: "/NIR" },
         },
         {
-          displayName: "Конференции",
-          icon: "group_work",
-          link: { path: "/Conferences" },
+          displayName: "Новости",
+          icon: "book",
+          link: { path: "/News" },
         },
       ],
 
@@ -118,6 +119,7 @@ export default store(function (/* { ssrContext } */) {
       schedule,
       user,
       homePage,
+      news,
     },
 
     // enable strict mode (adds overhead!)
