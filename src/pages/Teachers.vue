@@ -19,7 +19,10 @@
       </div>
     </div>
 
-    <div class="row q-mt-md">
+    <div
+      v-if="sortedTeacherData.length"
+      class="row q-mt-md"
+    >
 
       <div class="col-lg-3 col-12">
         <app-teachers-panel
@@ -51,7 +54,19 @@
         </q-tab-panels>
       </div>
     </div>
-    <!--    Teachers Tabs End   -->
+
+    <div
+      v-else
+      class=" row items-center justify-center"
+    >
+      <q-circular-progress
+        indeterminate
+        size="50px"
+        class="q-ma-md"
+        color="primary"
+      />
+    </div>
+
   </q-page>
 </template>
 
