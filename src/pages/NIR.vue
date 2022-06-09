@@ -10,7 +10,7 @@
       </div>
       <div class="row q-pt-sm justify-center">
         <div class="col-lg-10">
-          <p class="q-my-md text-primary">
+          <p class="q-my-md text-primary" align="center">
             Кафедра ведёт большой объём научно-исследовательской работы с
             активным привлечением студентов. За последние 5 лет студентами
             сделано более 170 научных докладов, опубликовано более 90 работ,
@@ -24,7 +24,7 @@
       </div>
       <div class="row q-pt-sm justify-center">
         <div class="col-lg-10">
-          <p class="q-my-md text-primary">
+          <p class="q-my-md text-primary" align="center">
             Выпускники кафедры 305 широко востребованы и являются
             высокооплачиваемыми специалистами в сферах инженерной,
             управленческой и научной деятельности благодаря высокому уровню
@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="row q-py-lg justify-center">
-        <div class="col">
+        <div class="col" align="center">
           <q-img
             src="../assets/logo.svg"
             style="height: 400px; max-width: 400px"
