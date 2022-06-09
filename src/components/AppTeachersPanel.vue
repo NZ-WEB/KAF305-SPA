@@ -19,8 +19,11 @@
     <q-pagination
       v-model="current"
       :max="calculatedNumberOfPages"
-      input
-    />
+      direction-links
+      flat
+      color="grey-4"
+      active-color="primary"
+      value="2"/>
   </div>
   <div v-else>
     <q-circular-progress />
