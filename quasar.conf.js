@@ -8,7 +8,17 @@
 
 /* eslint-env node */
 const ESLintPlugin = require("eslint-webpack-plugin");
-const { configure } = require("quasar/wrappers");
+const {configure} = require("quasar/wrappers");
+require('dotenv').config();
+
+
+const VUE_APP_SCHEDULE_API_KEY = process.env.VUE_APP_SCHEDULE_API_KEY,
+  VUE_APP_SERVER_BASE_URL = 'http://81.163.26.156:3001',
+  VUE_APP_CURRENT_GROUP_SCHEDULE = 'https://jutter.online/mai/api/schedule/currentWeek/',
+  VUE_APP_TEACHER_SCHEDULE_URL = 'https://jutter.online/mai/api/schedule/lector/',
+  VUE_APP_GROUP_SCHEDULE_URL = 'https://jutter.online/mai/api/schedule/all/',
+  VUE_APP_FIND_TEACHER_URL = 'VUE_APP_FIND_TEACHER_URL',
+  VUE_APP_SCHEDULE_GROUP_BY_NAME_URL = 'https://jutter.online/mai/api/groups/search/';
 
 module.exports = configure(function (ctx) {
   return {
@@ -45,6 +55,16 @@ module.exports = configure(function (ctx) {
     build: {
       vueRouterMode: "hash", // available values: 'hash', 'history'
 
+      env: {
+        VUE_APP_SCHEDULE_API_KEY,
+        VUE_APP_SERVER_BASE_URL,
+        VUE_APP_CURRENT_GROUP_SCHEDULE,
+        VUE_APP_GROUP_SCHEDULE_URL,
+        VUE_APP_FIND_TEACHER_URL,
+        VUE_APP_SCHEDULE_GROUP_BY_NAME_URL,
+        VUE_APP_TEACHER_SCHEDULE_URL
+      },
+
       // transpile: false,
 
       // Add dependencies for transpiling with Babel (Array of string/regex)
@@ -69,7 +89,7 @@ module.exports = configure(function (ctx) {
       chainWebpack(chain) {
         chain
           .plugin("eslint-webpack-plugin")
-          .use(ESLintPlugin, [{ extensions: ["js", "vue"] }]);
+          .use(ESLintPlugin, [{extensions: ["js", "vue"]}]);
       },
     },
 
@@ -118,7 +138,7 @@ module.exports = configure(function (ctx) {
       chainWebpackWebserver(chain) {
         chain
           .plugin("eslint-webpack-plugin")
-          .use(ESLintPlugin, [{ extensions: ["js"] }]);
+          .use(ESLintPlugin, [{extensions: ["js"]}]);
       },
 
       middlewares: [
@@ -137,7 +157,7 @@ module.exports = configure(function (ctx) {
       chainWebpackCustomSW(chain) {
         chain
           .plugin("eslint-webpack-plugin")
-          .use(ESLintPlugin, [{ extensions: ["js"] }]);
+          .use(ESLintPlugin, [{extensions: ["js"]}]);
       },
 
       manifest: {
@@ -213,14 +233,14 @@ module.exports = configure(function (ctx) {
       chainWebpackMain(chain) {
         chain
           .plugin("eslint-webpack-plugin")
-          .use(ESLintPlugin, [{ extensions: ["js"] }]);
+          .use(ESLintPlugin, [{extensions: ["js"]}]);
       },
 
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
       chainWebpackPreload(chain) {
         chain
           .plugin("eslint-webpack-plugin")
-          .use(ESLintPlugin, [{ extensions: ["js"] }]);
+          .use(ESLintPlugin, [{extensions: ["js"]}]);
       },
     },
   };
