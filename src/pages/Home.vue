@@ -17,15 +17,15 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref } from "vue";
-import AppTopSlider from "components/ui/AppTopSlider";
+import { defineComponent, onMounted } from "vue";
+import AppTopSlider from "components/AppTopSlider";
 import { useStore } from "vuex";
 import homePageTabs from "src/data/homePageTabs";
-import TheMainTabPanels from "components/ui/TheMainTabPanels";
+import TheMainTabPanels from "components/TheMainTabPanels";
 
 export default defineComponent({
   components: { TheMainTabPanels, AppTopSlider },
-  setup () {
+  setup() {
     const store = useStore();
 
     const heroTabs = homePageTabs;

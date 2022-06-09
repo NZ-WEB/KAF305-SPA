@@ -1,8 +1,8 @@
-const heroTabs =  [
+const heroTabs = [
   {
-    title: 'Роботизированная система охраны ВС',
-    fullTitle: 'Роботизированная система охраны ВС',
-    icon: 'precision_manufacturing',
+    title: "Роботизированная система охраны ВС",
+    fullTitle: "Роботизированная система охраны ВС",
+    icon: "precision_manufacturing",
     textContent: {
       text: [
         `Система патрулирования и охраны воздушных судов на основе интеллектуального автономного робота предназначена
@@ -15,61 +15,62 @@ const heroTabs =  [
         с использованием приемника спутниковой навигации, лазерного сканирующего дальномера, одометров и микромеханических датчиков.
         В системе используется современная технология повышения точности данных координат спутниковой навигации (RTK). Для объезда
         препятствий используются лазерный сканирующий дальномер, ультразвуковые датчики, а также оптические сенсоры (TOF). Положение робота
-        в реальном времени транслируется на пульт оператора.`
+        в реальном времени транслируется на пульт оператора.`,
       ],
       pictures: [
         [
-          'http://join.kaf305mai.ru/images/research_and_development/robot_carousel/render4.jpg',
-          'http://join.kaf305mai.ru/images/research_and_development/robot_carousel/render5.jpg',
-          'http://join.kaf305mai.ru/images/research_and_development/robot_carousel/maks_1.jpg'
+          "http://join.kaf305mai.ru/images/research_and_development/robot_carousel/render4.jpg",
+          "http://join.kaf305mai.ru/images/research_and_development/robot_carousel/render5.jpg",
+          "http://join.kaf305mai.ru/images/research_and_development/robot_carousel/maks_1.jpg",
         ],
         [
-          'http://join.kaf305mai.ru/images/research_and_development/robot_carousel/robot.gif',
-          'http://join.kaf305mai.ru/images/research_and_development/robot_carousel/airoport.jpg',
-          'http://join.kaf305mai.ru/images/research_and_development/robot_carousel/army.jpg'
+          "http://join.kaf305mai.ru/images/research_and_development/robot_carousel/robot.gif",
+          "http://join.kaf305mai.ru/images/research_and_development/robot_carousel/airoport.jpg",
+          "http://join.kaf305mai.ru/images/research_and_development/robot_carousel/army.jpg",
         ],
-
       ],
       qrCode: {
-        src: 'http://qrcoder.ru/code/?https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D6jRYPQBJgF4%26t%3D17s&4&0',
-        title: 'Обзорное видео комплекса'
-      }
-    }
+        src: "http://qrcoder.ru/code/?https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3D6jRYPQBJgF4%26t%3D17s&4&0",
+        title: "Обзорное видео комплекса",
+      },
+    },
   },
   {
-    title: 'Комплексы с подводными аппаратами',
-    fullTitle: 'Комплексы с подводными аппаратами',
-    icon: 'build',
+    title: "Комплексы с подводными аппаратами",
+    fullTitle: "Комплексы с подводными аппаратами",
+    icon: "build",
     textContent: {
-      text: [`Каждый из подводных аппаратов оснащен навигационно-управляющим модулем, разработанным кафедрой 305. В состав модуля могут входить: бесплатформенная инерциальная навигационная система, курсовертикаль, двухантенный приемник ГЛОНАСС/GPS, гидроаккустическая навигационная система, глубиномер, доплеровский ЛАГ, гидролокатор и резервированная распределенная вычислительная система.`],
+      text: [
+        `Каждый из подводных аппаратов оснащен навигационно-управляющим модулем, разработанным кафедрой 305. В состав модуля могут входить: бесплатформенная инерциальная навигационная система, курсовертикаль, двухантенный приемник ГЛОНАСС/GPS, гидроаккустическая навигационная система, глубиномер, доплеровский ЛАГ, гидролокатор и резервированная распределенная вычислительная система.`,
+      ],
       list: {
-        title: 'Комплексы представляют собой совместную разработку кафедры 305, ОКБ Океанологической техники РАН и других компаний. В состав комплексов в зависимости от назначения могут входить:',
+        title:
+          "Комплексы представляют собой совместную разработку кафедры 305, ОКБ Океанологической техники РАН и других компаний. В состав комплексов в зависимости от назначения могут входить:",
         items: [
-          '• Телеуправляемый необитаемый подводный аппарат',
-          '• Автономный необитаемый подводный аппарат',
-          '• Автономный носитель гидроакустической аппаратуры переменной плавучести',
-          '• Автономный буй переменной плавучести',
-        ]
+          "• Телеуправляемый необитаемый подводный аппарат",
+          "• Автономный необитаемый подводный аппарат",
+          "• Автономный носитель гидроакустической аппаратуры переменной плавучести",
+          "• Автономный буй переменной плавучести",
+        ],
       },
       pictures: [
         [
-          'http://join.kaf305mai.ru/images/research_and_development/ANPA/1.jpg',
-          'http://join.kaf305mai.ru/images/research_and_development/ANPA/2.jpg',
-          'http://join.kaf305mai.ru/images/research_and_development/ANPA/3.jpg'
+          "http://join.kaf305mai.ru/images/research_and_development/ANPA/1.jpg",
+          "http://join.kaf305mai.ru/images/research_and_development/ANPA/2.jpg",
+          "http://join.kaf305mai.ru/images/research_and_development/ANPA/3.jpg",
         ],
         [
-          'http://join.kaf305mai.ru/images/research_and_development/ANPA/4.jpg',
-          'http://join.kaf305mai.ru/images/research_and_development/ANPA/anpain.jpg',
-          'http://join.kaf305mai.ru/images/research_and_development/ANPA/anpa.gif'
+          "http://join.kaf305mai.ru/images/research_and_development/ANPA/4.jpg",
+          "http://join.kaf305mai.ru/images/research_and_development/ANPA/anpain.jpg",
+          "http://join.kaf305mai.ru/images/research_and_development/ANPA/anpa.gif",
         ],
-
-      ]
-    }
+      ],
+    },
   },
   {
-    title: 'Автоматизированная система осмотра ВС',
-    icon: 'flight',
-    fullTitle: 'Автоматизированная система осмотра ВС',
+    title: "Автоматизированная система осмотра ВС",
+    icon: "flight",
+    fullTitle: "Автоматизированная система осмотра ВС",
     textContent: {
       text: [
         `Автоматизированная система осмотра воздушного судна на стоянке «Спарка» построена на основе интеллектуального автономного
@@ -77,43 +78,43 @@ const heroTabs =  [
         возможных повреждений внешней поверхности ВС. Колесный робот осуществляет автоматический объезд и осмотр нижней части ВС. Мультикоптер
         осуществляет автоматический облёт и осмотр верхней части ВС. В процессе осмотра осуществляется фото- и видеофиксация состояния ВС. Особенностью
         комплекса является наличие системы предупреждения столкновения мультикоптера с ВС на основе тросового механизма, связывающего робот с мультикоптером.
-        Внедрение системы в аэропорту позволит значительно повысить выявляемость повреждений и снизить влияние человеческого фактора.`
+        Внедрение системы в аэропорту позволит значительно повысить выявляемость повреждений и снизить влияние человеческого фактора.`,
       ],
       pictures: [
         [
-          'http://join.kaf305mai.ru/images/research_and_development/multicopters/1.jpg',
-          'http://join.kaf305mai.ru/images/research_and_development/multicopters/2.jpg',
-          'http://join.kaf305mai.ru/images/research_and_development/multicopters/3.gif'
+          "http://join.kaf305mai.ru/images/research_and_development/multicopters/1.jpg",
+          "http://join.kaf305mai.ru/images/research_and_development/multicopters/2.jpg",
+          "http://join.kaf305mai.ru/images/research_and_development/multicopters/3.gif",
         ],
       ],
-    }
+    },
   },
   {
-    title: 'Нав. системы на элементной базе',
-    fullTitle: 'Навигационные системы на российской элементной базе',
-    icon: 'explore',
+    title: "Нав. системы на элементной базе",
+    fullTitle: "Навигационные системы на российской элементной базе",
+    icon: "explore",
     textContent: {
       text: [
         `На кафедре разработана и изготавливается линейка интегрированных навигационных систем различного класса.
-        Системы используются на различных объектах и построены с использованием преимущественно российской элементной базы.`
+        Системы используются на различных объектах и построены с использованием преимущественно российской элементной базы.`,
       ],
       list: {
-        title: 'В состав каждой системы входят:',
+        title: "В состав каждой системы входят:",
         items: [
-          '• Инерциальный измерительный модуль (тип зависит от требуемой точности и габаритов: MEMS или волоконно-оптические гироскопы)',
-          '• Cпутниковый навигационный приемник (одно- или многоантенный)',
-          '• Контрольно-корректирующая станция ГЛОНАСС/GPS с приемно-передающей аппаратурой',
-          '• Вычислительный блок на микропроцессорах',
-        ]
+          "• Инерциальный измерительный модуль (тип зависит от требуемой точности и габаритов: MEMS или волоконно-оптические гироскопы)",
+          "• Cпутниковый навигационный приемник (одно- или многоантенный)",
+          "• Контрольно-корректирующая станция ГЛОНАСС/GPS с приемно-передающей аппаратурой",
+          "• Вычислительный блок на микропроцессорах",
+        ],
       },
       pictures: [
         [
-          'http://join.kaf305mai.ru/images/research_and_development/ISNS/vog.jpg',
-          'http://join.kaf305mai.ru/images/research_and_development/ISNS/tril.jpg',
-          'http://join.kaf305mai.ru/images/research_and_development/ISNS/vog.jpg'
+          "http://join.kaf305mai.ru/images/research_and_development/ISNS/vog.jpg",
+          "http://join.kaf305mai.ru/images/research_and_development/ISNS/tril.jpg",
+          "http://join.kaf305mai.ru/images/research_and_development/ISNS/vog.jpg",
         ],
       ],
-    }
+    },
   },
 ];
 

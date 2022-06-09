@@ -5,14 +5,8 @@
   >
     <q-toolbar>
       <q-avatar size="100px">
-        <q-img
-          v-if="data.avatar"
-          :src="data.avatar"
-        ></q-img>
-        <q-icon
-          v-else
-          name="person"
-        />
+        <q-img v-if="data.avatar" :src="data.avatar"></q-img>
+        <q-icon v-else name="person" />
       </q-avatar>
 
       <q-toolbar-title>
@@ -78,11 +72,7 @@
           </h6>
         </div>
         <div class="col-9">
-          <q-chip
-            outline
-            color="primary"
-            text-color="white"
-          >
+          <q-chip outline color="primary" text-color="white">
             {{ data.specGuardian }}
           </q-chip>
         </div>
@@ -133,7 +123,7 @@ export default {
     },
   },
 
-  setup () {
+  setup() {
     const expanded = ref(false);
     return {
       expanded,

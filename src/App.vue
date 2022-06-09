@@ -1,13 +1,12 @@
 <template>
-  <router-view/>
+  <router-view />
 </template>
 <script>
-import {defineComponent, onMounted} from 'vue';
+import { defineComponent, onMounted } from "vue";
 // import {teachers} from './data/Teachers'
 
-
 export default defineComponent({
-  name: 'App',
+  name: "App",
   // setup() {
   //   const teachersData = teachers;
   //   console.log('Teachers data', teachersData);
@@ -31,8 +30,7 @@ export default defineComponent({
   //     loadTeachersData
   //   }
   // }
-})
-
+});
 </script>
 
 <style>
@@ -50,6 +48,4 @@ body {
 p {
   font-size: 16px;
 }
-
-
 </style>

@@ -1,17 +1,9 @@
 <template>
-  <q-page
-    class="custom-animation"
-    padding
-  >
+  <q-page class="custom-animation" padding>
     <q-container>
-
       <div class="row">
         <div class="col-3 col-sm-2 col-lg-1">
-
-          <router-link
-            class="block mx-auto block"
-            to="/schedule"
-          >
+          <router-link class="block mx-auto block" to="/schedule">
             <q-btn
               size="md"
               rounded
@@ -21,10 +13,8 @@
               <q-icon name="arrow_back" />
             </q-btn>
           </router-link>
-
         </div>
         <div class="col-9 col-sm-10 col-lg-11">
-
           <q-select
             class="text-primary"
             filled
@@ -32,13 +22,11 @@
             v-model="currWeek"
             :options="options()"
             option-value="value"
-            :display-value="`Учебная неделя ${currWeek }`"
+            :display-value="`Учебная неделя ${currWeek}`"
             emit-value
             rounded
           />
-
         </div>
-
       </div>
       <div
         v-if="$store.getters['schedule/WeekSchedule'][currWeek]"
@@ -60,25 +48,26 @@
                 <q-tab
                   :name="day.name"
                   :label="`${day.name} | ${day.date}`"
-                  v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek].days"
+                  v-for="(day, idxParent) in $store.getters[
+                    'schedule/WeekSchedule'
+                  ][currWeek].days"
                   :key="idxParent"
                 />
               </q-tabs>
 
               <q-separator />
 
-              <q-tab-panels
-                v-model="tab"
-                animated
-              >
+              <q-tab-panels v-model="tab" animated>
                 <q-tab-panel
-                  v-for="(day,idxParent) in $store.getters['schedule/WeekSchedule'][currWeek].days"
+                  v-for="(day, idxParent) in $store.getters[
+                    'schedule/WeekSchedule'
+                  ][currWeek].days"
                   :name="day.name"
                   :key="idxParent"
                 >
                   <app-schedule-item
                     style="min-height: auto"
-                    v-for="(subject,index) in day.subjects"
+                    v-for="(subject, index) in day.subjects"
                     :key="index"
                     :active="true"
                     :subject-count="subject.number"
@@ -108,8 +97,7 @@
 
         <q-tooltip :offset="[0, 8]">QSpinnerIos</q-tooltip>
       </div>
-      <div v-if="!filteredData">{{ $router.push('/schedule') }}</div>
-
+      <div v-if="!filteredData">{{ $router.push("/schedule") }}</div>
     </q-container>
   </q-page>
 </template>
@@ -118,42 +106,48 @@
 import { ref, onMounted } from "vue";
 import { useRoute } from "vue-router";
 import { useStore } from "vuex";
-import AppScheduleItem from "components/ui/AppScheduleItem";
+import AppScheduleItem from "components/AppScheduleItem";
 import "animate.css/animate.min.css";
 import { Loading, QSpinnerIos } from "quasar";
 import { semesterCounter } from "src/data/currWeek";
 
 export default {
-  props: ['type'],
+  props: ["type"],
 
-  setup (props) {
+  setup(props) {
     const store = useStore();
     onMounted(() => {
       Loading.show({
         spinner: QSpinnerIos,
-        spinnerSize: '7em',
-        spinnerColor: '#fff',
-        backgroundColor: '#fff',
+        spinnerSize: "7em",
+        spinnerColor: "#fff",
+        backgroundColor: "#fff",
       });
 
-
-      Loading.hide()
+      Loading.hide();
     });
 
     const route = useRoute();
     const d = new Date();
-    const days = ["Вс", "Пн", "Вт", "Ср",
-      "Чт", "Пт", "Сб"];
+    const days = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
 
     const loadCurrentSchedule = () => {
-      store.dispatch('getCurrentGroupSchedule', route.params.id);
+      store.dispatch("getCurrentGroupSchedule", route.params.id);
     };
 
     const defineGetter = (prop) => {
-      if (prop === 'Group') {
-        return ref(store.getters['schedule/groupsList'].find(i => i.id === route.params.id));
-      } else if (prop === 'Teacher') {
-        return ref(store.getters['schedule/teachersList'].find(i => i.id === route.params.id));
+      if (prop === "Group") {
+        return ref(
+          store.getters["schedule/groupsList"].find(
+            (i) => i.id === route.params.id
+          )
+        );
+      } else if (prop === "Teacher") {
+        return ref(
+          store.getters["schedule/teachersList"].find(
+            (i) => i.id === route.params.id
+          )
+        );
       }
     };
 
@@ -176,7 +170,7 @@ export default {
     };
 
     const options = () => {
-      const data = store.getters['schedule/WeekSchedule'];
+      const data = store.getters["schedule/WeekSchedule"];
       const options = [];
 
       data.forEach((i, idx) => {
@@ -184,20 +178,20 @@ export default {
       });
 
       return options;
-    }
+    };
 
     return {
       filteredData,
       activeWeek,
       tab,
       currWeek,
-      options
-    }
+      options,
+    };
   },
   components: {
-    AppScheduleItem
-  }
-}
+    AppScheduleItem,
+  },
+};
 </script>
 
 <style scoped lang="scss">

@@ -1,12 +1,12 @@
 <template>
-    <q-card
-      class="q-pa-xl q-mt-md shadow-0 row justify-center"
-      style="background: #EDF4FA; width: 100%"
-    >
-      <div class="col-12 col-lg-8">
-        <div :class="keyboardClass"></div>
-      </div>
-    </q-card>
+  <q-card
+    class="q-pa-xl q-mt-md shadow-0 row justify-center"
+    style="background: #edf4fa; width: 100%"
+  >
+    <div class="col-12 col-lg-8">
+      <div :class="keyboardClass"></div>
+    </div>
+  </q-card>
 </template>
 
 <script>
@@ -19,11 +19,11 @@ export default {
   props: {
     keyboardClass: {
       default: "simple-keyboard",
-      type: String
+      type: String,
     },
     input: {
-      type: String
-    }
+      type: String,
+    },
   },
   data: () => ({
     keyboard: null,
@@ -32,7 +32,7 @@ export default {
     this.keyboard = new Keyboard(this.keyboardClass, {
       onChange: this.onChange,
       onKeyPress: this.onKeyPress,
-      ...layout
+      ...layout,
     });
   },
   methods: {
@@ -52,23 +52,21 @@ export default {
       let shiftToggle = currentLayout === "default" ? "shift" : "default";
 
       this.keyboard.setOptions({
-        layoutName: shiftToggle
+        layoutName: shiftToggle,
       });
-    }
+    },
   },
   watch: {
     input(input) {
       this.keyboard.setInput(input);
-    }
-  }
+    },
+  },
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  .simple-keyboard {
-    background: transparent;
-  }
-
-
+.simple-keyboard {
+  background: transparent;
+}
 </style>

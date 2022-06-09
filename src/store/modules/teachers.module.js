@@ -2,22 +2,22 @@ import axios from "axios";
 
 export default {
   namespaced: true,
-  state () {
+  state() {
     return {
       curTeacherId: "",
       allTeachers: [],
     };
   },
   mutations: {
-    setTeacher (state, teacher) {
+    setTeacher(state, teacher) {
       state.allTeacher = teacher;
     },
-    setAllTeachers (state, allTeachers) {
+    setAllTeachers(state, allTeachers) {
       state.allTeachers = allTeachers;
     },
   },
   actions: {
-    async loadAllTeachers ({ commit }) {
+    async loadAllTeachers({ commit }) {
       try {
         const { data } = await axios.get(
           `${process.env.VUE_APP_FB_URL}/teachersData.json`
@@ -31,7 +31,7 @@ export default {
         console.log(e);
       }
     },
-    async loadTeacher ({ commit }) {
+    async loadTeacher({ commit }) {
       try {
         const { data } = await axios.get(
           `${process.env.VUE_APP_FB_URL}/teachersData.json/${id}`
@@ -43,7 +43,7 @@ export default {
         console.log(e);
       }
     },
-    async addNewTeacher (item) {
+    async addNewTeacher(item) {
       try {
         await axios.get(`${process.env.VUE_APP_FB_URL}/teachersData.json`, {
           method: "POST",
@@ -59,7 +59,7 @@ export default {
     },
   },
   getters: {
-    teachers (state) {
+    teachers(state) {
       return state.allTeachers;
     },
   },

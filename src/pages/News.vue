@@ -3,19 +3,17 @@
     <q-container>
       <div class="row justify-center">
         <div class="col-lg-7">
-          <h5
-            class="text-h4 text-weight-medium q-my-md text-primary"
-            align="center"
-          >Новости и научные мероприятия кафедры</h5>
+          <h5 class="text-h4 text-weight-medium q-my-md text-primary">
+            Новости и научные мероприятия кафедры
+          </h5>
         </div>
       </div>
       <div class="row justify-center">
         <div class="col-lg-6">
-          <p
-            class="q-my-md text-primary"
-            align="center"
-          >Кафедра 305 создана в 1945 году, выпустила более 3500
-            инженеров, подготовила 86 кандидатов и 12 докторов технических наук.</p>
+          <p class="q-my-md text-primary">
+            Кафедра 305 создана в 1945 году, выпустила более 3500 инженеров,
+            подготовила 86 кандидатов и 12 докторов технических наук.
+          </p>
         </div>
       </div>
       <div
@@ -29,12 +27,9 @@
             :label="item.title"
             :caption="item.subtitle"
             class="q-my-sm q-pa-lg clear-padding-sm shadow-0 text-primary"
-            style="background: #EDF4FA"
+            style="background: #edf4fa"
           >
-            <q-card
-              class="text-primary"
-              style="background: #EDF4FA"
-            >
+            <q-card class="text-primary" style="background: #edf4fa">
               <q-card-section>
                 <p class="text-grey">
                   {{ item.description }}
@@ -45,10 +40,7 @@
         </div>
       </div>
 
-      <div
-        v-else
-        class=" row items-center justify-center"
-      >
+      <div v-else class="row items-center justify-center">
         <q-circular-progress
           indeterminate
           size="50px"
@@ -60,22 +52,22 @@
   </q-page>
 </template>
 <script>
-import { onMounted } from 'vue'
-import { useStore } from 'vuex';
+import { onMounted } from "vue";
+import { useStore } from "vuex";
 
 export default {
-  setup () {
+  setup() {
     const store = useStore();
 
     const loadNews = async () => {
       await store.dispatch("news/loadNews");
-    }
+    };
 
     onMounted(() => {
       loadNews();
     });
-  }
-}
+  },
+};
 </script>
 
 <style scoped lang="scss">

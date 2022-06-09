@@ -77,6 +77,129 @@ yarn run lint
 quasar build
 ```
 
+## Directories tree:
+```
+├── babel.config.js
+├── firebase.json
+├── icongenie-prod.json
+├── jest.config.js
+├── jsconfig.json
+├── package.json
+├── package-lock.json
+├── public
+│   ├── favicon.ico
+│   └── icons
+│       ├── favicon-128x128.png
+│       ├── favicon-16x16.png
+│       ├── favicon-32x32.png
+│       └── favicon-96x96.png
+├── quasar.conf.js
+├── quasar.extensions.json
+├── quasar.testing.json
+├── README.md
+├── src
+│   ├── App.vue
+│   ├── assets
+│   │   ├── bg.mp4
+│   │   ├── favicon.ico
+│   │   ├── logo.png
+│   │   ├── logo.svg
+│   │   ├── main-image-1.jpg
+│   │   ├── mai-web.svg
+│   │   ├── quasar-logo-vertical.svg
+│   │   └── splash.png
+│   ├── axios
+│   │   └── teachers.js
+│   ├── boot
+│   │   ├── axios.js
+│   │   └── i18n.js
+│   ├── components
+│   │   ├── AppKeyboard.vue
+│   │   ├── AppNirsCounterCard.vue
+│   │   ├── AppPageTitle.vue
+│   │   ├── AppProfileCard.vue
+│   │   ├── AppPublicationCard.vue
+│   │   ├── AppQRCode.vue
+│   │   ├── AppScheduleForm.vue
+│   │   ├── AppScheduleItem.vue
+│   │   ├── AppSimpleKeyboard.vue
+│   │   ├── AppTeachersPanel.vue
+│   │   ├── AppTopSlider.vue
+│   │   ├── AppWeeksSchedule.vue
+│   │   ├── EssentialLink.vue
+│   │   ├── TheMainTabPanels.vue
+│   │   ├── TheNirsCounter.vue
+│   │   ├── TheNirsCustomers.vue
+│   │   └── TheNirsDestinations.vue
+│   ├── css
+│   │   ├── app.scss
+│   │   └── quasar.variables.scss
+│   ├── data
+│   │   ├── currWeek.js
+│   │   ├── homePageTabs.js
+│   │   ├── membersSlider.js
+│   │   └── Teachers.js
+│   ├── i18n
+│   │   ├── en-US
+│   │   │   └── index.js
+│   │   └── index.js
+│   ├── index.template.html
+│   ├── layouts
+│   │   ├── MainLayout.vue
+│   │   └── OwnLayout.vue
+│   ├── pages
+│   │   ├── Error404.vue
+│   │   ├── GroupWeeksSchedule.vue
+│   │   ├── History.vue
+│   │   ├── Home.vue
+│   │   ├── News.vue
+│   │   ├── NIR.vue
+│   │   ├── Schedule.vue
+│   │   ├── TeacherSchedule.vue
+│   │   ├── Teachers.vue
+│   │   └── WeeksSchedule.vue
+│   ├── router
+│   │   ├── index.js
+│   │   └── routes.js
+│   ├── service
+│   │   └── members.service.js
+│   ├── store
+│   │   ├── homePage
+│   │   │   ├── actions.js
+│   │   │   ├── getters.js
+│   │   │   ├── index.js
+│   │   │   ├── mutations.js
+│   │   │   └── state.js
+│   │   ├── index.js
+│   │   ├── modules
+│   │   │   ├── currentSchedule.module.js
+│   │   │   ├── schedule.module.js
+│   │   │   ├── teachers.module.js
+│   │   │   └── user.module.js
+│   │   ├── news
+│   │   │   ├── actions.js
+│   │   │   ├── getters.js
+│   │   │   ├── index.js
+│   │   │   ├── mutations.js
+│   │   │   └── state.js
+│   │   └── store-flag.d.ts
+│   └── use
+│       ├── homePage.js
+│       ├── schedulePage.js
+│       └── weeksSchedule.js
+├── src-electron
+│   ├── electron-main.js
+│   ├── electron-preload.js
+│   └── icons
+│       ├── icon.icns
+│       ├── icon.ico
+│       └── linux-512x512.png
+└── yarn.lock
+
+26 directories, 99 files
+
+```
+
 ### Customize the configuration
 
 See [Configuring quasar.conf.js](https://v2.quasar.dev/quasar-cli/quasar-conf-js).

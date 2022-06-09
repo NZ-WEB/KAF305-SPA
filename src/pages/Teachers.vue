@@ -1,8 +1,5 @@
 <template>
-  <q-page
-    padding
-    class="page"
-  >
+  <q-page padding class="page">
     <div
       v-if="$store.getters['homePage/getTopNews'].length"
       class="row q-mb-auto q-mt-0"
@@ -19,11 +16,7 @@
       </div>
     </div>
 
-    <div
-      v-if="sortedTeacherData.length"
-      class="row q-mt-md"
-    >
-
+    <div v-if="sortedTeacherData.length" class="row q-mt-md">
       <div class="col-lg-3 col-12">
         <app-teachers-panel
           @handleClick="setSelectedTab"
@@ -47,18 +40,13 @@
             :key="idx"
             class="q-pt-none"
           >
-
             <app-profile-card :data="item" />
-
           </q-tab-panel>
         </q-tab-panels>
       </div>
     </div>
 
-    <div
-      v-else
-      class=" row items-center justify-center"
-    >
+    <div v-else class="row items-center justify-center">
       <q-circular-progress
         indeterminate
         size="50px"
@@ -66,7 +54,6 @@
         color="primary"
       />
     </div>
-
   </q-page>
 </template>
 
@@ -84,21 +71,20 @@ import AppPageTitle from "src/components/AppPageTitle.vue";
 export default {
   components: { AppProfileCard, AppTeachersPanel, AppPageTitle },
 
-  setup () {
+  setup() {
     const membersService = new MembersService();
     const store = useStore();
     const teachersData = ref(null);
     const slug = ref(null);
-    const slide = ref('style');
+    const slide = ref("style");
     const expanded = ref(false);
     const sliderInfo = data;
     const tab = ref(0);
 
     const setSelectedTab = (selectedTab) => {
-      console.log(selectedTab, 'st')
+      console.log(selectedTab, "st");
       tab.value = selectedTab;
     };
-
 
     const loadTopNews = async () => {
       await store.dispatch("homePage/loadTopNews");
@@ -106,22 +92,25 @@ export default {
 
     const sortedTeacherData = computed(() => {
       if (teachersData.value) {
-        return [...teachersData.value].sort((a, b) => (a.fullName > b.fullName ? 1 : -1));
+        return [...teachersData.value].sort((a, b) =>
+          a.fullName > b.fullName ? 1 : -1
+        );
       }
       return [];
-    })
+    });
 
     onMounted(() => {
       Loading.show({
         spinner: QSpinnerIos,
-        spinnerSize: '7em',
-        spinnerColor: 'primary',
-        backgroundColor: 'primary',
+        spinnerSize: "7em",
+        spinnerColor: "primary",
+        backgroundColor: "primary",
       });
-      membersService.getAll()
-        .then(data => teachersData.value = data)
-        .then(data => slug.value = data[tab.value].slug)
-        .catch(e => console.log(e, 'error'));
+      membersService
+        .getAll()
+        .then((data) => (teachersData.value = data))
+        .then((data) => (slug.value = data[tab.value].slug))
+        .catch((e) => console.log(e, "error"));
 
       loadTopNews();
 
@@ -136,8 +125,8 @@ export default {
       slug,
       sliderInfo,
       sortedTeacherData,
-      setSelectedTab
-    }
+      setSelectedTab,
+    };
   },
-}
+};
 </script>

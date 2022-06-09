@@ -5,7 +5,6 @@
 
     <!-- (Optional) The Header -->
     <q-header class="text-primary bg-white">
-
       <q-toolbar class="">
         <img
           @click="$router.push('/')"
@@ -30,10 +29,7 @@
 
     <!-- (Optional) The Footer -->
     <q-footer class="text-primary bg-white">
-      <q-toolbar
-        align="center"
-        class="justify-center q-pa-sm"
-      >
+      <q-toolbar align="center" class="justify-center q-pa-sm">
         <q-toolbar-title>
           <div>
             <p class="date">{{ date }}</p>
@@ -44,12 +40,7 @@
     </q-footer>
 
     <!-- (Optional) A Drawer; you can add one more with side="right" or change this one's side -->
-    <q-drawer
-      v-model="leftDrawerOpen"
-      side="left"
-      bordered
-      class="bg-grey-2"
-    >
+    <q-drawer v-model="leftDrawerOpen" side="left" bordered class="bg-grey-2">
       <!-- QScrollArea is optional -->
       <q-scroll-area class="fit q-pa-sm">
         <!-- Content here -->
@@ -68,7 +59,7 @@ import { ref } from "vue";
 import { useStore } from "vuex";
 
 export default {
-  setup () {
+  setup() {
     const store = useStore();
     const leftDrawerOpen = ref(false);
     const menuItems = store.getters["menuItems"];
@@ -80,7 +71,7 @@ export default {
     const timerID = setInterval(updateTime, 1000);
     updateTime();
 
-    function updateTime () {
+    function updateTime() {
       let cd = new Date();
       time.value =
         zeroPadding(cd.getHours(), 2) +
@@ -98,7 +89,7 @@ export default {
         week[cd.getDay()];
     }
 
-    function zeroPadding (num, digit) {
+    function zeroPadding(num, digit) {
       let zero = "";
       for (let i = 0; i < digit; i++) {
         zero += "0";
@@ -108,7 +99,7 @@ export default {
 
     return {
       leftDrawerOpen,
-      toggleLeftDrawer () {
+      toggleLeftDrawer() {
         leftDrawerOpen.value = !leftDrawerOpen.value;
       },
       menuItems,
