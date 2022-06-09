@@ -3,9 +3,7 @@
     <q-container>
       <div class="row justify-center">
         <div class="col-lg-7">
-          <h5
-            class="text-h4 text-weight-medium q-my-md text-primary"
-          >
+          <h5 class="text-h4 text-weight-medium q-my-md text-primary">
             Новости и научные мероприятия кафедры
           </h5>
         </div>

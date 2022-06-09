@@ -1,5 +1,7 @@
 <template>
-  <h4 class="text-h5 text-center q-py-md text-primary text-bold">Основные направления НИОКР</h4>
+  <h4 class="text-h5 text-center q-py-md text-primary text-bold">
+    Основные направления НИОКР
+  </h4>
   <ul class="column justify-center">
     <li
       class="text-center"
