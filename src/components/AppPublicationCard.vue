@@ -5,10 +5,7 @@
     <q-separator class="q-my-md" />
 
     <div v-if="publications && publications.length">
-      <div
-        v-for="publication in publications"
-        :key="publication.id"
-      >
+      <div v-for="publication in publications" :key="publication.id">
         <h6 class="text-h6">
           {{ publication.title }}
         </h6>
@@ -39,7 +36,7 @@ export default {
     },
   },
 
-  setup (props) {
+  setup(props) {
     const membersService = new MembersService();
     const publications = ref(null);
 

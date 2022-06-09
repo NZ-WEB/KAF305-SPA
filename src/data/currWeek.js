@@ -10,7 +10,7 @@ if (d.getDay() === 0) {
   semesterCounter = weeksBetween(firstDate, d) + 1;
 } else {
   semesterCounter = weeksBetween(firstDate, d);
-  console.log(semesterCounter, 'semC')
+  console.log(semesterCounter, "semC");
 }
 
 export { semesterCounter };

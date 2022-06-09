@@ -10,25 +10,14 @@
         indicator-color="primary"
       >
         <div class="col-3">
-          <q-tab
-            icon="groups"
-            label="Группы"
-            name="groups"
-          />
+          <q-tab icon="groups" label="Группы" name="groups" />
         </div>
         <div class="col-3">
-          <q-tab
-            icon="person"
-            label="Преподаватели"
-            name="teachers"
-          />
+          <q-tab icon="person" label="Преподаватели" name="teachers" />
         </div>
       </q-tabs>
 
-      <q-tab-panels
-        v-model="tab"
-        animated
-      >
+      <q-tab-panels v-model="tab" animated>
         <q-tab-panel name="groups">
           <div class="row justify-center">
             <div class="col-12 col-lg-9 q-pa-sm">
@@ -68,41 +57,39 @@
 </template>
 
 <script>
-
 import { onMounted, ref } from "vue";
-import AppScheduleForm from "components/ui/AppScheduleForm";
+import AppScheduleForm from "components/AppScheduleForm";
 import { useStore } from "vuex";
 import { useQuasar } from "quasar";
 
 export default {
-  setup () {
+  setup() {
     const store = useStore();
     const $q = useQuasar();
     const groupName = ref(null);
     const teacherName = ref(null);
 
-
     onMounted(() => {
-      store.commit('schedule/clearWeekSchedule');
+      store.commit("schedule/clearWeekSchedule");
     });
 
-    async function onTeacherSubmit () {
-      await store.dispatch('schedule/findTeacher', teacherName.value);
+    async function onTeacherSubmit() {
+      await store.dispatch("schedule/findTeacher", teacherName.value);
     }
 
     return {
       groupName,
       teacherName,
       onTeacherSubmit,
-      tab: ref('groups'),
+      tab: ref("groups"),
       splitterModel: ref(20),
-    }
+    };
   },
 
   components: {
     AppScheduleForm,
-}
-}
+  },
+};
 </script>
 
 <style lang="scss" scoped>

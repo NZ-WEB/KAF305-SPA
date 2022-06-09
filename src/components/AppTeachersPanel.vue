@@ -1,13 +1,6 @@
 <template>
-  <div
-    v-if="teachers.length"
-    class="column items-center justify-center"
-  >
-    <q-tabs
-      v-model="tab"
-      class="text-primary"
-      vertical
-    >
+  <div v-if="teachers.length" class="column items-center justify-center">
+    <q-tabs v-model="tab" class="text-primary" vertical>
       <q-tab
         :name="idx"
         :label="teacher.fullName"
@@ -23,7 +16,8 @@
       flat
       color="grey-4"
       active-color="primary"
-      value="2"/>
+      value="2"
+    />
   </div>
   <div v-else>
     <q-circular-progress />
@@ -45,7 +39,7 @@ export default {
     handleClick: null,
   },
 
-  setup (props, { emit }) {
+  setup(props, { emit }) {
     const MAX_MEMBER_ON_PAGE = ref(10);
     const page = ref(1);
     const tab = ref(0);

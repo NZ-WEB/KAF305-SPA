@@ -1,8 +1,8 @@
 <script>
-import { defineComponent, ref } from 'vue';
+import { defineComponent, ref } from "vue";
 
 export default defineComponent({
-  name: 'MyButton',
+  name: "MyButton",
   props: {
     incrementStep: {
       type: Number,
@@ -11,7 +11,7 @@ export default defineComponent({
   },
   setup(props) {
     const counter = ref(0);
-    const input = ref('rocket muffin');
+    const input = ref("rocket muffin");
     function increment() {
       counter.value += props.incrementStep;
     }

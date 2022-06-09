@@ -1,3 +1,3 @@
-export function setTopNews (state, topNews) {
+export function setTopNews(state, topNews) {
   return (state.topNews = topNews);
 }

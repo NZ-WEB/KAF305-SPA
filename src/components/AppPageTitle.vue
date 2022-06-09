@@ -1,7 +1,9 @@
 <template>
-  <div class="row items-center justify-center q-pa-lg rounded-borders text-primary ">
+  <div
+    class="row items-center justify-center q-pa-lg rounded-borders text-primary"
+  >
     <div class="col-6">
-      <div class="column items-center justify-center ">
+      <div class="column items-center justify-center">
         <div class="col-auto">
           <h1 class="text-h4">{{ title }}</h1>
         </div>
@@ -11,7 +13,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -27,7 +28,7 @@ export default {
     },
   },
 
-  setup () {
+  setup() {
     return {};
   },
 };

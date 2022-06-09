@@ -1,3 +1,3 @@
-export function setNews (state, news) {
+export function setNews(state, news) {
   return (state.news = news);
 }
