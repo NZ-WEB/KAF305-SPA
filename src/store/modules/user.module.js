@@ -1,11 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   namespaced: true,
   state() {
     return {
-      user: []
-    }
+      user: [],
+    };
   },
   mutations: {
     setUser(state, user) {
@@ -15,20 +15,24 @@ export default {
   actions: {
     async login({ commit, getters }, data) {
       try {
-        const body = JSON.stringify({user: data});
-        console.log(body,'body');
+        const body = JSON.stringify({ user: data });
+        console.log(body, "body");
 
-        const res = await axios.post(`${process.env.VUE_APP_BACKEND_URL}/users/login`, body, {
-          headers: {
-            "Content-Type": "application/json; charset=utf-8"
+        const res = await axios.post(
+          `${process.env.VUE_APP_BACKEND_URL}/users/login`,
+          body,
+          {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+            },
           }
-        });
+        );
 
         const user = res.data.user;
 
-        commit('setUser', user);
+        commit("setUser", user);
       } catch (e) {
-        console.log(e)
+        console.log(e);
       }
     },
   },
@@ -36,5 +40,5 @@ export default {
     user(state) {
       return state.user;
     },
-  }
-}
+  },
+};

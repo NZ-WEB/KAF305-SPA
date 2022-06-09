@@ -1,19 +1,18 @@
-import {useStore} from "vuex";
-import {useQuasar} from "quasar";
-import {onMounted, reactive, ref} from "vue";
+import { useStore } from "vuex";
+import { useQuasar } from "quasar";
+import { onMounted, reactive, ref } from "vue";
 
 export function useSchedulePage() {
   const store = useStore();
   const $q = useQuasar();
   const groupName = ref(null);
   const teacherName = ref(null);
-  const teacherCondition = reactive({name: 'teacherCondition', value: false});
-  const groupCondition = reactive({name: 'groupCondition', value: false});
+  const teacherCondition = reactive({ name: "teacherCondition", value: false });
+  const groupCondition = reactive({ name: "groupCondition", value: false });
   const width = window.innerWidth;
 
-
   onMounted(() => {
-    store.commit('schedule/clearWeekSchedule');
+    store.commit("schedule/clearWeekSchedule");
   });
 
   const onChangeGroup = (input) => {
@@ -25,7 +24,7 @@ export function useSchedulePage() {
   };
 
   async function onTeacherSubmit() {
-    await store.dispatch('schedule/findTeacher', teacherName.value)
+    await store.dispatch("schedule/findTeacher", teacherName.value);
   }
 
   return {
@@ -37,6 +36,5 @@ export function useSchedulePage() {
     groupCondition,
     width,
     onTeacherSubmit,
-
-  }
+  };
 }

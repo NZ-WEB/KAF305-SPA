@@ -1,3 +1,3 @@
-export function getNews (state) {
+export function getNews(state) {
   return state.news;
 }

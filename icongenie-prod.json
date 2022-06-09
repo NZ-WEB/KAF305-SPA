@@ -4,13 +4,8 @@
     "icon": "./src/assets/logo.png",
     "background": "./src/assets/splash.png",
     "splashscreenIconRatio": "0",
-    "padding": [
-      0,
-      0
-    ],
-    "include": [
-      "all"
-    ]
+    "padding": [0, 0],
+    "include": ["all"]
   },
   "assets": []
 }
