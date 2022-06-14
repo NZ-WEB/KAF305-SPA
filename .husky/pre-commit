@@ -3,3 +3,4 @@
 
 jest
 yarn format
+git add .
