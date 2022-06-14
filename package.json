@@ -16,7 +16,10 @@
     "test:unit:watch": "jest --watch",
     "test:unit:watchAll": "jest --watchAll",
     "serve:test:coverage": "quasar serve test/jest/coverage/lcov-report/ --port 8788",
-    "concurrently:dev:jest": "concurrently \"quasar dev\" \"jest --watch\""
+    "concurrently:dev:jest": "concurrently \"quasar dev\" \"jest --watch\"",
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@quasar/extras": "^1.13.3",
@@ -43,11 +46,12 @@
     "electron": "^13.1.9",
     "electron-packager": "^15.2.0",
     "eslint": "^8.10.0",
-    "eslint-plugin-vue": "^8.5.0",
     "eslint-config-prettier": "^8.1.0",
-    "prettier": "^2.5.1",
     "eslint-plugin-jest": "^25.2.2",
-    "eslint-webpack-plugin": "^2.4.0"
+    "eslint-plugin-vue": "^8.5.0",
+    "eslint-webpack-plugin": "^2.4.0",
+    "husky": "^8.0.1",
+    "prettier": "^2.5.1"
   },
   "browserslist": [
     "last 10 Chrome versions",

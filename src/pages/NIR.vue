@@ -3,7 +3,10 @@
     <q-container>
       <div class="row q-pt-md justify-center">
         <div class="col-lg-10">
-          <h5 class="text-h4 text-weight-medium q-my-md text-primary">
+          <h5
+            align="center"
+            class="text-h4 text-weight-medium q-my-md text-primary"
+          >
             Научно Исследовательские Работы
           </h5>
         </div>

@@ -78,6 +78,7 @@ quasar build
 ```
 
 ## Directories tree:
+
 ```
 ├── babel.config.js
 ├── firebase.json

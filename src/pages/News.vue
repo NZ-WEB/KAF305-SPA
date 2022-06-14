@@ -3,14 +3,17 @@
     <q-container>
       <div class="row justify-center">
         <div class="col-lg-7">
-          <h5 class="text-h4 text-weight-medium q-my-md text-primary">
+          <h5
+            align="center"
+            class="text-h4 text-weight-medium q-my-md text-primary"
+          >
             Новости и научные мероприятия кафедры
           </h5>
         </div>
       </div>
       <div class="row justify-center">
         <div class="col-lg-6">
-          <p class="q-my-md text-primary">
+          <p align="center" class="q-my-md text-primary">
             Кафедра 305 создана в 1945 году, выпустила более 3500 инженеров,
             подготовила 86 кандидатов и 12 докторов технических наук.
           </p>
