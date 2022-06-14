@@ -51,7 +51,7 @@ export default {
     items: Object,
   },
   setup() {
-    const slide = ref(1);
+    const slide = ref(0);
 
     return {
       slide,
