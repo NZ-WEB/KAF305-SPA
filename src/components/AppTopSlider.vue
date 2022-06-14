@@ -37,7 +37,7 @@
         </p>
       </q-carousel-slide>
     </q-carousel>
-    <div v-else class="column items-center q-gutter-md">
+    <div  v-else class="column items-center q-gutter-md">
       <q-spinner color="primary" size="3em" />
     </div>
   </transition-group>

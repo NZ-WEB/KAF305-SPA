@@ -1,7 +1,6 @@
 import { describe, expect, it } from "@jest/globals";
 import { installQuasarPlugin } from "@quasar/quasar-app-extension-testing-unit-jest";
-import { mount, shallowMount } from "@vue/test-utils";
-import { QBtn } from "quasar";
+import { mount } from "@vue/test-utils";
 import AppTopSlider from "components/AppTopSlider";
 
 installQuasarPlugin();
@@ -79,5 +78,17 @@ describe("AppTopSlider", () => {
     await leftArrowBtn.trigger('click');
 
     expect(wrapper.text()).toContain('3');
+  });
+
+  it("should show preloader if props length = 0", async() => {
+    const wrapper = mount(AppTopSlider, {
+      propsData: {
+        items: []
+      },
+    });
+
+    const spinner = await wrapper.find('.q-spinner')?.html()
+
+    expect(spinner).toBeDefined();
   });
 });
