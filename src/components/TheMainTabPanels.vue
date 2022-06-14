@@ -167,10 +167,7 @@ import AppQRCode from "components/AppQRCode";
 
 export default {
   name: "TheMainTabPanels",
-  props: {
-    tabs: Array,
-  },
-  setup(props) {
+  setup() {
     const photos = ref(1);
     const tab = ref("disciplines");
 

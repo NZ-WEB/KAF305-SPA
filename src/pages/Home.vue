@@ -9,7 +9,7 @@
 
       <div class="row justify-center">
         <div class="container">
-          <the-main-tab-panels :tabs="heroTabs" />
+          <the-main-tab-panels  />
         </div>
       </div>
     </div>
